@@ -28,5 +28,12 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "prettier": "^1.14.3"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cli-highlight": "^2.0.0",
+    "commander": "^2.18.0",
+    "marked": "^0.5.1",
+    "marked-terminal": "^3.1.1"
   }
 }
