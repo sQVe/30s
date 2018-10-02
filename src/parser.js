@@ -4,12 +4,10 @@ const { promisify } = require('util');
 
 const snippets = require('../submodules/30-seconds-of-code/snippet_data/snippets.json')
   .data;
-const { isString, mapValues } = require('./helpers');
+const { enforceSingleNewLine, mapValues } = require('./helpers');
 
 const FILE_NAME = 'snippets.json';
 
-const enforceSingleNewLine = x =>
-  isString(x) ? x.replace(/[\r\n]+/g, '\n').replace(/[\r\n]*$/, '') : x;
 const createItem = ({
   id,
   attributes: {
@@ -28,3 +26,8 @@ const createItem = ({
   // eslint-disable-next-line no-console
   return console.log(`Successfully created ${FILE_NAME} file.`);
 })();
+
+module.exports = {
+  createItem,
+  // TODO: Write file function.
+};
