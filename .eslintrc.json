@@ -1,3 +1,6 @@
 {
-  "extends": ["eslint-config-sqve"]
+  "extends": ["eslint-config-sqve"],
+  "rules": {
+    "no-console": 0
+  }
 }

@@ -14,30 +14,54 @@ const viewer = require('./viewer');
 
 program.version('1.0.0');
 
-program
-  .command('search [query]')
-  // .option('-s, --setup_mode [mode]', 'Which setup mode to use')
-  .description('Fuzzy search snippets')
-  .action((query, options) => {
-    viewer.log(handler.searchSnippets(query));
-  });
+const addCommand = settings => {
+  settings.reduce((acc, [key, ...args]) => acc[key](...args), program);
+};
+const commonOptions = [
+  ['option', '-l, --layout <layout>', 'print in specified layout', 'iced'],
+  ['option', '-j, --json', 'output in json format', false],
+];
 
-program
-  .command('view [id]')
-  // .option('-s, --setup_mode [mode]', 'Which setup mode to use')
-  .description('View snippet')
-  .action(id => {
-    viewer.log(handler.getSnippet(id));
-  });
+addCommand([
+  ['command', 'search [query]'],
+  ['description', ['Fuzzy search snippets']],
+  ...commonOptions,
+  [
+    'action',
+    (query, opts) => viewer.logSnippet(opts, handler.searchSnippets(query)),
+  ],
+]);
 
-program
-  .command('tag [id]')
-  .description('View snippets with tag')
-  .action((id, options) => {
-    viewer.log(handler.getSnippetsByTag(id));
-  });
-// program.command('*').action((id, options) => {
-//   console.log(id, options);
-// });
+addCommand([
+  ['command', 'view [id]'],
+  ['description', ['View snippet']],
+  ...commonOptions,
+  [
+    'action',
+    (query, opts) => viewer.logSnippet(opts, handler.getSnippet(query)),
+  ],
+]);
 
+addCommand([
+  ['command', 'tag [id]'],
+  ['description', ['View snippets related to tag']],
+  ...commonOptions,
+  [
+    'action',
+    (query, opts) => viewer.logSnippet(opts, handler.getSnippetsByTag(query)),
+  ],
+]);
+
+program.on('--help', () =>
+  console.log(
+    [
+      '',
+      'Examples:',
+      '',
+      '  view all',
+      '  search flatten --output json all',
+      '  tag --print ic array',
+    ].join('\n')
+  )
+);
 program.parse(process.argv);

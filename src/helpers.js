@@ -1,6 +1,5 @@
 const any = (arr, fn = Boolean) => arr.some(fn);
-const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
-const isString = val => typeof val === 'string';
+const is = (type, val) => ![, null].includes(val) && val.constructor === type;
 const mapValues = (obj, fn) =>
   Object.keys(obj).reduce((acc, k) => {
     acc[k] = fn(obj[k], k, obj);
@@ -10,7 +9,7 @@ const startsOrEndsWith = (val, query) =>
   val.startsWith(query) || val.endsWith(query);
 
 const enforceSingleNewLine = x =>
-  isString(x) ? x.replace(/[\r\n]+/g, '\n').replace(/[\r\n]*$/, '') : x;
+  is(String, x) ? x.replace(/[\r\n]+/g, '\n').replace(/[\r\n]*$/, '') : x;
 
 function sortBy(key) {
   return (a, b) => {
@@ -21,9 +20,8 @@ function sortBy(key) {
 
 module.exports = {
   any,
-  compose,
   enforceSingleNewLine,
-  isString,
+  is,
   mapValues,
   sortBy,
   startsOrEndsWith,
