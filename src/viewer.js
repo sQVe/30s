@@ -7,20 +7,35 @@ const { enforceSingleNewLine } = require('./helpers');
 
 marked.setOptions({ renderer: new TerminalRenderer() });
 
-const format = x =>
-  [
-    chalk.magenta.bold(x.id),
-    chalk.magenta.bold('-'.repeat(x.id.length)),
-    highlight(x.code, { language: 'javascript' }),
-    '',
-    highlight(x.example, { language: 'javascript' }),
-    '',
-    enforceSingleNewLine(marked(x.text)),
-  ].join('\n');
-const log = x =>
-  console.log((Array.isArray(x) ? x : [x]).map(format).join('\n\n'));
+const prettyPrint = layout => {
+  const layoutMap = {
+    i: x =>
+      [
+        chalk.magenta.bold(x.id),
+        chalk.magenta.bold('-'.repeat(x.id.length)),
+      ].join('\n'),
+    d: x => enforceSingleNewLine(marked(x.description)),
+    c: x => highlight(x.code, { language: 'javascript' }),
+    e: x => highlight(x.example, { language: 'javascript' }),
+  };
+
+  return x =>
+    Array.from(layout)
+      .map((k, i) => layoutMap[k](x) + (i > 0 ? '\n' : ''))
+      .join('\n');
+};
+
+const logSnippet = ({ layout, json }, x) => {
+  if (json) {
+    console.log(JSON.stringify(x));
+  } else {
+    console.log(
+      (Array.isArray(x) ? x : [x]).map(prettyPrint(layout)).join('\n')
+    );
+  }
+};
 
 module.exports = {
-  format,
-  log,
+  prettyPrint,
+  logSnippet,
 };

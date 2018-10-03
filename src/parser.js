@@ -15,7 +15,11 @@ const createItem = ({
     tags,
     text,
   },
-}) => mapValues({ code, example, id, tags, text }, enforceSingleNewLine);
+}) =>
+  mapValues(
+    { code, example, id, tags, description: text },
+    enforceSingleNewLine
+  );
 
 (async () => {
   await promisify(fs.writeFile)(
@@ -23,7 +27,6 @@ const createItem = ({
     JSON.stringify(snippets.map(createItem))
   );
 
-  // eslint-disable-next-line no-console
   return console.log(`Successfully created ${FILE_NAME} file.`);
 })();
 
