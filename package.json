@@ -4,7 +4,7 @@
   "description": "CLI for 30 seconds of code snippets",
   "main": "src/index.js",
   "scripts": {
-    "build": "node src/index"
+    "build": "node src/parser"
   },
   "repository": {
     "type": "git",
