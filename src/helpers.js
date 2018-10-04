@@ -1,4 +1,5 @@
 const any = (arr, fn = Boolean) => arr.some(fn);
+const head = arr => arr[0];
 const is = (type, val) => ![, null].includes(val) && val.constructor === type; // eslint-disable-line no-sparse-arrays
 const last = arr => arr[arr.length - 1];
 const mapValues = (obj, fn) =>
@@ -6,9 +7,9 @@ const mapValues = (obj, fn) =>
     acc[k] = fn(obj[k], k, obj);
     return acc;
   }, {});
+
 const startsOrEndsWith = (val, query) =>
   val.startsWith(query) || val.endsWith(query);
-
 const enforceSingleNewLine = x =>
   is(String, x) ? x.replace(/[\r\n]+/g, '\n').replace(/[\r\n]*$/, '') : x;
 
@@ -22,6 +23,7 @@ function sortBy(key) {
 module.exports = {
   any,
   enforceSingleNewLine,
+  head,
   is,
   last,
   mapValues,
