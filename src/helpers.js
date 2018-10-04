@@ -1,5 +1,6 @@
 const any = (arr, fn = Boolean) => arr.some(fn);
-const is = (type, val) => ![, null].includes(val) && val.constructor === type;
+const is = (type, val) => ![, null].includes(val) && val.constructor === type; // eslint-disable-line no-sparse-arrays
+const last = arr => arr[arr.length - 1];
 const mapValues = (obj, fn) =>
   Object.keys(obj).reduce((acc, k) => {
     acc[k] = fn(obj[k], k, obj);
@@ -22,6 +23,7 @@ module.exports = {
   any,
   enforceSingleNewLine,
   is,
+  last,
   mapValues,
   sortBy,
   startsOrEndsWith,

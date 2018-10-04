@@ -1,3 +1,12 @@
+#!/usr/bin/env node
+
+//  ┏━┓┏━┓┏━┓┏━┓┏━╸┏━┓
+//  ┣━┛┣━┫┣┳┛┗━┓┣╸ ┣┳┛
+//  ╹  ╹ ╹╹┗╸┗━┛┗━╸╹┗╸
+//
+//  Parser for 30 seconds of code snippets.
+//  https://github.com/sQVe/30-seconds-of-code-cli
+
 const fs = require(`fs`);
 const path = require('path');
 const { promisify } = require('util');
@@ -20,17 +29,18 @@ const createItem = ({
     { code, example, id, tags, description: text },
     enforceSingleNewLine
   );
-
-(async () => {
-  await promisify(fs.writeFile)(
+const writeFile = content =>
+  promisify(fs.writeFile)(
     path.resolve(__dirname, FILE_NAME),
-    JSON.stringify(snippets.map(createItem))
+    JSON.stringify(content)
   );
 
+(async () => {
+  await writeFile(snippets.map(createItem));
   return console.log(`Successfully created ${FILE_NAME} file.`);
 })();
 
 module.exports = {
   createItem,
-  // TODO: Write file function.
+  writeFile,
 };
