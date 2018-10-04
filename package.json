@@ -2,13 +2,18 @@
   "name": "30-seconds-to-code-cli",
   "version": "1.0.0",
   "description": "CLI for 30 seconds of code snippets",
-  "main": "src/index.js",
   "scripts": {
     "build": "node src/parser"
+  },
+  "bin": {
+    "30s": "./src/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sQVe/30-seconds-of-code-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/sQVe/30-seconds-of-code-cli/issues"
   },
   "keywords": [
     "javascript",
@@ -17,9 +22,6 @@
   ],
   "author": "Oskar Grunning <oskargrunning@gmail.com>",
   "license": "CC0-1.0",
-  "bugs": {
-    "url": "https://github.com/sQVe/30-seconds-of-code-cli/issues"
-  },
   "devDependencies": {
     "@types/node": "^10.11.3",
     "eslint": "^5.6.1",

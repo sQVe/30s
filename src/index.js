@@ -11,8 +11,9 @@ const program = require('commander');
 
 const handler = require('./handler');
 const viewer = require('./viewer');
+const { version } = require('../package.json');
 
-program.version('1.0.0');
+program.version(version);
 
 const addCommand = settings => {
   settings.reduce((acc, [key, ...args]) => acc[key](...args), program);
