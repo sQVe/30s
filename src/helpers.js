@@ -7,6 +7,8 @@ const mapValues = (obj, fn) =>
     acc[k] = fn(obj[k], k, obj);
     return acc;
   }, {});
+const pick = (obj, arr) =>
+  arr.reduce((acc, curr) => (curr in obj && (acc[curr] = obj[curr]), acc), {}); // eslint-disable-line no-return-assign, no-sequences
 
 const startsOrEndsWith = (val, query) =>
   val.startsWith(query) || val.endsWith(query);
@@ -27,6 +29,7 @@ module.exports = {
   is,
   last,
   mapValues,
+  pick,
   sortBy,
   startsOrEndsWith,
 };
