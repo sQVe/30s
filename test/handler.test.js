@@ -5,7 +5,7 @@ const snippets = [
   { id: 'fefoolo', tags: ['object'] },
   { id: 'bazfoo', tags: ['object'] },
 ];
-jest.doMock('../src/snippets', () => snippets);
+jest.doMock('../build/snippets', () => snippets);
 
 const {
   getSnippet,

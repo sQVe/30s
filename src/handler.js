@@ -1,4 +1,4 @@
-const snippets = require('./snippets');
+const snippets = require('../build/snippets.json');
 const { any, sortBy, startsOrEndsWith } = require('./helpers');
 
 const fuzzyMatch = query => x => new RegExp(query).test(x.id);

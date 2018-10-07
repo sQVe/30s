@@ -1,14 +1,10 @@
 {
   "name": "30-seconds-to-code-cli",
-  "version": "0.4.0",
-  "description": "CLI for 30 seconds of code snippets",
-  "scripts": {
-    "build": "node src/parser",
-    "test": "jest"
-  },
-  "bin": {
-    "30s": "./src/index.js"
-  },
+  "version": "0.1.0",
+  "description": "A command-line application for 30 seconds of code snippets",
+  "author": "Oskar Grunning <oskargrunning@gmail.com>",
+  "license": "CC0-1.0",
+  "homepage": "https://github.com/sQVe/30-seconds-of-code-cli#30-seconds-of-code-cli",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sQVe/30-seconds-of-code-cli"
@@ -21,19 +17,51 @@
     "snippets",
     "cli"
   ],
-  "author": "Oskar Grunning <oskargrunning@gmail.com>",
-  "license": "CC0-1.0",
+  "scripts": {
+    "build": "rimraf build && npm run build:js && npm run build:parse",
+    "build:js": "NODE_ENV=production babel src --out-dir build",
+    "build:parse": "node build/parser.js",
+    "format": "prettier-eslint --write '{**/*,*}.{js,jsx,json}'",
+    "format:guard": "prettier-eslint --list-different '{**/*,*}.{js,jsx,json}'",
+    "lint": "eslint '{**/*,*}.{js,jsx}'",
+    "prepublish": "npm run build",
+    "start": "babel-node src/index.js",
+    "test": "jest",
+    "test:coverage": "rimraf coverage && jest --coverage",
+    "test:watch": "jest --watch --onlyChanged"
+  },
+  "engines": {
+    "node": ">= 6"
+  },
+  "bin": {
+    "30s": "./src/index.js"
+  },
+  "files": [
+    "build/"
+  ],
   "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
     "@types/jest": "^23.3.3",
     "@types/node": "^10.11.4",
     "@types/ramda": "^0.25.39",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "cross-env": "^5.2.0",
     "eslint": "^5.6.1",
     "eslint-config-sqve": "^1.6.1",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.1.1",
     "jest": "^23.6.0",
-    "prettier": "^1.14.3"
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3",
+    "prettier-eslint-cli": "^4.7.1",
+    "rimraf": "^2.6.2"
   },
   "dependencies": {
     "chalk": "^2.4.1",
@@ -42,5 +70,22 @@
     "marked": "^0.5.1",
     "marked-terminal": "^3.1.1",
     "ramda": "^0.25.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier-eslint --write",
+      "eslint",
+      "cross-env CI=true jest --findRelatedTests",
+      "git add"
+    ],
+    "*.json": [
+      "prettier-eslint --write",
+      "git add"
+    ]
   }
 }
