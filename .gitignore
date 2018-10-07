@@ -28,9 +28,9 @@ package.lock
 .env.*
 
 # Build generated
-dist/
 build/
 coverage/
+dist/
 
 
 # --- SublimeText
