@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Handler searchSnippets() should find snippets fuzzy matching query 1`] = `
+Array [
+  Object {
+    "id": "foo",
+    "relevance": 30,
+    "tags": Array [
+      "array",
+    ],
+  },
+  Object {
+    "id": "foobar",
+    "relevance": 5.625,
+    "tags": Array [
+      "array",
+    ],
+  },
+  Object {
+    "id": "bazfoo",
+    "relevance": 5.625,
+    "tags": Array [
+      "object",
+    ],
+  },
+  Object {
+    "id": "fefoolo",
+    "relevance": 3,
+    "tags": Array [
+      "object",
+    ],
+  },
+]
+`;
