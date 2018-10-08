@@ -18,7 +18,8 @@
     "cli"
   ],
   "scripts": {
-    "build": "rimraf build && npm run build:js && npm run build:parse",
+    "build": "rm -rf build && npm run build:js && npm run build:parse",
+    "build:copy": "cp src/snippets.json build/",
     "build:js": "NODE_ENV=production babel src --out-dir build",
     "build:parse": "node build/parser.js",
     "format": "prettier-eslint --write '{**/*,*}.{js,jsx,json}'",
@@ -27,18 +28,21 @@
     "prepublish": "npm run build",
     "start": "babel-node src/index.js",
     "test": "jest",
-    "test:coverage": "rimraf coverage && jest --coverage",
+    "test:coverage": "rm -rf coverage && jest --coverage",
     "test:watch": "jest --watch --onlyChanged"
   },
   "engines": {
     "node": ">= 6"
   },
   "bin": {
-    "30s": "./src/index.js"
+    "30s": "./build/index.js"
   },
   "files": [
     "build/"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
@@ -50,7 +54,6 @@
     "@types/ramda": "^0.25.39",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
-    "cross-env": "^5.2.0",
     "eslint": "^5.6.1",
     "eslint-config-sqve": "^1.6.1",
     "eslint-plugin-import": "^2.14.0",
@@ -60,8 +63,7 @@
     "jest": "^23.6.0",
     "lint-staged": "^7.3.0",
     "prettier": "^1.14.3",
-    "prettier-eslint-cli": "^4.7.1",
-    "rimraf": "^2.6.2"
+    "prettier-eslint-cli": "^4.7.1"
   },
   "dependencies": {
     "chalk": "^2.4.1",
@@ -80,7 +82,7 @@
     "*.{js,jsx}": [
       "prettier-eslint --write",
       "eslint",
-      "cross-env CI=true jest --findRelatedTests",
+      "jest --findRelatedTests",
       "git add"
     ],
     "*.json": [
