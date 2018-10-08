@@ -11,11 +11,13 @@ const snippet = {
   ].join('\n'),
 };
 
-describe.only('Viewer', () => {
+describe('Viewer', () => {
   describe('prettyPrint()', () => {
     it('should pretty print based on given snippet', () => {
       expect(
-        prettyPrint(Object.keys(snippet).map(k => ({ [k]: snippet[k] })))
+        prettyPrint(
+          Object.keys(snippet).map(k => ({ [k]: snippet[k] }))
+        ).toString()
       ).toMatchSnapshot();
       expect(prettyPrint([snippet])).toMatchSnapshot();
     });

@@ -1,19 +1,16 @@
 language: node_js
 node_js:
-  - 8
+- 8
 cache:
   directories:
   - node_modules
-git:
-  submodules: false
-before_install:
-  - git submodule update --init --recursive
-  - git submodule foreach git pull origin master
 script:
-  - npm run lint
-  - npm run format:guard
-  - npm run test
-  - npm run build
+- npm run lint
+- npm run format:guard
+- npm run test
+- npm run build
 after_success:
-  - chmod +x .travis/update.sh
-  - .travis/update.sh
+- chmod +x .travis/update.sh && .travis/update.sh
+env:
+  global:
+    secure: HF2IiBf7XnGv1b8gpAdWAlVtZZ0zoUFw0VaQCmEjcLlnbjDijO5mlTGzxBdoivLvAAYPBBcoJ0GnNDt9FTgebv88NdwBA4xb9e4sEEQ+sGq5PxeHWMPviILyXdm6n8vg4Tr0e7C/SuwhJaqE4BoEUSP3TsOomL2l7lhvUD5yr82m93Gd9/xq1VvQj+hRk9ioHUEt0/j0cqcBfHalidP7tAkgT5O79aQWLvki4YaEWhUfzT+W3Dg3u3nV1GWjNZg9iUd5alVMChxCuroed+729sWjaWbZR2P1a2pPlun3OOIBusf9ssndeElxuXOUtpauNCgPWC8sT4b+J6wzWILF14ZmIR14TZYNCZ3hqSuI06lw7PWdY0pKdEv7AN/BupsZpqSBj/kDRjhhrwHBC52FhYc60pJ3etGs/6jk9b1OkbCfPhCIAzqS53jcxfWL8VFNdq1yX5GGOZ+i3vQF+25QW3Mv3w5LtYh9sk+/bfSfvOAAtCUvU/cFgoZoXHwOba8kLlOkDQuYCTG9QkvpLnXnDE6ikMTmuW1VFRmAYv/5BhMkkh5pjLjcEydm5yoqRlihWTqJ04qrECcUYttCRyGRLSDrFq1gGf+iWiQxXFLFyNIPSsvfMbwrywH7f1QJMlFtQDfRNryAvOQYsWfjypV8JNOoz24Q7AaPB6nKU9WuMrk=
