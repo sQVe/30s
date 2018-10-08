@@ -1,6 +1,7 @@
 const { head } = require('../src/helpers');
 const { logSnippet, prettyPrint } = require('../src/viewer');
 
+const layouts = [...Array.from('idce'), 'idce'];
 const snippet = {
   code: 'const head = arr => arr[0];',
   example: 'head([1, 2, 3]); // 1',
@@ -24,14 +25,24 @@ describe('Viewer', () => {
   });
 
   describe('logSnippet()', () => {
-    global.console = { ...global.console, log: jest.fn() };
-
-    const layouts = [...Array.from('idce'), 'idce'];
     const stringifySpy = jest.spyOn(JSON, 'stringify');
+    global.console = { ...global.console, log: jest.fn() };
 
     afterEach(() => {
       console.log.mockClear();
       stringifySpy.mockClear();
+    });
+
+    it('should handle snippets in a array', () => {
+      logSnippet({ layout: 'ic' }, [snippet]);
+
+      expect(head(console.log.mock.calls)).toMatchSnapshot();
+    });
+
+    it('should handle snippet in object', () => {
+      logSnippet({ layout: 'ic' }, snippet);
+
+      expect(head(console.log.mock.calls)).toMatchSnapshot();
     });
 
     layouts.forEach(layout => {

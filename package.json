@@ -26,7 +26,7 @@
     "format:guard": "prettier-eslint --list-different '{**/*,*}.{js,jsx,json}'",
     "lint": "eslint '{**/*,*}.{js,jsx}'",
     "prepublish": "npm run build",
-    "start": "babel-node src/index.js",
+    "start": "babel-node src/cli.js",
     "test": "jest",
     "test:coverage": "rm -rf coverage && jest --coverage",
     "test:watch": "jest --watch --onlyChanged"
@@ -35,7 +35,7 @@
     "node": ">= 6"
   },
   "bin": {
-    "30s": "./build/index.js"
+    "30s": "./build/cli.js"
   },
   "files": [
     "build/"

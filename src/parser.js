@@ -37,7 +37,7 @@ const writeFile = content =>
 
 (async () => {
   await writeFile(snippets.map(createItem));
-  return console.log(`Successfully created ${FILE_NAME} file.`);
+  console.log(`Successfully created ${FILE_NAME} file.`);
 })();
 
 module.exports = {

@@ -13,7 +13,7 @@ const {
   searchSnippets,
 } = require('../src/handler');
 
-describe.only('Handler', () => {
+describe('Handler', () => {
   describe('getSnippet()', () => {
     it('should find snippet by id', () => {
       expect(getSnippet('foo')).toEqual(snippets[2]);
