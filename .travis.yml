@@ -4,8 +4,16 @@ node_js:
 cache:
   directories:
   - node_modules
+git:
+  submodules: false
+before_install:
+  - git submodule update --init --recursive
+  - git submodule foreach git pull origin master
 script:
   - npm run lint
   - npm run format:guard
   - npm run test
   - npm run build
+after_success:
+  - chmod +x .travis/update.sh
+  - .travis/update.sh
