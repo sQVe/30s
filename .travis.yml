@@ -7,10 +7,10 @@ cache:
 script:
 - npm run lint
 - npm run format:guard
-- npm run test
 - npm run build
+- npm run test
 after_success:
-- chmod +x .travis/update.sh && .travis/update.sh
+- scripts/update.sh
 deploy:
   provider: npm
   email: oskargrunning@gmail.com

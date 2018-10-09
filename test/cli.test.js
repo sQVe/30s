@@ -4,7 +4,7 @@ const { spawnSync } = require('child_process');
 const { version } = require('../package.json');
 
 const callCli = (...args) =>
-  spawnSync(path.resolve(__dirname, '../src/cli.js'), args)
+  spawnSync(path.resolve(__dirname, '../build/cli.js'), args)
     .stdout.toString()
     .trim();
 const commands = ['search', 'view', 'tag'];
