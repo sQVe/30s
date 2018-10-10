@@ -1,16 +1,25 @@
+os:
+- linux
+
 language: node_js
+
 node_js:
 - 8
+- 6
+
 cache:
   directories:
   - node_modules
+
 script:
 - npm run lint
 - npm run format:guard
 - npm run build
 - npm run test
+
 after_success:
 - scripts/update.sh
+
 deploy:
   provider: npm
   email: oskargrunning@gmail.com
