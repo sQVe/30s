@@ -1,9 +1,10 @@
-const snippets = require('../build/snippets.json');
-const { any, sortBy, startsOrEndsWith } = require('./helpers');
+import snippets from '../build/snippets.json';
+import { any, sortBy, startsOrEndsWith } from './helpers';
 
 const fuzzyMatch = query => x => new RegExp(query).test(x.id);
-const getSnippet = id => snippets.find(x => x.id === id);
-const getSnippetsByTag = id => snippets.filter(x => any(x.tags, y => y === id));
+export const getSnippet = id => snippets.find(x => x.id === id);
+export const getSnippetsByTag = id =>
+  snippets.filter(x => any(x.tags, y => y === id));
 
 function setSearchRelevance(query) {
   return x => {
@@ -20,14 +21,8 @@ function setSearchRelevance(query) {
   };
 }
 
-const searchSnippets = query =>
+export const searchSnippets = query =>
   snippets
     .filter(fuzzyMatch(query))
     .map(setSearchRelevance(query))
     .sort(sortBy('relevance'));
-
-module.exports = {
-  getSnippet,
-  getSnippetsByTag,
-  searchSnippets,
-};

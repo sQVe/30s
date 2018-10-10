@@ -1,13 +1,13 @@
-const TerminalRenderer = require('marked-terminal');
-const chalk = require('chalk');
-const marked = require('marked');
-const { highlight } = require('cli-highlight');
+import Renderer from 'marked-terminal';
+import chalk from 'chalk';
+import marked from 'marked';
+import { highlight } from 'cli-highlight';
 
-const { enforceSingleNewLine, pick } = require('./helpers');
+import { enforceSingleNewLine, pick } from './helpers';
 
-marked.setOptions({ renderer: new TerminalRenderer() });
+marked.setOptions({ renderer: new Renderer() });
 
-const prettyPrint = x => {
+export const prettyPrint = x => {
   const printMap = {
     code: y => highlight(y.code, { language: 'javascript' }),
     description: y => enforceSingleNewLine(marked(y.description)),
@@ -29,7 +29,7 @@ const prettyPrint = x => {
     .join('\n\n');
 };
 
-const logSnippet = ({ layout, json }, x) => {
+export const logSnippet = ({ layout, json }, x) => {
   const layoutMap = {
     c: 'code',
     d: 'description',
@@ -46,9 +46,4 @@ const logSnippet = ({ layout, json }, x) => {
   } else {
     console.log(prettyPrint(arr));
   }
-};
-
-module.exports = {
-  prettyPrint,
-  logSnippet,
 };
