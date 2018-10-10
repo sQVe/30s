@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cli help option should print help page 1`] = `
+"Usage: cli [options] [command]
+
+Options:
+
+  -V, --version             output the version number
+  -h, --help                output usage information
+
+Commands:
+
+  search [options] [query]  Fuzzy search snippets
+  tag [options] [id]        View snippets related to tag
+  view [options] [id]       View snippet
+
+Examples:
+
+  view all
+  search flatten --output json all
+  tag --print ic array"
+`;
+
+exports[`Cli help option should print help page 2`] = `
+"Usage: cli [options] [command]
+
+Options:
+
+  -V, --version             output the version number
+  -h, --help                output usage information
+
+Commands:
+
+  search [options] [query]  Fuzzy search snippets
+  tag [options] [id]        View snippets related to tag
+  view [options] [id]       View snippet
+
+Examples:
+
+  view all
+  search flatten --output json all
+  tag --print ic array"
+`;
+
+exports[`Cli help option should print help page for search command 1`] = `
+"Usage: search [options] [query]
+
+Fuzzy search snippets
+
+Options:
+
+  -l, --layout <layout>  print in specified layout (default: iced)
+  -j, --json             output in json format
+  -h, --help             output usage information"
+`;
+
+exports[`Cli help option should print help page for search command 2`] = `
+"Usage: search [options] [query]
+
+Fuzzy search snippets
+
+Options:
+
+  -l, --layout <layout>  print in specified layout (default: iced)
+  -j, --json             output in json format
+  -h, --help             output usage information"
+`;
+
+exports[`Cli help option should print help page for tag command 1`] = `
+"Usage: tag [options] [id]
+
+View snippets related to tag
+
+Options:
+
+  -l, --layout <layout>  print in specified layout (default: iced)
+  -j, --json             output in json format
+  -h, --help             output usage information"
+`;
+
+exports[`Cli help option should print help page for tag command 2`] = `
+"Usage: tag [options] [id]
+
+View snippets related to tag
+
+Options:
+
+  -l, --layout <layout>  print in specified layout (default: iced)
+  -j, --json             output in json format
+  -h, --help             output usage information"
+`;
+
+exports[`Cli help option should print help page for view command 1`] = `
+"Usage: view [options] [id]
+
+View snippet
+
+Options:
+
+  -l, --layout <layout>  print in specified layout (default: iced)
+  -j, --json             output in json format
+  -h, --help             output usage information"
+`;
+
+exports[`Cli help option should print help page for view command 2`] = `
+"Usage: view [options] [id]
+
+View snippet
+
+Options:
+
+  -l, --layout <layout>  print in specified layout (default: iced)
+  -j, --json             output in json format
+  -h, --help             output usage information"
+`;

@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Viewer logSnippet() should handle snippet in object 1`] = `
+Array [
+  "[35m[1mhead[22m[39m
+[35m[1m----[22m[39m
+[34mconst[39m head = [33marr =>[39m arr[[32m0[39m];",
+]
+`;
+
+exports[`Viewer logSnippet() should handle snippets in a array 1`] = `
+Array [
+  "[35m[1mhead[22m[39m
+[35m[1m----[22m[39m
+[34mconst[39m head = [33marr =>[39m arr[[32m0[39m];",
+]
+`;
+
 exports[`Viewer logSnippet() should log JSON given json flag 1`] = `
 Array [
   "[{\\"id\\":\\"head\\"}]",

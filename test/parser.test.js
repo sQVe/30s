@@ -1,5 +1,5 @@
 jest.mock('fs', () => ({
-  writeFile: jest.fn(() => {}),
+  writeFile: jest.fn(),
 }));
 
 const fs = require('fs');

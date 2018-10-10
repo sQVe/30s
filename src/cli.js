@@ -13,44 +13,53 @@ const handler = require('./handler');
 const viewer = require('./viewer');
 const { version } = require('../package.json');
 
-program.version(version);
+const isTest = process.env.NODE_ENV === 'test';
 
+const actions = {
+  tag: (id, opts) => viewer.logSnippet(opts, handler.getSnippet(id)),
+  view: (id, opts) => viewer.logSnippet(opts, handler.getSnippetsByTag(id)),
+  search: (query, opts) =>
+    viewer.logSnippet(opts, handler.searchSnippets(query)),
+};
 const addCommand = settings => {
   settings.reduce((acc, [key, ...args]) => acc[key](...args), program);
 };
+const addAction = action => [
+  'action',
+  isTest
+    ? // NOTE: Commander.js sadly does not include a way to hook onto given
+      // actions for testing. We solve this by outputting state when NODE_ENV
+      // is test.
+      (input, { layout, json }) =>
+        console.log(JSON.stringify([action, input, layout, !!json]))
+    : actions[action],
+];
 const commonOptions = [
   ['option', '-l, --layout <layout>', 'print in specified layout', 'iced'],
   ['option', '-j, --json', 'output in json format', false],
 ];
 
+program.version(version);
+
 addCommand([
   ['command', 'search [query]'],
   ['description', ['Fuzzy search snippets']],
   ...commonOptions,
-  [
-    'action',
-    (query, opts) => viewer.logSnippet(opts, handler.searchSnippets(query)),
-  ],
-]);
-
-addCommand([
-  ['command', 'view [id]'],
-  ['description', ['View snippet']],
-  ...commonOptions,
-  [
-    'action',
-    (query, opts) => viewer.logSnippet(opts, handler.getSnippet(query)),
-  ],
+  addAction('search'),
 ]);
 
 addCommand([
   ['command', 'tag [id]'],
   ['description', ['View snippets related to tag']],
   ...commonOptions,
-  [
-    'action',
-    (query, opts) => viewer.logSnippet(opts, handler.getSnippetsByTag(query)),
-  ],
+  addAction('tag'),
+]);
+
+addCommand([
+  ['command', 'view [id]'],
+  ['description', ['View snippet']],
+  ...commonOptions,
+  addAction('view'),
 ]);
 
 program.on('--help', () =>

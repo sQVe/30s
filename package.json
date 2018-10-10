@@ -26,16 +26,16 @@
     "format:guard": "prettier-eslint --list-different '{**/*,*}.{js,jsx,json}'",
     "lint": "eslint '{**/*,*}.{js,jsx}'",
     "prepublish": "npm run build",
-    "start": "babel-node src/index.js",
-    "test": "jest",
-    "test:coverage": "rm -rf coverage && jest --coverage",
-    "test:watch": "jest --watch --onlyChanged"
+    "start": "babel-node src/cli.js",
+    "test": "scripts/test.sh",
+    "test:coverage": "rm -rf coverage && scripts/test.sh --coverage",
+    "test:watch": "scripts/test.sh --watch --onlyChanged"
   },
   "engines": {
     "node": ">= 6"
   },
   "bin": {
-    "30s": "./build/index.js"
+    "30s": "./build/cli.js"
   },
   "files": [
     "build/"
@@ -82,7 +82,7 @@
     "*.{js,jsx}": [
       "prettier-eslint --write",
       "eslint",
-      "jest --findRelatedTests",
+      "scripts/test.sh --findRelatedTests",
       "git add"
     ],
     "*.json": [
