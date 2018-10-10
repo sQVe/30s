@@ -7,14 +7,13 @@
 //  A CLI for 30 seconds of code snippets.
 //  https://github.com/sQVe/30-seconds-of-code-cli
 
-const program = require('commander');
+import program from 'commander';
 
-const handler = require('./handler');
-const viewer = require('./viewer');
-const { version } = require('../package.json');
+import * as handler from './handler';
+import * as viewer from './viewer';
+import { version } from '../package.json';
 
 const isTest = process.env.NODE_ENV === 'test';
-
 const actions = {
   tag: (id, opts) => viewer.logSnippet(opts, handler.getSnippet(id)),
   view: (id, opts) => viewer.logSnippet(opts, handler.getSnippetsByTag(id)),

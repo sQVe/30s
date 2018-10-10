@@ -28,11 +28,10 @@
     "prepublish": "npm run build",
     "start": "babel-node src/cli.js",
     "test": "scripts/test.sh",
-    "test:coverage": "rm -rf coverage && scripts/test.sh --coverage",
     "test:watch": "scripts/test.sh --watch --onlyChanged"
   },
   "engines": {
-    "node": ">= 6"
+    "node": ">= 8"
   },
   "bin": {
     "30s": "./build/cli.js"

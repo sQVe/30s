@@ -7,17 +7,16 @@
 //  Parser for 30 seconds of code snippets.
 //  https://github.com/sQVe/30-seconds-of-code-cli
 
-const fs = require(`fs`);
-const path = require('path');
-const { promisify } = require('util');
+import fs from 'fs';
+import path from 'path';
+import { promisify } from 'util';
 
-const snippets = require('../submodules/30-seconds-of-code/snippet_data/snippets.json')
-  .data;
-const { enforceSingleNewLine, mapValues } = require('./helpers');
+import { data as snippets } from '../submodules/30-seconds-of-code/snippet_data/snippets.json';
+import { enforceSingleNewLine, mapValues } from './helpers';
 
 const FILE_NAME = 'snippets.json';
 
-const createItem = ({
+export const createItem = ({
   id,
   attributes: {
     codeBlocks: [code, example],
@@ -29,7 +28,7 @@ const createItem = ({
     { code, example, id, tags, description: text },
     enforceSingleNewLine
   );
-const writeFile = content =>
+export const writeFile = content =>
   promisify(fs.writeFile)(
     path.resolve(__dirname, FILE_NAME),
     JSON.stringify(content)
@@ -39,8 +38,3 @@ const writeFile = content =>
   await writeFile(snippets.map(createItem));
   console.log(`Successfully created ${FILE_NAME} file.`);
 })();
-
-module.exports = {
-  createItem,
-  writeFile,
-};
