@@ -1,6 +1,7 @@
 import Renderer from 'marked-terminal';
 import chalk from 'chalk';
 import marked from 'marked';
+import { writeSync as writeToClipboard } from 'clipboardy';
 import { highlight } from 'cli-highlight';
 
 import { enforceSingleNewLine, pick } from './helpers';
@@ -29,21 +30,22 @@ export const prettyPrint = x => {
     .join('\n\n');
 };
 
-export const logSnippet = ({ layout, json }, x) => {
+export const print = ({ cp, layout, json }, x) => {
+  const arr = Array.isArray(x) ? x : [x];
   const layoutMap = {
     c: 'code',
     d: 'description',
     e: 'example',
     i: 'id',
   };
+  const layoutKeys = Array.from(layout).map(k => layoutMap[k]);
 
-  const arr = (Array.isArray(x) ? x : [x]).map(y =>
-    pick(y, Array.from(layout).map(k => layoutMap[k]))
-  );
-
+  if (cp) {
+    writeToClipboard(arr.map(y => y.code).join('\n'));
+  }
   if (json) {
-    console.log(JSON.stringify(arr));
+    console.log(JSON.stringify(arr.map(y => pick(y, layoutKeys))));
   } else {
-    console.log(prettyPrint(arr));
+    console.log(prettyPrint(arr.map(y => pick(y, layoutKeys))));
   }
 };

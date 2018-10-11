@@ -1,9 +1,8 @@
-import snippets from '../build/snippets.json';
 import { any, sortBy, startsOrEndsWith } from './helpers';
 
 const fuzzyMatch = query => x => new RegExp(query).test(x.id);
-export const getSnippet = id => snippets.find(x => x.id === id);
-export const getSnippetsByTag = id =>
+export const getSnippet = (snippets, id) => snippets.find(x => x.id === id);
+export const getSnippetsByTag = (snippets, id) =>
   snippets.filter(x => any(x.tags, y => y === id));
 
 function setSearchRelevance(query) {
@@ -21,7 +20,7 @@ function setSearchRelevance(query) {
   };
 }
 
-export const searchSnippets = query =>
+export const searchSnippets = (snippets, query) =>
   snippets
     .filter(fuzzyMatch(query))
     .map(setSearchRelevance(query))

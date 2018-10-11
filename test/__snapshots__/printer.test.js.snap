@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Printer prettyPrint() should pretty print based on given snippet 1`] = `
+"[34mconst[39m head = [33marr =>[39m arr[[32m0[39m];
+
+head([[32m1[39m, [32m2[39m, [32m3[39m]); [32m// 1[39m
+
+[35m[1mhead[22m[39m
+[35m[1m----[22m[39m
+
+[0mReturns the head of a list.[0m
+[0mUse [33marr[0][39m to return the first element of the passed array.[0m"
+`;
+
+exports[`Printer prettyPrint() should pretty print based on given snippet 2`] = `
+"[34mconst[39m head = [33marr =>[39m arr[[32m0[39m];
+
+head([[32m1[39m, [32m2[39m, [32m3[39m]); [32m// 1[39m
+
+[35m[1mhead[22m[39m
+[35m[1m----[22m[39m
+[0mReturns the head of a list.[0m
+[0mUse [33marr[0][39m to return the first element of the passed array.[0m"
+`;
+
+exports[`Printer print() should handle snippet in object 1`] = `
+Array [
+  "[35m[1mhead[22m[39m
+[35m[1m----[22m[39m
+[34mconst[39m head = [33marr =>[39m arr[[32m0[39m];",
+]
+`;
+
+exports[`Printer print() should handle snippets in a array 1`] = `
+Array [
+  "[35m[1mhead[22m[39m
+[35m[1m----[22m[39m
+[34mconst[39m head = [33marr =>[39m arr[[32m0[39m];",
+]
+`;
+
+exports[`Printer print() should log JSON given json flag 1`] = `
+Array [
+  "[{\\"id\\":\\"head\\"}]",
+]
+`;
+
+exports[`Printer print() should log JSON given json flag 2`] = `
+Array [
+  "[{\\"description\\":\\"Returns the head of a list.\\\\nUse \`arr[0]\` to return the first element of the passed array.\\"}]",
+]
+`;
+
+exports[`Printer print() should log JSON given json flag 3`] = `
+Array [
+  "[{\\"code\\":\\"const head = arr => arr[0];\\"}]",
+]
+`;
+
+exports[`Printer print() should log JSON given json flag 4`] = `
+Array [
+  "[{\\"example\\":\\"head([1, 2, 3]); // 1\\"}]",
+]
+`;
+
+exports[`Printer print() should log JSON given json flag 5`] = `
+Array [
+  "[{\\"id\\":\\"head\\",\\"description\\":\\"Returns the head of a list.\\\\nUse \`arr[0]\` to return the first element of the passed array.\\",\\"code\\":\\"const head = arr => arr[0];\\",\\"example\\":\\"head([1, 2, 3]); // 1\\"}]",
+]
+`;
+
+exports[`Printer print() should log prettyPrint() by default 1`] = `
+Array [
+  "[35m[1mhead[22m[39m
+[35m[1m----[22m[39m",
+]
+`;
+
+exports[`Printer print() should log prettyPrint() by default 2`] = `
+Array [
+  "[0mReturns the head of a list.[0m
+[0mUse [33marr[0][39m to return the first element of the passed array.[0m",
+]
+`;
+
+exports[`Printer print() should log prettyPrint() by default 3`] = `
+Array [
+  "[34mconst[39m head = [33marr =>[39m arr[[32m0[39m];",
+]
+`;
+
+exports[`Printer print() should log prettyPrint() by default 4`] = `
+Array [
+  "head([[32m1[39m, [32m2[39m, [32m3[39m]); [32m// 1[39m",
+]
+`;
+
+exports[`Printer print() should log prettyPrint() by default 5`] = `
+Array [
+  "[35m[1mhead[22m[39m
+[35m[1m----[22m[39m
+[0mReturns the head of a list.[0m
+[0mUse [33marr[0][39m to return the first element of the passed array.[0m
+
+[34mconst[39m head = [33marr =>[39m arr[[32m0[39m];
+
+head([[32m1[39m, [32m2[39m, [32m3[39m]); [32m// 1[39m",
+]
+`;
