@@ -62,7 +62,7 @@ describe('Printer', () => {
 
     // Do not run copy & paste tests on headless linux environments like
     // Travis CI.
-    if (process.platform === 'linux' && !process.env.DISPLAY) {
+    if (process.platform !== 'linux' || process.env.DISPLAY) {
       it('should copy code blocks to clipboard', () => {
         print({ layout: 'iced', cp: true }, snippet);
 
