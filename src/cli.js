@@ -9,16 +9,16 @@
 
 import program from 'commander';
 
-import * as handler from './handler';
-import * as viewer from './viewer';
+import snippets from '../build/snippets.json';
+import { getSnippet, getSnippetsByTag, searchSnippets } from './handler';
+import { print } from './printer';
 import { version } from '../package.json';
 
 const isTest = process.env.NODE_ENV === 'test';
 const actions = {
-  tag: (id, opts) => viewer.logSnippet(opts, handler.getSnippet(id)),
-  view: (id, opts) => viewer.logSnippet(opts, handler.getSnippetsByTag(id)),
-  search: (query, opts) =>
-    viewer.logSnippet(opts, handler.searchSnippets(query)),
+  tag: (id, opts) => print(opts, getSnippetsByTag(snippets, id)),
+  view: (id, opts) => print(opts, getSnippet(snippets, id)),
+  search: (query, opts) => print(opts, searchSnippets(snippets, query)),
 };
 const addCommand = settings => {
   settings.reduce((acc, [key, ...args]) => acc[key](...args), program);
@@ -27,14 +27,15 @@ const addAction = action => [
   'action',
   isTest
     ? // NOTE: Commander.js sadly does not include a way to hook onto given
-      // actions for testing. We solve this by outputting state when NODE_ENV
-      // is test.
+      // actions for integration testing. We solve this by outputting state
+      // when NODE_ENV is test.
       (input, { layout, json }) =>
         console.log(JSON.stringify([action, input, layout, !!json]))
     : actions[action],
 ];
 const commonOptions = [
   ['option', '-l, --layout <layout>', 'print in specified layout', 'iced'],
+  ['option', '-c, --cp', 'copy code blocks', false],
   ['option', '-j, --json', 'output in json format', false],
 ];
 
@@ -66,7 +67,6 @@ program.on('--help', () =>
     [
       '',
       'Examples:',
-      '',
       '  view all',
       '  search flatten --output json all',
       '  tag --print ic array',

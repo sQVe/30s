@@ -27,8 +27,10 @@
     "lint": "eslint '{**/*,*}.{js,jsx}'",
     "prepublish": "npm run build",
     "start": "babel-node src/cli.js",
-    "test": "scripts/test.sh",
-    "test:watch": "scripts/test.sh --watch --onlyChanged"
+    "test": "jest",
+    "test:integration": "npm run build && jest test/cli.test.js --testPathIgnorePatterns",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch --onlyChanged"
   },
   "engines": {
     "node": ">= 8"
@@ -48,8 +50,8 @@
     "@babel/node": "^7.0.0",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
-    "@types/jest": "^23.3.3",
-    "@types/node": "^10.11.4",
+    "@types/jest": "^23.3.5",
+    "@types/node": "^10.11.7",
     "@types/ramda": "^0.25.39",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
@@ -58,7 +60,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
-    "husky": "^1.1.1",
+    "husky": "^1.1.2",
     "jest": "^23.6.0",
     "lint-staged": "^7.3.0",
     "prettier": "^1.14.3",
@@ -67,7 +69,8 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "cli-highlight": "^2.0.0",
-    "commander": "^2.18.0",
+    "clipboardy": "^1.2.3",
+    "commander": "^2.19.0",
     "marked": "^0.5.1",
     "marked-terminal": "^3.1.1",
     "ramda": "^0.25.0"
@@ -81,7 +84,7 @@
     "*.{js,jsx}": [
       "prettier-eslint --write",
       "eslint",
-      "scripts/test.sh --findRelatedTests",
+      "jest --findRelatedTests",
       "git add"
     ],
     "*.json": [

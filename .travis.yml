@@ -1,5 +1,7 @@
 os:
 - linux
+before_install:
+- sudo apt-get install xsel
 language: node_js
 node_js:
 - 8

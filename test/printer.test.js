@@ -1,5 +1,7 @@
+import { readSync as readFromClipboard } from 'clipboardy';
+
 const { head } = require('../src/helpers');
-const { logSnippet, prettyPrint } = require('../src/viewer');
+const { print, prettyPrint } = require('../src/printer');
 
 const layouts = [...Array.from('idce'), 'idce'];
 const snippet = {
@@ -12,7 +14,7 @@ const snippet = {
   ].join('\n'),
 };
 
-describe('Viewer', () => {
+describe('Printer', () => {
   describe('prettyPrint()', () => {
     it('should pretty print based on given snippet', () => {
       expect(
@@ -24,7 +26,7 @@ describe('Viewer', () => {
     });
   });
 
-  describe('logSnippet()', () => {
+  describe('print()', () => {
     const stringifySpy = jest.spyOn(JSON, 'stringify');
     global.console = { ...global.console, log: jest.fn() };
 
@@ -34,28 +36,44 @@ describe('Viewer', () => {
     });
 
     it('should handle snippets in a array', () => {
-      logSnippet({ layout: 'ic' }, [snippet]);
+      print({ layout: 'ic' }, [snippet]);
 
       expect(head(console.log.mock.calls)).toMatchSnapshot();
     });
 
     it('should handle snippet in object', () => {
-      logSnippet({ layout: 'ic' }, snippet);
+      print({ layout: 'ic' }, snippet);
 
       expect(head(console.log.mock.calls)).toMatchSnapshot();
     });
 
     layouts.forEach(layout => {
       it('should log JSON given json flag', () => {
-        logSnippet({ layout, json: true }, snippet);
+        print({ layout, json: true }, snippet);
 
         expect(head(console.log.mock.calls)).toMatchSnapshot();
       });
 
       it('should log prettyPrint() by default', () => {
-        logSnippet({ layout }, snippet);
+        print({ layout }, snippet);
         expect(head(console.log.mock.calls)).toMatchSnapshot();
       });
     });
+
+    // Do not run copy & paste tests on headless linux environments like
+    // Travis CI.
+    if (process.platform === 'linux' && !process.env.DISPLAY) {
+      it('should copy code blocks to clipboard', () => {
+        print({ layout: 'iced', cp: true }, snippet);
+
+        expect(readFromClipboard()).toEqual(snippet.code);
+      });
+
+      it('should copy multiple code blocks to clipboard', () => {
+        print({ layout: 'iced', cp: true }, [snippet, snippet]);
+
+        expect(readFromClipboard()).toEqual(`${snippet.code}\n${snippet.code}`);
+      });
+    }
   });
 });
