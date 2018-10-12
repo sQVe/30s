@@ -4,13 +4,13 @@ exports[`Cli help option should print help page 1`] = `
 "Usage: cli [options] [command]
 
 Options:
-  -V, --version             output the version number
-  -h, --help                output usage information
+  -V, --version               output the version number
+  -h, --help                  output usage information
 
 Commands:
-  search [options] [query]  Fuzzy search snippets
-  tag [options] [id]        View snippets related to tag
-  view [options] [id]       View snippet
+  s|search [options] [query]  fuzzy search snippets by id
+  t|tag [options] [id]        view snippets by tag
+  v|view [options] [id]       view snippet with id
 
 Examples:
   view all
@@ -22,13 +22,13 @@ exports[`Cli help option should print help page 2`] = `
 "Usage: cli [options] [command]
 
 Options:
-  -V, --version             output the version number
-  -h, --help                output usage information
+  -V, --version               output the version number
+  -h, --help                  output usage information
 
 Commands:
-  search [options] [query]  Fuzzy search snippets
-  tag [options] [id]        View snippets related to tag
-  view [options] [id]       View snippet
+  s|search [options] [query]  fuzzy search snippets by id
+  t|tag [options] [id]        view snippets by tag
+  v|view [options] [id]       view snippet with id
 
 Examples:
   view all
@@ -37,73 +37,73 @@ Examples:
 `;
 
 exports[`Cli help option should print help page for search command 1`] = `
-"Usage: search [options] [query]
+"Usage: s|search [options] [query]
 
-Fuzzy search snippets
+fuzzy search snippets by id
 
 Options:
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
-  -c, --cp               copy code blocks
+  -c, --cp               copy code to clipboard
   -j, --json             output in json format
+  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for search command 2`] = `
-"Usage: search [options] [query]
+"Usage: s|search [options] [query]
 
-Fuzzy search snippets
+fuzzy search snippets by id
 
 Options:
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
-  -c, --cp               copy code blocks
+  -c, --cp               copy code to clipboard
   -j, --json             output in json format
+  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for tag command 1`] = `
-"Usage: tag [options] [id]
+"Usage: t|tag [options] [id]
 
-View snippets related to tag
+view snippets by tag
 
 Options:
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
-  -c, --cp               copy code blocks
+  -c, --cp               copy code to clipboard
   -j, --json             output in json format
+  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for tag command 2`] = `
-"Usage: tag [options] [id]
+"Usage: t|tag [options] [id]
 
-View snippets related to tag
+view snippets by tag
 
 Options:
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
-  -c, --cp               copy code blocks
+  -c, --cp               copy code to clipboard
   -j, --json             output in json format
+  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for view command 1`] = `
-"Usage: view [options] [id]
+"Usage: v|view [options] [id]
 
-View snippet
+view snippet with id
 
 Options:
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
-  -c, --cp               copy code blocks
+  -c, --cp               copy code to clipboard
   -j, --json             output in json format
+  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for view command 2`] = `
-"Usage: view [options] [id]
+"Usage: v|view [options] [id]
 
-View snippet
+view snippet with id
 
 Options:
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
-  -c, --cp               copy code blocks
+  -c, --cp               copy code to clipboard
   -j, --json             output in json format
+  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
   -h, --help             output usage information"
 `;

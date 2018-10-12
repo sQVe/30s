@@ -25,11 +25,11 @@
     "format": "prettier-eslint --write '{**/*,*}.{js,jsx,json}'",
     "format:guard": "prettier-eslint --list-different '{**/*,*}.{js,jsx,json}'",
     "lint": "eslint '{**/*,*}.{js,jsx}'",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "start": "babel-node src/cli.js",
     "test": "jest",
-    "test:integration": "npm run build && jest test/cli.test.js --testPathIgnorePatterns",
     "test:coverage": "jest --coverage",
+    "test:integration": "jest test/cli.test.js --testPathIgnorePatterns",
     "test:watch": "jest --watch --onlyChanged"
   },
   "engines": {
