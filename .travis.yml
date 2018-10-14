@@ -13,6 +13,7 @@ script:
 - npm run format:guard
 - npm run build
 - npm run test
+- npm run test:integration
 after_success:
 - scripts/update.sh
 deploy:

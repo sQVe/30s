@@ -34,30 +34,33 @@ const addAction = action => [
     : actions[action],
 ];
 const commonOptions = [
-  ['option', '-l, --layout <layout>', 'print in specified layout', 'iced'],
-  ['option', '-c, --cp', 'copy code blocks', false],
+  ['option', '-c, --cp', 'copy code to clipboard', false],
   ['option', '-j, --json', 'output in json format', false],
+  ['option', '-l, --layout <layout>', 'print in specified layout', 'iced'],
 ];
 
 program.version(version);
 
 addCommand([
-  ['command', 'search [query]'],
-  ['description', ['Fuzzy search snippets']],
+  ['command', 's [query]'],
+  ['alias', 'search'],
+  ['description', ['fuzzy search snippets by id']],
   ...commonOptions,
   addAction('search'),
 ]);
 
 addCommand([
-  ['command', 'tag [id]'],
-  ['description', ['View snippets related to tag']],
+  ['command', 't [id]'],
+  ['alias', 'tag'],
+  ['description', ['view snippets by tag']],
   ...commonOptions,
   addAction('tag'),
 ]);
 
 addCommand([
-  ['command', 'view [id]'],
-  ['description', ['View snippet']],
+  ['command', 'v [id]'],
+  ['alias', 'view'],
+  ['description', ['view snippet with id']],
   ...commonOptions,
   addAction('view'),
 ]);
