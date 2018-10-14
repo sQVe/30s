@@ -53,7 +53,7 @@ commit_changes() {
 
 push_changes() {
   echo "Pushing to master branch..."
-  git push --force --quiet "https://${GH_TOKEN}@github.com/sQVe/30-seconds-of-code-cli.git" master > /dev/null 2>&1
+  git push --force --quiet "https://${GH_TOKEN}@github.com/sQVe/30s.git" master > /dev/null 2>&1
 }
 
 # Ensure master branch and a not pull request event.

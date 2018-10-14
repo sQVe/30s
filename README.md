@@ -1,8 +1,8 @@
-# 30 seconds of code cli
+# 30s
 
 _A command-line application for [30 seconds of code](https://github.com/30-seconds/30-seconds-of-code/) snippets._
 
-[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/sQVe/30-seconds-of-code-cli/blob/develop/LICENSE) [![Build Status](https://travis-ci.org/sQVe/30-seconds-of-code-cli.svg?branch=master)](https://travis-ci.org/sQVe/30-seconds-of-code-cli) [![Greenkeeper badge](https://badges.greenkeeper.io/sQVe/30-seconds-of-code-cli.svg)](https://greenkeeper.io/)
+[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/sQVe/30s/blob/develop/LICENSE) [![Build Status](https://travis-ci.org/sQVe/30s.svg?branch=master)](https://travis-ci.org/sQVe/30s) [![Greenkeeper badge](https://badges.greenkeeper.io/sQVe/30s.svg)](https://greenkeeper.io/)
 
 ![Demo](/.github/demo.gif?raw=true)
 
@@ -25,18 +25,18 @@ Pick one of the following options to install the command-line application:
 #### Option 1: NPM / Yarn
 
 ```bash
-npm install -g 30-seconds-of-code
+npm install -g 30s
 ```
 
 ```bash
-yarn add -g 30-seconds-of-code
+yarn add -g 30s
 ```
 
 #### Option 2: Source
 
 ```bash
-$ git clone git@github.com:sQVe/30-seconds-of-code-cli.git
-$ cd 30-seconds-of-code-cli/
+$ git clone git@github.com:sQVe/30s.git
+$ cd 30s/
 $ npm install
 $ ./build/cli.sh <command> <query>
 ```
@@ -94,7 +94,7 @@ v, view                       # view snippet with id
 
 #### Bug reports & feature requests
 
-Please use the [issue tracker](https://github.com/sQVe/30-seconds-of-code-cli/issues) to report bugs or file feature requests.
+Please use the [issue tracker](https://github.com/sQVe/30s/issues) to report bugs or file feature requests.
 
 #### Developing
 
@@ -110,7 +110,7 @@ Optional steps:
 
 #### Roadmap
 
-See the [development board](https://github.com/sQVe/30-seconds-of-code-cli/projects/1) for a detailed development roadmap. Below are a short outline of important improvements:
+See the [development board](https://github.com/sQVe/30s/projects/1) for a detailed development roadmap. Below are a short outline of important improvements:
 
 - Setup coverage with `coveralls`
 - Release with `semantic-release`

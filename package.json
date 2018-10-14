@@ -1,16 +1,16 @@
 {
-  "name": "30-seconds-to-code-cli",
-  "version": "0.1.0",
+  "name": "30s",
+  "version": "0.1.1",
   "description": "A command-line application for 30 seconds of code snippets",
   "author": "Oskar Grunning <oskargrunning@gmail.com>",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/sQVe/30-seconds-of-code-cli#30-seconds-of-code-cli",
+  "homepage": "https://github.com/sQVe/30s#30s",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sQVe/30-seconds-of-code-cli"
+    "url": "git+https://github.com/sQVe/30s"
   },
   "bugs": {
-    "url": "https://github.com/sQVe/30-seconds-of-code-cli/issues"
+    "url": "https://github.com/sQVe/30s/issues"
   },
   "keywords": [
     "javascript",
