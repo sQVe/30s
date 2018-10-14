@@ -1,6 +1,6 @@
 {
   "name": "30s",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A command-line application for 30 seconds of code snippets",
   "author": "Oskar Grunning <oskargrunning@gmail.com>",
   "license": "CC0-1.0",
@@ -48,7 +48,6 @@
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
     "@babel/node": "^7.0.0",
-    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@types/jest": "^23.3.5",
     "@types/node": "^10.11.7",
@@ -67,6 +66,7 @@
     "prettier-eslint-cli": "^4.7.1"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "chalk": "^2.4.1",
     "cli-highlight": "^2.0.0",
     "clipboardy": "^1.2.3",
