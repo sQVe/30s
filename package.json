@@ -7,7 +7,7 @@
   "homepage": "https://github.com/sQVe/30s#30s",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sQVe/30s"
+    "url": "git+https://github.com/sQVe/30s.git"
   },
   "bugs": {
     "url": "https://github.com/sQVe/30s/issues"
@@ -41,9 +41,6 @@
   "files": [
     "build/"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
@@ -52,28 +49,29 @@
     "@types/jest": "^23.3.5",
     "@types/node": "^10.11.7",
     "@types/ramda": "^0.25.39",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "eslint": "^5.6.1",
-    "eslint-config-sqve": "^1.6.1",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1",
-    "husky": "^1.1.2",
-    "jest": "^23.6.0",
-    "lint-staged": "^7.3.0",
-    "prettier": "^1.14.3",
-    "prettier-eslint-cli": "^4.7.1"
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "~23.6.0",
+    "eslint": "~5.6.1",
+    "eslint-config-sqve": "~1.6.1",
+    "eslint-plugin-import": "~2.14.0",
+    "eslint-plugin-jsx-a11y": "~6.1.2",
+    "eslint-plugin-react": "~7.11.1",
+    "husky": "~1.1.2",
+    "jest": "~23.6.0",
+    "lint-staged": "~7.3.0",
+    "prettier": "~1.14.3",
+    "prettier-eslint-cli": "~4.7.1",
+    "semantic-release": "~15.9.17"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
-    "chalk": "^2.4.1",
-    "cli-highlight": "^2.0.0",
-    "clipboardy": "^1.2.3",
-    "commander": "^2.19.0",
-    "marked": "^0.5.1",
-    "marked-terminal": "^3.1.1",
-    "ramda": "^0.25.0"
+    "@babel/polyfill": "~7.0.0",
+    "chalk": "~2.4.1",
+    "cli-highlight": "~2.0.0",
+    "clipboardy": "~1.2.3",
+    "commander": "~2.19.0",
+    "marked": "~0.5.1",
+    "marked-terminal": "~3.1.1",
+    "ramda": "~0.25.0"
   },
   "husky": {
     "hooks": {

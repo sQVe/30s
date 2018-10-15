@@ -1,13 +1,8 @@
-os:
-- linux
-before_install:
-- sudo apt-get install xsel
+os: linux
+dist: trusty
 language: node_js
 node_js:
 - 8
-cache:
-  directories:
-  - node_modules
 script:
 - npm run lint
 - npm run format:guard
@@ -17,10 +12,7 @@ script:
 after_success:
 - scripts/update.sh
 deploy:
-  provider: npm
-  email: oskargrunning@gmail.com
-  api_key: $NPM_TOKEN
-  on:
-    branch: master
-    repo: sQVe/30-seconds-of-code-cli
-    tags: true
+  provider: script
+  skip_cleanup: true
+  script:
+    - npx semantic-release
