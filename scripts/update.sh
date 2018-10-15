@@ -41,14 +41,10 @@ commit_changes() {
   git add .
 
   if [[ $TRAVIS_EVENT_TYPE == "cron" ]]; then
-    git commit --message "Travis build: $TRAVIS_BUILD_NUMBER [cron]"
+    git commit --message "fix(snippets): update snippets (cron build: $TRAVIS_BUILD_NUMBER)"
   else
-    git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
+    git commit --message "fix(snippets): update snippets (build: $TRAVIS_BUILD_NUMBER)"
   fi
-
-  # TODO: Enable this when we're ready to release npm packages.
-  # echo "Patching package version..."
-  # npm version patch
 }
 
 push_changes() {

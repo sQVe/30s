@@ -17,10 +17,7 @@ script:
 after_success:
 - scripts/update.sh
 deploy:
-  provider: npm
-  email: oskargrunning@gmail.com
-  api_key: $NPM_TOKEN
-  on:
-    branch: master
-    repo: sQVe/30-seconds-of-code-cli
-    tags: true
+  provider: script
+  skip_cleanup: true
+  script:
+    - npx semantic-release
