@@ -61,7 +61,7 @@
     "lint-staged": "~7.3.0",
     "prettier": "~1.14.3",
     "prettier-eslint-cli": "~4.7.1",
-    "semantic-release": "~15.9.17"
+    "semantic-release": "~15.10.3"
   },
   "dependencies": {
     "@babel/polyfill": "~7.0.0",
