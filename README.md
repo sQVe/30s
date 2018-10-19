@@ -2,7 +2,7 @@
 
 _A command-line application for [30 seconds of code](https://github.com/30-seconds/30-seconds-of-code/) snippets._
 
-[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/sQVe/30s/blob/develop/LICENSE) [![Build Status](https://travis-ci.org/sQVe/30s.svg?branch=master)](https://travis-ci.org/sQVe/30s) [![Greenkeeper badge](https://badges.greenkeeper.io/sQVe/30s.svg)](https://greenkeeper.io/)
+[![license](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/sQVe/30s/blob/develop/LICENSE) [![build status](https://travis-ci.org/sqve/30s.svg?branch=master)](https://travis-ci.org/sqve/30s) [![coveralls](https://coveralls.io/repos/github/sQVe/30s/badge.svg?branch=master)](https://coveralls.io/github/sQVe/30s?branch=master) [![greenkeeper](https://badges.greenkeeper.io/sQVe/30s.svg)](https://greenkeeper.io/)
 
 ![Demo](/.github/demo.gif?raw=true)
 
