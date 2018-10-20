@@ -112,8 +112,6 @@ Optional steps:
 
 See the [development board](https://github.com/sQVe/30s/projects/1) for a detailed development roadmap. Below are a short outline of important improvements:
 
-- Setup coverage with `coveralls`
-- Release with `semantic-release`
 - Replace most helper logic by using `Ramda`
 - Replace `commander` with basic `yargs` and own logic
 - Autocomplete with `omelette`
