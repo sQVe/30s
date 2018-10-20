@@ -1,13 +1,13 @@
 module.exports = {
   clearMocks: true,
   coveragePathIgnorePatterns: [
-    // Exlude cli integration test.
-    '/test/cli.test.js',
+    // Exlude index (cli) integration test.
+    '/test/index.test.js',
   ],
   testEnvironment: 'node',
   testPathIgnorePatterns: [
-    // Exlude cli integration test.
-    '/test/cli.test.js',
+    // Exlude index (cli) integration test.
+    '/test/index.test.js',
     '/node_modules/',
     '/submodules/',
   ],
