@@ -9,7 +9,7 @@
 
 import program from 'commander';
 
-import snippets from '../build/snippets.json';
+import snippets from '../dist/snippets.json';
 import { getSnippet, getSnippetsByTag, searchSnippets } from './handler';
 import { print } from './printer';
 import { version } from '../package.json';

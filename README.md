@@ -38,7 +38,7 @@ yarn add -g 30s
 $ git clone git@github.com:sQVe/30s.git
 $ cd 30s/
 $ npm install
-$ ./build/cli.sh <command> <query>
+$ ./dist/cli.sh <command> <query>
 ```
 
 ## Usage

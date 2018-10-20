@@ -13,7 +13,7 @@ setup_git() {
 }
 
 get_snippets_sha() {
-  sha256sum build/snippets.json | awk '{print $1}'
+  sha256sum dist/snippets.json | awk '{print $1}'
 }
 
 check_submodules_changes() {
