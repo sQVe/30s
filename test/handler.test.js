@@ -13,19 +13,19 @@ const {
 } = require('../src/handler');
 
 describe('Handler', () => {
-  describe('getSnippet()', () => {
+  describe('getSnippet', () => {
     it('should find snippet by id', () => {
       expect(getSnippet(snippets, 'foo')).toEqual(snippets[2]);
     });
   });
 
-  describe('getSnippetsByTag()', () => {
+  describe('getSnippetsByTag', () => {
     it('should find snippets by tag', () => {
       expect(getSnippetsByTag(snippets, 'array')).toEqual(snippets.slice(0, 3));
     });
   });
 
-  describe('searchSnippets()', () => {
+  describe('searchSnippets', () => {
     it('should find snippets fuzzy matching query', () => {
       expect(searchSnippets(snippets, 'foo')).toMatchSnapshot();
     });

@@ -1,7 +1,7 @@
 import { readSync as readFromClipboard } from 'clipboardy';
 
 const { head } = require('../src/helpers');
-const { print, prettyPrint } = require('../src/printer');
+const { printSnippet, colorizedPrint } = require('../src/printer');
 
 const layouts = [...Array.from('idce'), 'idce'];
 const snippet = {
@@ -15,18 +15,18 @@ const snippet = {
 };
 
 describe('Printer', () => {
-  describe('prettyPrint()', () => {
-    it('should pretty print based on given snippet', () => {
+  describe('colorizedPrint', () => {
+    it('should print in color based on given snippet', () => {
       expect(
-        prettyPrint(
+        colorizedPrint(
           Object.keys(snippet).map(k => ({ [k]: snippet[k] }))
         ).toString()
       ).toMatchSnapshot();
-      expect(prettyPrint([snippet])).toMatchSnapshot();
+      expect(colorizedPrint([snippet])).toMatchSnapshot();
     });
   });
 
-  describe('print()', () => {
+  describe('printSnippet', () => {
     const stringifySpy = jest.spyOn(JSON, 'stringify');
     global.console = { ...global.console, log: jest.fn() };
 
@@ -36,26 +36,27 @@ describe('Printer', () => {
     });
 
     it('should handle snippets in a array', () => {
-      print({ layout: 'ic' }, [snippet]);
+      printSnippet({ layout: 'ic' }, [snippet]);
 
       expect(head(console.log.mock.calls)).toMatchSnapshot();
     });
 
     it('should handle snippet in object', () => {
-      print({ layout: 'ic' }, snippet);
+      printSnippet({ layout: 'ic' }, snippet);
 
       expect(head(console.log.mock.calls)).toMatchSnapshot();
     });
 
     layouts.forEach(layout => {
       it('should log JSON given json flag', () => {
-        print({ layout, json: true }, snippet);
+        printSnippet({ layout, json: true }, snippet);
 
         expect(head(console.log.mock.calls)).toMatchSnapshot();
       });
 
-      it('should log prettyPrint() by default', () => {
-        print({ layout }, snippet);
+      it('should print in color by default', () => {
+        printSnippet({ layout }, snippet);
+
         expect(head(console.log.mock.calls)).toMatchSnapshot();
       });
     });
@@ -64,13 +65,13 @@ describe('Printer', () => {
     // Travis CI.
     if (process.platform !== 'linux' || process.env.DISPLAY) {
       it('should copy code blocks to clipboard', () => {
-        print({ layout: 'iced', cp: true }, snippet);
+        printSnippet({ layout: 'iced', cp: true }, snippet);
 
         expect(readFromClipboard()).toEqual(snippet.code);
       });
 
       it('should copy multiple code blocks to clipboard', () => {
-        print({ layout: 'iced', cp: true }, [snippet, snippet]);
+        printSnippet({ layout: 'iced', cp: true }, [snippet, snippet]);
 
         expect(readFromClipboard()).toEqual(`${snippet.code}\n${snippet.code}`);
       });

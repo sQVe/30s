@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Parser createItem() should create item 1`] = `
+exports[`Parser createItem should create item 1`] = `
 Object {
   "code": "code",
   "description": "text",
@@ -12,4 +12,4 @@ Object {
 }
 `;
 
-exports[`Parser writeFile() should call fs.writeFile with a path and content 1`] = `"{\\"foo\\":true}"`;
+exports[`Parser writeFile should call fs.writeFile with a path and content 1`] = `"{\\"foo\\":true}"`;
