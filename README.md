@@ -1,6 +1,6 @@
 # 30s
 
-_A command-line application for [30 seconds of code](https://github.com/30-seconds/30-seconds-of-code/) snippets._
+_A command-line application for [`30 seconds of code`](https://github.com/30-seconds/30-seconds-of-code/) snippets._
 
 [![license](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/sQVe/30s/blob/develop/LICENSE) [![build status](https://travis-ci.org/sQVe/30s.svg?branch=master)](https://travis-ci.org/sQVe/30s) [![coveralls](https://coveralls.io/repos/github/sQVe/30s/badge.svg?branch=master)](https://coveralls.io/github/sQVe/30s?branch=master) [![greenkeeper](https://badges.greenkeeper.io/sQVe/30s.svg)](https://greenkeeper.io/)
 
@@ -14,9 +14,9 @@ _A command-line application for [30 seconds of code](https://github.com/30-secon
 - View, view by tag and search snippets
 - Only show what you find necessary by picking a layout
 - Colorful output or JSON
-- Copy all code blocks to clipboard
+- Copy all code to clipboard
 - Automatically updates with new snippet changes
-- Works on Mac, Linux and (maybe) Windows
+- Works on Linux, Mac and Windows
 
 ## Installation
 
@@ -38,7 +38,7 @@ yarn add -g 30s
 $ git clone git@github.com:sQVe/30s.git
 $ cd 30s/
 $ npm install
-$ ./build/cli.sh <command> <query>
+$ ./dist/index.js <command> <query>
 ```
 
 ## Usage
@@ -98,7 +98,7 @@ Please use the [issue tracker](https://github.com/sQVe/30s/issues) to report bug
 
 #### Developing
 
-PRs are more than welcome. Do the following to start helping out:
+Pull requests are more than welcome. Do the following to start helping out:
 
 1. [Fork](https://help.github.com/articles/fork-a-repo/) this repository to your own GitHub account and then [clone](https://help.github.com/articles/cloning-a-repository/) it to your local device.
 2. Run `npm install` in the created directory to install all necessary dependencies.
@@ -108,17 +108,26 @@ Optional steps:
 3. Uninstall `30s` if it's already installed: `npm uninstall -g 30s`
 4. Link it to the global module directory: `npm link`
 
+#### Style guide & conventions
+
+Code is written with an intent to follow [functional programming](https://en.wikipedia.org/wiki/Functional_programming) best practices. Write pure functions and utilize [`Ramda`](https://github.com/ramda/ramda) when possible.
+
+Styling and formatting is enforced by [`prettier`](https://github.com/prettier/prettier) and [`eslint-config-sqve`](https://github.com/sQVe/eslint-config-sqve) (a config based on [`airbnb/javascript`](https://github.com/airbnb/javascript)). Code is automatically formatted and fixed on `pre-commit` and also checked for issues on **Travis CI**.
+
+Commits are written in accordance with [Angular Commit Message Conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines). This enables us to automatically release new version together with [`semantic-release`](https://github.com/semantic-release/semantic-release) on `fix` and `feat` commit types.
+
 #### Roadmap
 
 See the [development board](https://github.com/sQVe/30s/projects/1) for a detailed development roadmap. Below are a short outline of important improvements:
 
-- Replace most helper logic by using `Ramda`
-- Replace `commander` with basic `yargs` and own logic
 - Autocomplete with `omelette`
+- Display relevant tags
+- Replace `commander` with basic `yargs` and own logic
+- Replace most helper logic by using `Ramda`
 
 ## Thanks
 
-Many thanks to the core team and all the contributers at [30-seconds-of-code](https://github.com/Chalarangelo/30-seconds-of-code) for creating an awesome curated collection of snippets.
+Many thanks to the core team and all the contributers at [`30-seconds-of-code`](https://github.com/Chalarangelo/30-seconds-of-code) for creating an awesome curated collection of snippets.
 
 ## License
 

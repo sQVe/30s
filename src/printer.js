@@ -8,29 +8,23 @@ import { enforceSingleNewLine, pick } from './helpers';
 
 marked.setOptions({ renderer: new Renderer() });
 
-export const prettyPrint = x => {
+export const colorizedPrint = x => {
   const printMap = {
-    code: y => highlight(y.code, { language: 'javascript' }),
-    description: y => enforceSingleNewLine(marked(y.description)),
-    example: y => highlight(y.example, { language: 'javascript' }),
-    id: y =>
-      [
-        chalk.magenta.bold(y.id),
-        chalk.magenta.bold('-'.repeat(y.id.length)),
-      ].join('\n'),
+    code: y => highlight(y, { language: 'javascript' }),
+    description: y => enforceSingleNewLine(marked(y)),
+    example: y => highlight(y, { language: 'javascript' }),
+    id: y => chalk.magenta.bold(y),
   };
+  const print = y =>
+    Object.entries(y)
+      .map(([k, v]) => printMap[k](v) + (k === 'id' ? '' : '\n'))
+      .join('\n')
+      .replace(/\n$/, '');
 
-  return x
-    .map(y =>
-      Object.keys(y)
-        .map(k => printMap[k](y) + (k === 'id' ? '' : '\n'))
-        .join('\n')
-        .replace(/\n$/, '')
-    )
-    .join('\n\n');
+  return x.map(print).join('\n\n');
 };
 
-export const print = ({ cp, layout, json }, x) => {
+export const printSnippet = ({ cp, layout, json }, x) => {
   const arr = Array.isArray(x) ? x : [x];
   const layoutMap = {
     c: 'code',
@@ -38,14 +32,14 @@ export const print = ({ cp, layout, json }, x) => {
     e: 'example',
     i: 'id',
   };
-  const layoutKeys = Array.from(layout).map(k => layoutMap[k]);
+  const keysByLayout = Array.from(layout).map(k => layoutMap[k]);
 
   if (cp) {
     writeToClipboard(arr.map(y => y.code).join('\n'));
   }
   if (json) {
-    console.log(JSON.stringify(arr.map(y => pick(y, layoutKeys))));
+    console.log(JSON.stringify(arr.map(y => pick(y, keysByLayout))));
   } else {
-    console.log(prettyPrint(arr.map(y => pick(y, layoutKeys))));
+    console.log(colorizedPrint(arr.map(y => pick(y, keysByLayout))));
   }
 };

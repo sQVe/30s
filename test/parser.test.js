@@ -10,7 +10,7 @@ const { last } = require('../src/helpers');
 const stringifySpy = jest.spyOn(JSON, 'stringify');
 
 describe('Parser', () => {
-  describe('createItem()', () => {
+  describe('createItem', () => {
     const attributes = {
       codeBlocks: ['code', 'example'],
       tags: ['tags'],
@@ -44,7 +44,7 @@ describe('Parser', () => {
     });
   });
 
-  describe('writeFile()', () => {
+  describe('writeFile', () => {
     beforeEach(() => {
       writeFile({ foo: true });
     });

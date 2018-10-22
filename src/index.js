@@ -9,16 +9,16 @@
 
 import program from 'commander';
 
-import snippets from '../build/snippets.json';
+import snippets from '../dist/snippets.json';
 import { getSnippet, getSnippetsByTag, searchSnippets } from './handler';
-import { print } from './printer';
+import { printSnippet } from './printer';
 import { version } from '../package.json';
 
 const isTest = process.env.NODE_ENV === 'test';
 const actions = {
-  tag: (id, opts) => print(opts, getSnippetsByTag(snippets, id)),
-  view: (id, opts) => print(opts, getSnippet(snippets, id)),
-  search: (query, opts) => print(opts, searchSnippets(snippets, query)),
+  tag: (id, opts) => printSnippet(opts, getSnippetsByTag(snippets, id)),
+  view: (id, opts) => printSnippet(opts, getSnippet(snippets, id)),
+  search: (query, opts) => printSnippet(opts, searchSnippets(snippets, query)),
 };
 const addCommand = settings => {
   settings.reduce((acc, [key, ...args]) => acc[key](...args), program);
