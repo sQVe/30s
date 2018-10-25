@@ -1,10 +1,10 @@
-const path = require('path');
-const { spawnSync } = require('child_process');
+import path from 'path';
+import { spawnSync } from 'child_process';
 
-const { version } = require('../package.json');
+import { version } from '../../package.json';
 
 const callCli = (...args) =>
-  spawnSync(path.resolve(__dirname, '../dist/index.js'), args)
+  spawnSync(path.resolve(__dirname, '../../dist/index.js'), args)
     .stdout.toString()
     .trim();
 const commands = ['search', 'view', 'tag'];

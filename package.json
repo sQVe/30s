@@ -30,7 +30,7 @@
     "start": "babel-node src/index.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:integration": "jest test/index.test.js --testPathIgnorePatterns",
+    "test:integration": "jest test/integration --passWithNoTests --testPathIgnorePatterns",
     "test:watch": "jest --watch --onlyChanged"
   },
   "engines": {

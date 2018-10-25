@@ -6,11 +6,7 @@ const snippets = [
   { id: 'bazfoo', tags: ['object'] },
 ];
 
-const {
-  getSnippet,
-  getSnippetsByTag,
-  searchSnippets,
-} = require('../src/handler');
+import { getSnippet, getSnippetsByTag, searchSnippets } from '../src/handler';
 
 describe('Handler', () => {
   describe('getSnippet', () => {

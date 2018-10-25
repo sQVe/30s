@@ -1,13 +1,14 @@
 jest.mock('fs', () => ({
-  writeFile: jest.fn(),
+  writeFileSync: jest.fn(() => ''),
 }));
 
-const fs = require('fs');
+import fs from 'fs';
 
-const { createItem, writeFile } = require('../src/parser');
-const { last } = require('../src/helpers');
+import { createItem, writeFile } from '../src/parser';
+import { last } from '../src/helpers';
 
 const stringifySpy = jest.spyOn(JSON, 'stringify');
+jest.spyOn(global.console, 'log').mockImplementation(() => {});
 
 describe('Parser', () => {
   describe('createItem', () => {
@@ -54,7 +55,7 @@ describe('Parser', () => {
     });
 
     it('should call fs.writeFile with a path and content', () => {
-      const [path, content] = last(fs.writeFile.mock.calls);
+      const [path, content] = last(fs.writeFileSync.mock.calls);
 
       expect(path).toMatch(/.*\/src\/snippets.json/);
       expect(content).toMatchSnapshot();

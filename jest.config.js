@@ -7,7 +7,7 @@ module.exports = {
   testEnvironment: 'node',
   testPathIgnorePatterns: [
     // Exlude index (cli) integration test.
-    '/test/index.test.js',
+    '/test/integration/',
     '/node_modules/',
     '/submodules/',
   ],

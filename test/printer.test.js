@@ -1,7 +1,9 @@
-import { readSync as readFromClipboard } from 'clipboardy';
+jest.mock('clipboardy');
 
-const { head } = require('../src/helpers');
-const { printSnippet, colorizedPrint } = require('../src/printer');
+import { writeSync as writeToClipboard } from 'clipboardy';
+
+import { head } from '../src/helpers';
+import { printSnippet, colorizedPrint } from '../src/printer';
 
 const layouts = [...Array.from('idce'), 'idce'];
 const snippet = {
@@ -27,13 +29,7 @@ describe('Printer', () => {
   });
 
   describe('printSnippet', () => {
-    const stringifySpy = jest.spyOn(JSON, 'stringify');
-    global.console = { ...global.console, log: jest.fn() };
-
-    afterEach(() => {
-      console.log.mockClear();
-      stringifySpy.mockClear();
-    });
+    jest.spyOn(global.console, 'log').mockImplementation(() => {});
 
     it('should handle snippets in a array', () => {
       printSnippet({ layout: 'ic' }, [snippet]);
@@ -61,20 +57,20 @@ describe('Printer', () => {
       });
     });
 
-    // Do not run copy & paste tests on headless linux environments like
-    // Travis CI.
-    if (process.platform !== 'linux' || process.env.DISPLAY) {
-      it('should copy code blocks to clipboard', () => {
-        printSnippet({ layout: 'iced', cp: true }, snippet);
+    it('should copy write blocks to clipboard', () => {
+      printSnippet({ layout: 'iced', cp: true }, snippet);
 
-        expect(readFromClipboard()).toEqual(snippet.code);
-      });
+      expect(writeToClipboard).toHaveBeenCalledTimes(1);
+      expect(writeToClipboard).toHaveBeenCalledWith(snippet.code);
+    });
 
-      it('should copy multiple code blocks to clipboard', () => {
-        printSnippet({ layout: 'iced', cp: true }, [snippet, snippet]);
+    it('should copy multiple code blocks to clipboard', () => {
+      printSnippet({ layout: 'iced', cp: true }, [snippet, snippet]);
 
-        expect(readFromClipboard()).toEqual(`${snippet.code}\n${snippet.code}`);
-      });
-    }
+      expect(writeToClipboard).toHaveBeenCalledTimes(1);
+      expect(writeToClipboard).toHaveBeenCalledWith(
+        [snippet.code, snippet.code].join('\n')
+      );
+    });
   });
 });

@@ -9,7 +9,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import { promisify } from 'util';
 
 import { data as snippets } from '../submodules/30-seconds-of-code/snippet_data/snippets.json';
 import { enforceSingleNewLine, mapValues } from './helpers';
@@ -29,12 +28,6 @@ export const createItem = ({
     enforceSingleNewLine
   );
 export const writeFile = content =>
-  promisify(fs.writeFile)(
-    path.resolve(__dirname, FILE_NAME),
-    JSON.stringify(content)
-  );
+  fs.writeFileSync(path.resolve(__dirname, FILE_NAME), JSON.stringify(content));
 
-(async () => {
-  await writeFile(snippets.map(createItem));
-  console.log(`Successfully created ${FILE_NAME} file.`);
-})();
+writeFile(snippets.map(createItem));
