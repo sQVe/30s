@@ -1,80 +1,74 @@
-# --- Node
-
-# Logs
+# Logs.
 logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Lock files
+# Lock files.
 package.lock
 
-# Optional npm cache directory
+# Optional npm cache directory.
 .npm
 
-# Dependency directories
+# Dependency directories.
 /node_modules
 /jspm_packages
 /bower_components
 
-# Yarn Integrity file
+# Yarn Integrity file.
 .yarn-integrity
 
-# Optional eslint cache
+# Optional eslint cache.
 .eslintcache
 
-# Dotenv environment variables file(s)
+# Dotenv environment variables file(s).
 .env
 .env.*
 
-# Build generated
+# Build generated.
 build/
 coverage/
 dist/
+es/
+lib/
 
-# --- SublimeText
-# cache files for sublime text
-*.tmlanguage.cache
-*.tmPreferences.cache
+# SublimeText.
 *.stTheme.cache
-
-# workspace files are user-specific
-*.sublime-workspace
-
-# project files should be checked into the repository, unless a significant
-# proportion of contributors will probably not be using SublimeText
 *.sublime-project
+*.sublime-workspace
+*.tmPreferences.cache
+*.tmlanguage.cache
 
-# --- VisualStudioCode
+# VisualStudioCode.
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# --- WebStorm/IntelliJ
+# WebStorm/IntelliJ.
 /.idea
 modules.xml
 *.ipr
 
-# --- System Files
+# System Files.
 .DS_Store
 
-# Windows thumbnail cache files
+# Windows thumbnail cache files.
 Thumbs.db
 ehthumbs.db
 ehthumbs_vista.db
 
-# Folder config file
+# Folder config file.
 Desktop.ini
 
-# Recycle Bin used on file shares
+# Recycle Bin used on file shares.
 $RECYCLE.BIN/
 
-# Thumbnails
+# Thumbnails.
 ._*
 
-# Files that might appear in the root of a volume
+# Files that might appear in the root of a volume.
 .DocumentRevisions-V100
 .fseventsd
 .Spotlight-V100

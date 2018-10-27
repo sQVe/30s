@@ -4,7 +4,7 @@ import { spawnSync } from 'child_process';
 import { version } from '../../package.json';
 
 const callCli = (...args) =>
-  spawnSync(path.resolve(__dirname, '../../dist/index.js'), args)
+  spawnSync(path.resolve(__dirname, '../../lib/index.js'), args)
     .stdout.toString()
     .trim();
 const commands = ['search', 'view', 'tag'];

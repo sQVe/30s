@@ -7,7 +7,7 @@
   "homepage": "https://github.com/sQVe/30s#30s",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sQVe/30s.git"
+    "url": "git+https://github.com/sQVe/30s.git"
   },
   "bugs": {
     "url": "https://github.com/sQVe/30s/issues"
@@ -18,29 +18,29 @@
     "cli"
   ],
   "scripts": {
-    "build": "rm -rf dist && npm run build:js && npm run build:parse",
-    "build:copy": "cp src/snippets.json dist/",
-    "build:js": "NODE_ENV=production babel src --out-dir dist",
-    "build:parse": "node dist/parser.js",
-    "ci:format": "prettier-eslint --list-different '{**/*,*}.{js,jsx,json}'",
-    "ci:coverage": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "format": "prettier-eslint --write '{**/*,*}.{js,jsx,json}'",
+    "build": "rm -rf lib && npm run build:js && npm run build:parse",
+    "build:copy": "cp src/snippets.json lib/",
+    "build:js": "NODE_ENV=production babel src --out-dir lib",
+    "build:parse": "node lib/parser.js",
+    "format": "prettier-eslint --write '{**/*,*}.{js,json,jsx,md,yaml}'",
+    "format:check": "prettier-eslint --list-different '{**/*,*}.{js,json,jsx,md,yaml}'",
     "lint": "eslint '{**/*,*}.{js,jsx}'",
     "prepare": "npm run build",
     "start": "babel-node src/index.js",
     "test": "jest",
-    "test:coverage": "jest --coverage",
-    "test:integration": "jest test/integration --passWithNoTests --testPathIgnorePatterns",
+    "test:cov": "jest --coverage",
+    "test:cov:up": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "test:integration": "jest test/integration --testPathIgnorePatterns",
     "test:watch": "jest --watch --onlyChanged"
   },
   "engines": {
     "node": ">= 8"
   },
   "bin": {
-    "30s": "./dist/index.js"
+    "30s": "./lib/index.js"
   },
   "files": [
-    "dist/"
+    "lib/"
   ],
   "devDependencies": {
     "@babel/cli": "~7.1.2",
@@ -49,7 +49,7 @@
     "@babel/preset-env": "~7.1.0",
     "@types/jest": "^23.3.7",
     "@types/node": "^10.12.0",
-    "@types/ramda": "^0.25.39",
+    "@types/ramda": "^0.25.40",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "~23.6.0",
     "coveralls": "~3.0.2",
@@ -63,7 +63,7 @@
     "lint-staged": "~7.3.0",
     "prettier": "~1.14.3",
     "prettier-eslint-cli": "~4.7.1",
-    "semantic-release": "~15.10.5"
+    "semantic-release": "~15.10.6"
   },
   "dependencies": {
     "@babel/polyfill": "~7.0.0",
