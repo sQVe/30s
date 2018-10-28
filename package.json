@@ -5,13 +5,8 @@
   "author": "Oskar Grunning <oskargrunning@gmail.com>",
   "license": "CC0-1.0",
   "homepage": "https://github.com/sQVe/30s#30s",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sQVe/30s.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sQVe/30s/issues"
-  },
+  "repository": "github:sQVe/30s",
+  "bugs": "https://github.com/sQVe/30s/issues",
   "keywords": [
     "javascript",
     "snippets",
