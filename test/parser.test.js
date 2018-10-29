@@ -3,9 +3,9 @@ jest.mock('fs', () => ({
 }));
 
 import fs from 'fs';
+import { last } from 'ramda';
 
 import { createItem, writeFile } from '../src/parser';
-import { last } from '../src/helpers';
 
 const stringifySpy = jest.spyOn(JSON, 'stringify');
 jest.spyOn(global.console, 'log').mockImplementation(() => {});

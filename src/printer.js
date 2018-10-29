@@ -1,10 +1,11 @@
 import Renderer from 'marked-terminal';
 import chalk from 'chalk';
 import marked from 'marked';
-import { writeSync as writeToClipboard } from 'clipboardy';
+import { compose, is, join, map, pick, prop, replace, toPairs } from 'ramda';
 import { highlight } from 'cli-highlight';
+import { writeSync as writeToClipboard } from 'clipboardy';
 
-import { enforceSingleNewLine, pick } from './helpers';
+import { enforceSingleNewLine } from './helpers';
 
 marked.setOptions({ renderer: new Renderer() });
 
@@ -16,30 +17,48 @@ export const colorizedPrint = x => {
     id: y => chalk.magenta.bold(y),
   };
   const print = y =>
-    Object.entries(y)
-      .map(([k, v]) => printMap[k](v) + (k === 'id' ? '' : '\n'))
-      .join('\n')
-      .replace(/\n$/, '');
+    compose(
+      replace(/\n$/, ''),
+      join('\n'),
+      map(([k, v]) => printMap[k](v) + (k === 'id' ? '' : '\n')),
+      toPairs
+    )(y);
 
-  return x.map(print).join('\n\n');
+  return compose(
+    join('\n\n'),
+    map(print)
+  )(x);
 };
 
 export const printSnippet = ({ cp, layout, json }, x) => {
-  const arr = Array.isArray(x) ? x : [x];
+  const arr = is(Array, x) ? x : [x];
   const layoutMap = {
     c: 'code',
     d: 'description',
     e: 'example',
     i: 'id',
   };
-  const keysByLayout = Array.from(layout).map(k => layoutMap[k]);
+  const keysByLayout = map(k => layoutMap[k])(Array.from(layout));
 
   if (cp) {
-    writeToClipboard(arr.map(y => y.code).join('\n'));
+    writeToClipboard(
+      compose(
+        join('\n'),
+        map(prop('code'))
+      )(arr)
+    );
   }
+
+  const pickedSnippet = map(pick(keysByLayout))(arr);
   if (json) {
-    console.log(JSON.stringify(arr.map(y => pick(y, keysByLayout))));
+    compose(
+      console.log,
+      JSON.stringify
+    )(pickedSnippet);
   } else {
-    console.log(colorizedPrint(arr.map(y => pick(y, keysByLayout))));
+    compose(
+      console.log,
+      colorizedPrint
+    )(pickedSnippet);
   }
 };

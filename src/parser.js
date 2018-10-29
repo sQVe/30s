@@ -9,9 +9,10 @@
 
 import fs from 'fs';
 import path from 'path';
+import { map } from 'ramda';
 
 import { data as snippets } from '../submodules/30-seconds-of-code/snippet_data/snippets.json';
-import { enforceSingleNewLine, mapValues } from './helpers';
+import { enforceSingleNewLine } from './helpers';
 
 const FILE_NAME = 'snippets.json';
 
@@ -22,12 +23,8 @@ export const createItem = ({
     tags,
     text,
   },
-}) =>
-  mapValues(
-    { code, example, id, tags, description: text },
-    enforceSingleNewLine
-  );
+}) => map(enforceSingleNewLine, { code, example, id, tags, description: text });
 export const writeFile = content =>
   fs.writeFileSync(path.resolve(__dirname, FILE_NAME), JSON.stringify(content));
 
-writeFile(snippets.map(createItem));
+writeFile(map(createItem)(snippets));
