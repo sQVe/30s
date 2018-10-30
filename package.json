@@ -55,7 +55,7 @@
     "eslint-plugin-react": "~7.11.1",
     "husky": "~1.1.2",
     "jest": "~23.6.0",
-    "lint-staged": "~7.3.0",
+    "lint-staged": "~8.0.2",
     "prettier": "~1.14.3",
     "prettier-eslint-cli": "~4.7.1",
     "semantic-release": "~15.10.6"
