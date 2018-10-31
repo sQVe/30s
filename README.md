@@ -2,7 +2,7 @@
 
 _A command-line application for [`30 seconds of code`](https://github.com/30-seconds/30-seconds-of-code/) snippets._
 
-[![npm](https://img.shields.io/npm/v/30s.svg)](https://www.npmjs.com/package/30s) [![build status](https://travis-ci.org/sQVe/30s.svg?branch=master)](https://travis-ci.org/sQVe/30s) [![coveralls](https://coveralls.io/repos/github/sQVe/30s/badge.svg?branch=develop)](https://coveralls.io/github/sQVe/30s?branch=develop) [![dependabot status](https://api.dependabot.com/badges/status?host=github&repo=sQVe/30s)](https://dependabot.com) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![license](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/sQVe/30s/blob/develop/LICENSE)
+[![npm](https://img.shields.io/npm/v/30s.svg)](https://www.npmjs.com/package/30s) [![build status](https://travis-ci.org/sQVe/30s.svg?branch=master)](https://travis-ci.org/sQVe/30s) [![coveralls](https://coveralls.io/repos/github/sQVe/30s/badge.svg)](https://coveralls.io/github/sQVe/30s) [![dependabot status](https://api.dependabot.com/badges/status?host=github&repo=sQVe/30s)](https://dependabot.com) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![license](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/sQVe/30s/blob/develop/LICENSE)
 
 ![Demo](/.github/demo.gif?raw=true)
 
