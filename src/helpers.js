@@ -1,4 +1,4 @@
-import { anyPass, startsWith, endsWith, is, compose, replace } from 'ramda';
+import { anyPass, compose, endsWith, is, replace, startsWith } from 'ramda';
 
 export const startsOrEndsWith = (val, query) =>
   anyPass([startsWith, endsWith])(query, val);
