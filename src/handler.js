@@ -1,27 +1,38 @@
-import { any, sortBy, startsOrEndsWith } from './helpers';
+import {
+  any,
+  compose,
+  curry,
+  descend,
+  filter,
+  find,
+  map,
+  prop,
+  sort,
+} from 'ramda';
 
-const fuzzyMatch = query => x => new RegExp(query).test(x.id);
-export const getSnippet = (snippets, id) => snippets.find(x => x.id === id);
+import { startsOrEndsWith } from './helpers';
+
+const fuzzyMatch = curry((query, x) => new RegExp(query).test(x.id));
+export const getSnippet = (snippets, id) => find(x => x.id === id, snippets);
 export const getSnippetsByTag = (snippets, id) =>
-  snippets.filter(x => any(x.tags, y => y === id));
+  filter(x => any(y => y === id, x.tags), snippets);
 
-function setSearchRelevance(query) {
-  return x => {
-    let relevance = query.length * 10;
+const setSearchRelevance = curry((query, x) => {
+  let relevance = query.length * 10;
 
-    if (x.id === query) return { ...x, relevance };
-    if (startsOrEndsWith(x.id, query)) relevance *= 0.75;
-    else relevance /= 2;
+  if (x.id === query) return { ...x, relevance };
+  if (startsOrEndsWith(x.id, query)) relevance *= 0.75;
+  else relevance /= 2;
 
-    return {
-      ...x,
-      relevance: relevance / (x.id.replace(query, '').length + 1),
-    };
+  return {
+    ...x,
+    relevance: relevance / (x.id.replace(query, '').length + 1),
   };
-}
+});
 
 export const searchSnippets = (snippets, query) =>
-  snippets
-    .filter(fuzzyMatch(query))
-    .map(setSearchRelevance(query))
-    .sort(sortBy('relevance'));
+  compose(
+    sort(descend(prop('relevance'))),
+    map(setSearchRelevance(query)),
+    filter(fuzzyMatch(query))
+  )(snippets);

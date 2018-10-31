@@ -123,7 +123,6 @@ See the [development board](https://github.com/sQVe/30s/projects/1) for a detail
 - Autocomplete with `omelette`
 - Display relevant tags
 - Replace `commander` with basic `yargs` and own logic
-- Replace most helper logic by using `Ramda`
 
 ## Thanks
 

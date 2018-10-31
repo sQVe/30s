@@ -8,6 +8,7 @@
 //  https://github.com/sQVe/30s
 
 import program from 'commander';
+import { reduce } from 'ramda';
 
 import snippets from '../lib/snippets.json';
 import { getSnippet, getSnippetsByTag, searchSnippets } from './handler';
@@ -21,7 +22,7 @@ const actions = {
   search: (query, opts) => printSnippet(opts, searchSnippets(snippets, query)),
 };
 const addCommand = settings => {
-  settings.reduce((acc, [key, ...args]) => acc[key](...args), program);
+  reduce((acc, [key, ...args]) => acc[key](...args), program, settings);
 };
 const addAction = action => [
   'action',

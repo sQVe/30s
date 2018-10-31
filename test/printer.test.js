@@ -1,8 +1,8 @@
 jest.mock('clipboardy');
 
+import { head } from 'ramda';
 import { writeSync as writeToClipboard } from 'clipboardy';
 
-import { head } from '../src/helpers';
 import { printSnippet, colorizedPrint } from '../src/printer';
 
 const layouts = [...Array.from('idce'), 'idce'];
