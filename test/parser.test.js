@@ -1,14 +1,14 @@
 jest.mock('fs', () => ({
   writeFileSync: jest.fn(() => ''),
-}));
+}))
 
-import fs from 'fs';
-import { last } from 'ramda';
+import fs from 'fs'
+import { last } from 'ramda'
 
-import { createItem, writeFile } from '../src/parser';
+import { createItem, writeFile } from '../src/parser'
 
-const stringifySpy = jest.spyOn(JSON, 'stringify');
-jest.spyOn(global.console, 'log').mockImplementation(() => {});
+const stringifySpy = jest.spyOn(JSON, 'stringify')
+jest.spyOn(global.console, 'log').mockImplementation(() => {})
 
 describe('Parser', () => {
   describe('createItem', () => {
@@ -16,15 +16,15 @@ describe('Parser', () => {
       codeBlocks: ['code', 'example'],
       tags: ['tags'],
       text: 'text',
-    };
+    }
     const snippet = {
       id: 'id',
       attributes,
-    };
+    }
 
     it('should create item', () => {
-      expect(createItem(snippet)).toMatchSnapshot();
-    });
+      expect(createItem(snippet)).toMatchSnapshot()
+    })
 
     it('should enforce single newlines between paragraphs', () => {
       expect(
@@ -32,8 +32,8 @@ describe('Parser', () => {
           ...snippet,
           attributes: { ...attributes, text: 'foo\n\nbar' },
         }).description
-      ).toEqual('foo\nbar');
-    });
+      ).toEqual('foo\nbar')
+    })
 
     it('should remove all newlines from ending', () => {
       expect(
@@ -41,24 +41,24 @@ describe('Parser', () => {
           ...snippet,
           attributes: { ...attributes, text: 'foo\n\n' },
         }).description
-      ).toEqual('foo');
-    });
-  });
+      ).toEqual('foo')
+    })
+  })
 
   describe('writeFile', () => {
     beforeEach(() => {
-      writeFile({ foo: true });
-    });
+      writeFile({ foo: true })
+    })
 
     it('should write content as JSON', () => {
-      expect(stringifySpy).toHaveBeenCalled();
-    });
+      expect(stringifySpy).toHaveBeenCalled()
+    })
 
     it('should call fs.writeFile with a path and content', () => {
-      const [path, content] = last(fs.writeFileSync.mock.calls);
+      const [path, content] = last(fs.writeFileSync.mock.calls)
 
-      expect(path).toMatch(/.*\/src\/snippets.json/);
-      expect(content).toMatchSnapshot();
-    });
-  });
-});
+      expect(path).toMatch(/.*\/src\/snippets.json/)
+      expect(content).toMatchSnapshot()
+    })
+  })
+})

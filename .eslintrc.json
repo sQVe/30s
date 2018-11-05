@@ -1,6 +1,6 @@
 {
-  "extends": ["eslint-config-sqve"],
+  "extends": ["eslint-config-sqve/fp"],
   "rules": {
-    "no-console": 0
+    "no-console": "off"
   }
 }
