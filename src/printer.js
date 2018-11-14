@@ -40,6 +40,7 @@ export const printSnippet = ({ cp, layout, json }, x) => {
   }
   const keysByLayout = map (k => layoutMap[k]) (Array.from (layout))
 
+  if (x == null) return ''
   if (cp) {
     writeToClipboard (
       compose (
