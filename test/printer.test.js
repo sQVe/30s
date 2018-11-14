@@ -43,6 +43,12 @@ describe('Printer', () => {
       expect(head(console.log.mock.calls)).toMatchSnapshot()
     })
 
+    it('should handle no snippet', () => {
+      printSnippet({ layout: 'ic' }, undefined)
+
+      expect(head(console.log.mock.calls)).toBeUndefined()
+    })
+
     layouts.forEach(layout => {
       it('should log JSON given json flag', () => {
         printSnippet({ layout, json: true }, snippet)
