@@ -13,7 +13,7 @@ jest.spyOn(global.console, 'log').mockImplementation(() => {})
 describe('Parser', () => {
   describe('createItem', () => {
     const attributes = {
-      codeBlocks: ['code', 'example'],
+      codeBlocks: { es6: 'code', example: 'example' },
       tags: ['tags'],
       text: 'text',
     }

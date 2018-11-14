@@ -19,11 +19,12 @@ const FILE_NAME = 'snippets.json'
 export const createItem = ({
   id,
   attributes: {
-    codeBlocks: [code, example],
+    codeBlocks: { es6, example },
     tags,
     text,
   },
-}) => map (enforceSingleNewLine, { code, example, id, tags, description: text })
+}) =>
+  map (enforceSingleNewLine, { code: es6, example, id, tags, description: text })
 export const writeFile = content =>
   fs.writeFileSync (path.resolve (__dirname, FILE_NAME), JSON.stringify (content))
 
