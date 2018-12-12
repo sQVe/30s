@@ -26,13 +26,18 @@ const addCommand = settings =>
 
 const addAction = action => [
   'action',
-  isTest
-    ? // NOTE: Commander.js sadly does not include a way to hook onto given
-      // actions for integration testing. We solve this by outputting state
-      // when NODE_ENV is test.
-      (input, { layout, json }) =>
-        console.log (JSON.stringify ([action, input, layout, !!json]))
-    : actions[action],
+  (input, opts) => {
+    if (!input) return program.outputHelp ()
+
+    return isTest
+      ? // NOTE: Commander.js sadly does not include a way to hook onto given
+        // actions for integration testing. We solve this by outputting state
+        // when NODE_ENV is test.
+        console.log (
+          JSON.stringify ([action, input, !!opts.cp, !!opts.json, opts.layout])
+        )
+      : actions[action] (input, opts)
+  },
 ]
 const commonOptions = [
   ['option', '-c, --cp', 'copy code to clipboard', false],
@@ -71,10 +76,18 @@ program.on ('--help', () =>
     [
       '',
       'Examples:',
-      '  view all',
-      '  search flatten --output json all',
-      '  tag --print ic array',
+      '  v head',
+      '  view head',
+      '',
+      '  s -j flatten',
+      '  search --json flatten',
+      '',
+      '  t -l ic array',
+      '  tag --layout ic array',
     ].join ('\n')
   )
 )
 program.parse (process.argv)
+if (process.argv.length <= 2) {
+  program.outputHelp ()
+}
