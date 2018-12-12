@@ -22,7 +22,6 @@ const actions = {
   search: (query, opts) => printSnippet (opts, searchSnippets (snippets, query)),
 }
 const addCommand = settings =>
-  // eslint-disable-next-line fp/no-rest-parameters
   reduce ((acc, [key, ...args]) => acc[key] (...args), program, settings)
 
 const addAction = action => [
@@ -38,7 +37,7 @@ const addAction = action => [
 const commonOptions = [
   ['option', '-c, --cp', 'copy code to clipboard', false],
   ['option', '-j, --json', 'output in json format', false],
-  ['option', '-l, --layout <layout>', 'print in specified layout', 'iced'],
+  ['option', '-l, --layout <layout>', 'print in specified layout', 'itced'],
 ]
 
 program.version (version)

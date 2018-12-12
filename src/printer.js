@@ -15,6 +15,10 @@ export const colorizedPrint = x => {
     description: y => enforceSingleNewLine (marked (y)),
     example: y => highlight (y, { language: 'javascript' }),
     id: y => chalk.magenta.bold (y),
+    tags: compose (
+      chalk.gray.italic,
+      join (', ')
+    ),
   }
   const print = y =>
     compose (
@@ -37,6 +41,7 @@ export const printSnippet = ({ cp, layout, json }, x) => {
     d: 'description',
     e: 'example',
     i: 'id',
+    t: 'tags',
   }
   const keysByLayout = map (k => layoutMap[k]) (Array.from (layout))
 
