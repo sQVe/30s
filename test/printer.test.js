@@ -5,15 +5,16 @@ import { writeSync as writeToClipboard } from 'clipboardy'
 
 import { printSnippet, colorizedPrint } from '../src/printer'
 
-const layouts = [...Array.from('idce'), 'idce']
+const layouts = [...Array.from('itced'), 'itced']
 const snippet = {
   code: 'const head = arr => arr[0];',
-  example: 'head([1, 2, 3]); // 1',
-  id: 'head',
   description: [
     'Returns the head of a list.',
     'Use `arr[0]` to return the first element of the passed array.',
   ].join('\n'),
+  example: 'head([1, 2, 3]); // 1',
+  id: 'head',
+  tags: ['array', 'beginner'],
 }
 
 describe('Printer', () => {
@@ -49,20 +50,6 @@ describe('Printer', () => {
       expect(head(console.log.mock.calls)).toBeUndefined()
     })
 
-    layouts.forEach(layout => {
-      it('should log JSON given json flag', () => {
-        printSnippet({ layout, json: true }, snippet)
-
-        expect(head(console.log.mock.calls)).toMatchSnapshot()
-      })
-
-      it('should print in color by default', () => {
-        printSnippet({ layout }, snippet)
-
-        expect(head(console.log.mock.calls)).toMatchSnapshot()
-      })
-    })
-
     it('should copy write blocks to clipboard', () => {
       printSnippet({ layout: 'iced', cp: true }, snippet)
 
@@ -77,6 +64,22 @@ describe('Printer', () => {
       expect(writeToClipboard).toHaveBeenCalledWith(
         [snippet.code, snippet.code].join('\n')
       )
+    })
+
+    layouts.forEach(layout => {
+      describe(`with layout set to "${layout}"`, () => {
+        it('should log JSON given json flag', () => {
+          printSnippet({ layout, json: true }, snippet)
+
+          expect(head(console.log.mock.calls)).toMatchSnapshot()
+        })
+
+        it('should print in color by default', () => {
+          printSnippet({ layout }, snippet)
+
+          expect(head(console.log.mock.calls)).toMatchSnapshot()
+        })
+      })
     })
   })
 })

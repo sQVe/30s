@@ -31,17 +31,26 @@ describe('Cli', () => {
     })
   })
 
+  describe('input safe guard', () => {
+    // TODO: Write this.
+  })
+
   commands.forEach(command => {
     describe(`${command} command`, () => {
+      // TODO: Write correct it cases here.
+
       it(`should output test strings`, async () => {
         expect(callCli(command, 'foo')).toEqual(
-          JSON.stringify([command, 'foo', 'iced', false])
+          JSON.stringify([command, 'foo', false, false, 'itced'])
         )
         expect(callCli(command, 'foo', '--layout', 'ic')).toEqual(
-          JSON.stringify([command, 'foo', 'ic', false])
+          JSON.stringify([command, 'foo', false, false, 'ic'])
         )
         expect(callCli(command, 'foo', '--json')).toEqual(
-          JSON.stringify([command, 'foo', 'iced', true])
+          JSON.stringify([command, 'foo', false, true, 'itced'])
+        )
+        expect(callCli(command, 'foo', '--cp')).toEqual(
+          JSON.stringify([command, 'foo', true, false, 'itced'])
         )
       })
     })

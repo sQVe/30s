@@ -56,8 +56,9 @@ v, view                       # view snippet with id
 ```bash
 -c, --cp                      # copy code to clipboard
 -j, --json                    # output in json format
--l, --layout                  # print in specified layout (default: "iced")
+-l, --layout                  # print in specified layout (default: "itced")
                                 # i: id
+                                # t: tag
                                 # c: code
                                 # e: example
                                 # d: description
@@ -67,15 +68,22 @@ v, view                       # view snippet with id
 #### Examples
 
 ```bash
+30s v head                    # view snippet with id "head"
 30s view head                 # view snippet with id "head"
 ```
 
 ```bash
+30s t array                   # view snippets by tag "array"
 30s tag array                 # view snippets by tag "array"
 ```
 
 ```bash
-30s search all                # find all snippets that include "all"
+30s s all                     # find all snippets with ids that contains "all"
+30s search all                # find all snippets with ids that contains "all"
+```
+
+```bash
+30s view merge --cp           # view snippet with id "merge" and copy it's code
 ```
 
 ```bash
@@ -84,10 +92,6 @@ v, view                       # view snippet with id
 
 ```bash
 30s search all --layout ce    # find all snippets that include "all" and print only code and example
-```
-
-```bash
-30s view merge --cp           # view snippet with id "merge" and copy it's code
 ```
 
 ## Contributing
@@ -121,7 +125,6 @@ Commits are written in accordance with [Angular Commit Message Conventions](http
 See the [development board](https://github.com/sQVe/30s/projects/1) for a detailed development roadmap. Below are a short outline of important improvements:
 
 - Autocomplete with `omelette`
-- Display relevant tags
 - Replace `commander` with basic `yargs` and own logic
 
 ## Thanks
