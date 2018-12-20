@@ -78,8 +78,8 @@ v, view                       # view snippet with id
 ```
 
 ```bash
-30s s all                     # find all snippets with ids that contains "all"
-30s search all                # find all snippets with ids that contains "all"
+30s s all                     # find all snippets with a id that contains "all"
+30s search all                # find all snippets with a id that contains "all"
 ```
 
 ```bash
@@ -91,7 +91,8 @@ v, view                       # view snippet with id
 ```
 
 ```bash
-30s search all --layout ce    # find all snippets that include "all" and print only code and example
+30s search all --layout ce    # find all snippets with a id that contains "all"
+                              # and print only code and example
 ```
 
 ## Contributing
