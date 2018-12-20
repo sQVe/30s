@@ -25,8 +25,8 @@ export const getSnippetsByTag = (snippets, id) =>
 
 const computeRelevance = (id, query) => {
   const base = query.length * 10
-  const restChars = id.replace (query, '').length + 1
-  const divideByRestChars = flip (divide) (restChars)
+  const diffInChars = id.replace (query, '').length + 1
+  const divideByDiffInChars = flip (divide) (diffInChars)
   const multi = ifElse (
     always (startsOrEndsWith (id, query)),
     multiply (0.75),
@@ -35,7 +35,7 @@ const computeRelevance = (id, query) => {
 
   if (id === query) return base
   return compose (
-    divideByRestChars,
+    divideByDiffInChars,
     multi
   ) (base)
 }

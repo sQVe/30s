@@ -13,9 +13,14 @@ Commands:
   v|view [options] [id]       view snippet with id
 
 Examples:
-  view all
-  search flatten --output json all
-  tag --print ic array"
+  v head
+  view head
+
+  s -j flatten
+  search --json flatten
+
+  t -l ic array
+  tag --layout ic array"
 `;
 
 exports[`Cli help option should print help page 2`] = `
@@ -31,9 +36,14 @@ Commands:
   v|view [options] [id]       view snippet with id
 
 Examples:
-  view all
-  search flatten --output json all
-  tag --print ic array"
+  v head
+  view head
+
+  s -j flatten
+  search --json flatten
+
+  t -l ic array
+  tag --layout ic array"
 `;
 
 exports[`Cli help option should print help page for search command 1`] = `
@@ -44,7 +54,7 @@ fuzzy search snippets by id
 Options:
   -c, --cp               copy code to clipboard
   -j, --json             output in json format
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
+  -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
@@ -56,7 +66,7 @@ fuzzy search snippets by id
 Options:
   -c, --cp               copy code to clipboard
   -j, --json             output in json format
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
+  -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
@@ -68,7 +78,7 @@ view snippets by tag
 Options:
   -c, --cp               copy code to clipboard
   -j, --json             output in json format
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
+  -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
@@ -80,7 +90,7 @@ view snippets by tag
 Options:
   -c, --cp               copy code to clipboard
   -j, --json             output in json format
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
+  -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
@@ -92,7 +102,7 @@ view snippet with id
 Options:
   -c, --cp               copy code to clipboard
   -j, --json             output in json format
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
+  -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
@@ -104,6 +114,6 @@ view snippet with id
 Options:
   -c, --cp               copy code to clipboard
   -j, --json             output in json format
-  -l, --layout <layout>  print in specified layout (default: \\"iced\\")
+  -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
