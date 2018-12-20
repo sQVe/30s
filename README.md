@@ -83,7 +83,7 @@ v, view                       # view snippet with id
 ```
 
 ```bash
-30s view merge --cp           # view snippet with id "merge" and copy it's code
+30s view merge --cp           # view snippet with id "merge" and copy its code
 ```
 
 ```bash
