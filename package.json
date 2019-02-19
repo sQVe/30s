@@ -1,6 +1,6 @@
 {
   "name": "30s",
-  "version": "0.1.2",
+  "version": "0.1.0",
   "description": "A command-line application for 30 seconds of code snippets",
   "author": "Oskar Grunning <oskargrunning@gmail.com>",
   "license": "CC0-1.0",
@@ -29,7 +29,7 @@
     "test:watch": "jest --watch --onlyChanged"
   },
   "engines": {
-    "node": ">= 8"
+    "node": ">= 0"
   },
   "bin": {
     "30s": "./lib/index.js"
@@ -49,16 +49,14 @@
     "babel-eslint": "~10.0.0",
     "babel-jest": "~24.1.0",
     "coveralls": "~3.0.0",
-    "eslint": "~5.12.0",
+    "eslint": "~5.14.0",
     "eslint-config-sqve": "~2.1.0",
-    "eslint-config-standard": "~12.0.0",
-    "eslint-config-standard-react": "~7.0.0",
-    "eslint-plugin-fp": "~2.3.0",
-    "eslint-plugin-import": "~2.15.0",
-    "eslint-plugin-node": "~8.0.0",
-    "eslint-plugin-promise": "~4.0.0",
-    "eslint-plugin-react": "~7.12.0",
-    "eslint-plugin-standard": "~4.0.0",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-react": "^7.12.0",
+    "eslint-plugin-standard": "^4.0.0",
     "husky": "~1.3.0",
     "jest": "~24.1.0",
     "lint-staged": "~8.1.0",
