@@ -20,7 +20,7 @@
     "format": "prettier-eslint --write '{**/*,*}.{js,json,jsx,md,yaml}'",
     "format:check": "prettier-eslint --list-different '{**/*,*}.{js,json,jsx,md,yaml}'",
     "lint": "eslint '{**/*,*}.{js,jsx}'",
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "start": "babel-node src/index.js",
     "test": "jest",
     "test:cov": "jest --coverage",
