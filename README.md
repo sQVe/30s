@@ -2,7 +2,7 @@
 
 _A command-line application for [`30 seconds of code`](https://github.com/30-seconds/30-seconds-of-code/) snippets._
 
-[![npm](https://img.shields.io/npm/v/30s.svg)](https://www.npmjs.com/package/30s) [![build status](https://travis-ci.org/sQVe/30s.svg?branch=master)](https://travis-ci.org/sQVe/30s) [![coveralls](https://coveralls.io/repos/github/sQVe/30s/badge.svg)](https://coveralls.io/github/sQVe/30s) [![dependabot status](https://api.dependabot.com/badges/status?host=github&repo=sQVe/30s)](https://dependabot.com) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![license](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/sQVe/30s/blob/develop/LICENSE)
+[![NPM](https://img.shields.io/npm/v/30s.svg)](https://www.npmjs.com/package/30s) [![build status](https://travis-ci.org/sQVe/30s.svg?branch=master)](https://travis-ci.org/sQVe/30s) [![coveralls](https://coveralls.io/repos/github/sQVe/30s/badge.svg)](https://coveralls.io/github/sQVe/30s) [![dependabot status](https://api.dependabot.com/badges/status?host=github&repo=sQVe/30s)](https://dependabot.com) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![license](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/sQVe/30s/blob/develop/LICENSE)
 
 ![Demo](/.github/demo.gif?raw=true)
 
@@ -12,7 +12,7 @@ _A command-line application for [`30 seconds of code`](https://github.com/30-sec
 
 - Written in JavaScript (ES6)
 - View, view by tag and search snippets
-- Only show what you find necessary by picking a layout
+- Show what you find necessary by picking a layout
 - Colorful output or JSON
 - Copy all code to clipboard
 - Automatically updates with new snippet changes
@@ -115,11 +115,11 @@ Optional steps:
 
 #### Style guide & conventions
 
-Code is written with an intent to follow [functional programming](https://en.wikipedia.org/wiki/Functional_programming) best practices. Write pure functions and utilize [`Ramda`](https://github.com/ramda/ramda) when possible.
+Try to follow [functional programming](https://en.wikipedia.org/wiki/Functional_programming) best practices. Use pure functions and [`Ramda`](https://github.com/ramda/ramda) when possible.
 
-Styling and formatting is enforced by [`prettier`](https://github.com/prettier/prettier) and [`eslint-config-sqve`](https://github.com/sQVe/eslint-config-sqve) (a config based on [`airbnb/javascript`](https://github.com/airbnb/javascript)). Code is automatically formatted and fixed on `pre-commit` and also checked for issues on **Travis CI**.
+Write commits following: [Angular Commit Message Conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines). This enables us to automatically release new versions together with [`semantic-release`](https://github.com/semantic-release/semantic-release) on `fix` and `feat` commit types.
 
-Commits are written in accordance with [Angular Commit Message Conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines). This enables us to automatically release new version together with [`semantic-release`](https://github.com/semantic-release/semantic-release) on `fix` and `feat` commit types.
+[`prettier`](https://github.com/prettier/prettier) and [`eslint-config-sqve`](https://github.com/sQVe/eslint-config-sqve) (a config based on [`airbnb/javascript`](https://github.com/airbnb/javascript)) enforces our styling and formatting. It runs automatically on `pre-commit` and is also checked for issues on **Travis CI**.
 
 #### Roadmap
 
@@ -130,7 +130,7 @@ See the [development board](https://github.com/sQVe/30s/projects/1) for a detail
 
 ## Thanks
 
-Many thanks to the core team and all the contributers at [`30-seconds-of-code`](https://github.com/Chalarangelo/30-seconds-of-code) for creating an awesome curated collection of snippets.
+Big thank you to the core team and all the contributers at [`30-seconds-of-code`](https://github.com/Chalarangelo/30-seconds-of-code) for creating an awesome curated collection of snippets.
 
 ## License
 
