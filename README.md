@@ -45,55 +45,44 @@ $ ./lib/index.js <command> <query>
 
 #### Commands
 
-```bash
-s, search                     # fuzzy search snippets by id
-t, tag                        # view snippets by tag
-v, view                       # view snippet with id
-```
+| Short version | Long version | Description                          |
+| :-----------: | :----------: | ------------------------------------ |
+|      `s`      |   `search`   | Fuzzy search (RegExp) snippets by id |
+|      `t`      |    `tag`     | View snippets by tag                 |
+|      `v`      |    `view`    | View snippet with id                 |
 
 #### Options
 
-```bash
--c, --cp                      # copy code to clipboard
--j, --json                    # output in json format
--l, --layout                  # print in specified layout (default: "itced")
-                                # i: id
-                                # t: tag
-                                # c: code
-                                # e: example
-                                # d: description
--h, --help                    # output usage information
-```
+| Short version | Long version | Description                                                      |
+| :-----------: | :----------: | ---------------------------------------------------------------- |
+|     `-c`      |    `--cp`    | Copy snippet code to clipboard                                   |
+|     `-j`      |   `--json`   | Print output in JSON format                                      |
+|     `-l`      |  `--layout`  | Print output with specified [layout](#layout) (default: "itced") |
+|     `-h`      |   `--help`   | Output usage information                                         |
+
+##### Layout
+
+| Layout key | Description                |
+| :--------: | -------------------------- |
+|    `i`     | Output snippet id          |
+|    `t`     | Output snippet tags        |
+|    `c`     | Output snippet code        |
+|    `e`     | Output snippet examples    |
+|    `d`     | Output snippet description |
 
 #### Examples
 
-```bash
-30s v head                    # view snippet with id "head"
-30s view head                 # view snippet with id "head"
-```
-
-```bash
-30s t array                   # view snippets by tag "array"
-30s tag array                 # view snippets by tag "array"
-```
-
-```bash
-30s s all                     # find all snippets with an id that contains "all"
-30s search all                # find all snippets with an id that contains "all"
-```
-
-```bash
-30s view merge --cp           # view snippet with id "merge" and copy its code
-```
-
-```bash
-30s view merge --json         # view snippet with id "merge" and output as json
-```
-
-```bash
-30s search all --layout ce    # find all snippets with an id that contains "all"
-                              # and print only code and example
-```
+| Example                      | Description                                                                  |
+| :--------------------------- | ---------------------------------------------------------------------------- |
+| `30s v head`                 | View snippet with id `head`                                                  |
+| `30s view head`              | View snippet with id `head`                                                  |
+| `30s t array`                | View snippets by tag `array`                                                 |
+| `30s tag array`              | View snippets by tag `array`                                                 |
+| `30s s all`                  | Find all snippets with an id that contains `all`                             |
+| `30s search all`             | Find all snippets with an id that contains `all`                             |
+| `30s view merge --cp`        | View snippet with id `merge` and copy its code                               |
+| `30s view merge --json`      | View snippet with id `merge` and output as JSON                              |
+| `30s search all --layout ce` | Find all snippets with an id that contains `all` and output code and example |
 
 ## Contributing
 
