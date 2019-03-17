@@ -119,7 +119,7 @@ See the [development board](https://github.com/sQVe/30s/projects/1) for a detail
 
 ## Thanks
 
-Big thank you to the core team and all the contributers at [`30-seconds-of-code`](https://github.com/Chalarangelo/30-seconds-of-code) for creating an awesome curated collection of snippets.
+A big thank you to the core team and all the contributers at [`30-seconds-of-code`](https://github.com/Chalarangelo/30-seconds-of-code) for creating an awesome curated collection of snippets.
 
 ## License
 
