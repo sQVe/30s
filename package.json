@@ -41,7 +41,7 @@
     "@babel/cli": "~7.2.0",
     "@babel/core": "~7.3.3",
     "@babel/node": "~7.2.0",
-    "@babel/preset-env": "~7.3.0",
+    "@babel/preset-env": "~7.4.1",
     "@semantic-release/changelog": "~3.0.0",
     "@semantic-release/git": "~7.0.0",
     "@types/jest": "^24.0.0",
