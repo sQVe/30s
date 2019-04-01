@@ -51,7 +51,7 @@
     "babel-eslint": "~10.0.0",
     "babel-jest": "~24.5.0",
     "coveralls": "~3.0.0",
-    "eslint": "~5.15.0",
+    "eslint": "~5.16.0",
     "eslint-config-sqve": "~2.1.0",
     "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-import": "^2.16.0",
