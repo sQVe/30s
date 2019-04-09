@@ -70,7 +70,7 @@
     "@babel/polyfill": "~7.4.0",
     "chalk": "~2.4.0",
     "cli-highlight": "~2.1.0",
-    "clipboardy": "~1.2.0",
+    "clipboardy": "~2.0.0",
     "commander": "~2.20.0",
     "marked": "~0.6.0",
     "marked-terminal": "~3.2.0",
