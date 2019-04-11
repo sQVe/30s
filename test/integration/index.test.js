@@ -3,8 +3,10 @@ import { spawnSync } from 'child_process'
 
 import { version } from '../../package.json'
 
+const cliPath = path.resolve(__dirname, '../../lib/30s.js')
+
 const callCli = (...args) =>
-  spawnSync(path.resolve(__dirname, '../../lib/index.js'), args)
+  spawnSync('node', [cliPath, ...args])
     .stdout.toString()
     .trim()
 const commands = ['search', 'view', 'tag']
