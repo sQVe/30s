@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 //  ┏━┓┏━┓┏━┓
 //  ╺━┫┃┃┃┗━┓
 //  ┗━┛┗━┛┗━┛
@@ -87,6 +85,7 @@ program.on ('--help', () =>
     ].join ('\n')
   )
 )
+
 program.parse (process.argv)
 if (process.argv.length <= 2) {
   program.outputHelp ()

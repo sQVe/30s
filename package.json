@@ -13,10 +13,11 @@
     "cli"
   ],
   "scripts": {
-    "build": "rm -rf lib && npm run build:js && npm run build:parse",
-    "build:copy": "cp src/snippets.json lib/",
-    "build:js": "NODE_ENV=production babel src --out-dir lib",
-    "build:parse": "node lib/parser.js",
+    "build": "npm run clean && npm run build:snippets && npm run move:snippets && npm run build:cjs",
+    "build:cjs": "BUILD_BUNDLE=cjs rollup -c",
+    "build:snippets": "BUILD_BUNDLE=snippets rollup -c && node tmp/parser.js",
+    "move:snippets": "mkdir lib && mv tmp/snippets.json lib/",
+    "clean": "rm -rf {lib,tmp}",
     "format": "prettier-eslint --write '{**/*,*}.{js,json,jsx,md,yaml}'",
     "format:check": "prettier-eslint --list-different '{**/*,*}.{js,json,jsx,md,yaml}'",
     "lint": "eslint '{**/*,*}.{js,jsx}'",
@@ -29,18 +30,19 @@
     "test:watch": "jest --watch --onlyChanged"
   },
   "engines": {
-    "node": ">= 0"
+    "node": ">= 8"
   },
   "bin": {
-    "30s": "./lib/index.js"
+    "30s": "./lib/30s.js"
   },
+  "main": "lib/30s.js",
   "files": [
     "lib/"
   ],
   "devDependencies": {
     "@babel/cli": "~7.4.3",
     "@babel/core": "~7.4.0",
-    "@babel/node": "~7.2.0",
+    "@babel/plugin-transform-runtime": "~7.4.0",
     "@babel/preset-env": "~7.4.2",
     "@semantic-release/changelog": "~3.0.0",
     "@semantic-release/git": "~7.0.0",
@@ -50,6 +52,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "~10.0.0",
     "babel-jest": "~24.7.1",
+    "babel-plugin-ramda": "~2.0.0",
     "coveralls": "~3.0.0",
     "eslint": "~5.16.0",
     "eslint-config-sqve": "~2.1.0",
@@ -64,6 +67,12 @@
     "lint-staged": "~8.1.0",
     "prettier": "~1.16.0",
     "prettier-eslint-cli": "~4.7.0",
+    "rollup": "~1.9.0",
+    "rollup-plugin-add-shebang": "~0.1.1",
+    "rollup-plugin-babel": "~4.3.0",
+    "rollup-plugin-commonjs": "~9.3.0",
+    "rollup-plugin-json": "~4.0.0",
+    "rollup-plugin-node-resolve": "~4.1.0",
     "semantic-release": "~15.13.0"
   },
   "dependencies": {
@@ -72,6 +81,7 @@
     "cli-highlight": "~2.1.0",
     "clipboardy": "~2.0.0",
     "commander": "~2.20.0",
+    "core-js": "~3.0.0",
     "marked": "~0.6.0",
     "marked-terminal": "~3.2.0",
     "ramda": "~0.26.0"

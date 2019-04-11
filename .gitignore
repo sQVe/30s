@@ -26,11 +26,9 @@ package.lock
 .env.*
 
 # Build generated.
-build/
 coverage/
-dist/
-es/
 lib/
+tmp/
 
 # SublimeText.
 *.stTheme.cache
