@@ -16,7 +16,7 @@
     "build": "npm run clean && npm run build:snippets && npm run move:snippets && npm run build:cjs",
     "build:cjs": "BUILD_BUNDLE=cjs rollup -c",
     "build:snippets": "BUILD_BUNDLE=snippets rollup -c && node tmp/parser.js",
-    "move:snippets": "mkdir lib && mv tmp/snippets.json lib/",
+    "move:snippets": "mkdir -p lib && mv tmp/snippets.json lib/",
     "clean": "rm -rf {lib,tmp}",
     "format": "prettier-eslint --write '{**/*,*}.{js,json,jsx,md,yaml}'",
     "format:check": "prettier-eslint --list-different '{**/*,*}.{js,json,jsx,md,yaml}'",
