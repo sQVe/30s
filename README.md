@@ -108,7 +108,7 @@ Try to follow [functional programming](https://en.wikipedia.org/wiki/Functional_
 
 Write commits following: [Angular Commit Message Conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines). This enables us to automatically release new versions together with [`semantic-release`](https://github.com/semantic-release/semantic-release) on `fix` and `feat` commit types.
 
-[`prettier`](https://github.com/prettier/prettier) and [`eslint-config-sqve`](https://github.com/sQVe/eslint-config-sqve) (a config based on [`airbnb/javascript`](https://github.com/airbnb/javascript)) enforces our styling and formatting. It runs automatically on `pre-commit` and is also checked for issues on **Travis CI**.
+[`prettier`](https://github.com/prettier/prettier) and [`eslint-config-sqve`](https://github.com/sQVe/eslint-config-sqve) (a config based on [`standardjs`](https://standardjs.com)) enforces our styling and formatting. It runs automatically on `pre-commit` and is also checked for issues on **Travis CI**.
 
 #### Roadmap
 
