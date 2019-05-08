@@ -62,7 +62,7 @@ const bundles = [
   {
     external,
     input: 'src/parser.js',
-    output: { format: 'cjs', file: 'tmp/parser.js' },
+    output: { format: 'cjs', file: '.tmp/parser.js' },
     plugins: [json ()],
     type: 'snippets',
   },
