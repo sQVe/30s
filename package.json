@@ -22,7 +22,6 @@
     "format:check": "prettier-eslint --list-different '{**/*,*}.{js,json,jsx,md,yaml}'",
     "lint": "eslint '{**/*,*}.{js,jsx}'",
     "prepublishOnly": "npm run build",
-    "start": "babel-node src/index.js",
     "test": "jest",
     "test:cov": "jest --coverage",
     "test:cov:up": "jest --coverage --coverageReporters=text-lcov | coveralls",
