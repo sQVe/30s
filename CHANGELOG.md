@@ -1,3 +1,10 @@
+## [1.2.8](https://github.com/sQVe/30s/compare/v1.2.7...v1.2.8) (2019-06-04)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (cron build: 1633) ([89d8ac7](https://github.com/sQVe/30s/commit/89d8ac7))
+
 ## [1.2.7](https://github.com/sQVe/30s/compare/v1.2.6...v1.2.7) (2019-06-01)
 
 
