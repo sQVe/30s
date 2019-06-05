@@ -38,7 +38,7 @@ yarn add -g 30s
 $ git clone git@github.com:sQVe/30s.git
 $ cd 30s/
 $ npm install
-$ ./lib/index.js <command> <query>
+$ node lib/index.js <command> <query>
 ```
 
 ## Usage
