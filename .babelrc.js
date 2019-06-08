@@ -15,10 +15,7 @@ module.exports = {
       },
     ],
   ],
-  plugins: ['es', 'cjs', 'test'].includes(NODE_ENV)
-    ? [
-        ...defaultPlugins,
-        ['@babel/transform-runtime', { useESModules: NODE_ENV === 'es' }],
-      ]
+  plugins: ['cjs', 'test'].includes(NODE_ENV)
+    ? [...defaultPlugins, ['@babel/transform-runtime']]
     : defaultPlugins,
 }

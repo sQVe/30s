@@ -12,8 +12,8 @@ const dependencies = [
   ...Object.keys (pkg.peerDependencies || {}),
   'core-js',
   'fs',
-  'path',
   'lib/snippets',
+  'path',
 ]
 const isArrayLike = x => x != null && typeof x[Symbol.iterator] === 'function'
 const isNil = (...xs) => xs.some (x => x == null)
@@ -24,7 +24,7 @@ const removeRelativePath = dep => dep.replace (/^(\.{1,2}\/)+/, '')
 const external = id =>
   dependencies.map (dep => removeRelativePath (id).startsWith (dep)).some (Boolean)
 
-const bundleCreator = defaults => opts =>
+const presetBundleDefaults = defaults => opts =>
   Object.entries ({ ...defaults, ...opts }).reduce (
     (acc, [k, v]) => ({
       ...acc,
@@ -38,11 +38,11 @@ const bundleCreator = defaults => opts =>
     {}
   )
 
-const bundle = bundleCreator ({
+const bundle = presetBundleDefaults ({
   input: 'src/index.js',
   output: { exports: 'named', indent: false },
   plugins: [
-    nodeResolve ({ jsnext: true }),
+    nodeResolve (),
     commonjs (),
     json (),
     shebang ({
@@ -62,7 +62,7 @@ const bundles = [
   {
     external,
     input: 'src/parser.js',
-    output: { format: 'cjs', file: 'tmp/parser.js' },
+    output: { format: 'cjs', file: '.tmp/parser.js' },
     plugins: [json ()],
     type: 'snippets',
   },
