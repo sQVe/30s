@@ -9,7 +9,7 @@ const callCli = (...args) =>
   spawnSync('node', [cliPath, ...args])
     .stdout.toString()
     .trim()
-const commands = ['search', 'view', 'tag']
+const commands = ['random', 'search', 'view', 'tag']
 
 describe('Cli', () => {
   describe('version option', () => {

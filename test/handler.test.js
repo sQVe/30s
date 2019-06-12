@@ -1,3 +1,5 @@
+global.Math.random = () => 0.6
+
 const snippets = [
   { id: 'bar', tags: ['array'] },
   { id: 'foobar', tags: ['array'] },
@@ -6,7 +8,12 @@ const snippets = [
   { id: 'bazfoo', tags: ['object'] },
 ]
 
-import { getSnippet, getSnippetsByTag, searchSnippets } from '../src/handler'
+import {
+  getSnippet,
+  getSnippetsByTag,
+  randomSnippet,
+  searchSnippets,
+} from '../src/handler'
 
 describe('Handler', () => {
   describe('getSnippet', () => {
@@ -18,6 +25,12 @@ describe('Handler', () => {
   describe('getSnippetsByTag', () => {
     it('should find snippets by tag', () => {
       expect(getSnippetsByTag(snippets, 'array')).toEqual(snippets.slice(0, 3))
+    })
+  })
+
+  describe('randomSnippet', () => {
+    it('should get random snippet', () => {
+      expect(randomSnippet(snippets)).toEqual(snippets[3])
     })
   })
 
