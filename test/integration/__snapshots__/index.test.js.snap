@@ -8,19 +8,23 @@ Options:
   -h, --help                  output usage information
 
 Commands:
+  r|random [options]          view random snippet
   s|search [options] [query]  fuzzy search snippets by id
   t|tag [options] [id]        view snippets by tag
   v|view [options] [id]       view snippet with id
 
 Examples:
-  v head
-  view head
+  30s v head
+  30s view head
 
-  s -j flatten
-  search --json flatten
+  30s r
+  30s random
 
-  t -l ic array
-  tag --layout ic array"
+  30s s -j flatten
+  30s search --json flatten
+
+  30s t -l ic array
+  30s tag --layout ic array"
 `;
 
 exports[`Cli help option should print help page 2`] = `
@@ -31,19 +35,47 @@ Options:
   -h, --help                  output usage information
 
 Commands:
+  r|random [options]          view random snippet
   s|search [options] [query]  fuzzy search snippets by id
   t|tag [options] [id]        view snippets by tag
   v|view [options] [id]       view snippet with id
 
 Examples:
-  v head
-  view head
+  30s v head
+  30s view head
 
-  s -j flatten
-  search --json flatten
+  30s r
+  30s random
 
-  t -l ic array
-  tag --layout ic array"
+  30s s -j flatten
+  30s search --json flatten
+
+  30s t -l ic array
+  30s tag --layout ic array"
+`;
+
+exports[`Cli help option should print help page for random command 1`] = `
+"Usage: r|random [options]
+
+view random snippet
+
+Options:
+  -c, --cp               copy code to clipboard
+  -j, --json             output in json format
+  -l, --layout <layout>  print in specified layout (default: \\"itced\\")
+  -h, --help             output usage information"
+`;
+
+exports[`Cli help option should print help page for random command 2`] = `
+"Usage: r|random [options]
+
+view random snippet
+
+Options:
+  -c, --cp               copy code to clipboard
+  -j, --json             output in json format
+  -l, --layout <layout>  print in specified layout (default: \\"itced\\")
+  -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for search command 1`] = `

@@ -5,16 +5,22 @@
 import program from 'commander'
 import { reduce } from 'ramda'
 
+import {
+  getSnippet,
+  getSnippetsByTag,
+  randomSnippet,
+  searchSnippets,
+} from './handler'
 import snippets from '../lib/snippets.json'
-import { getSnippet, getSnippetsByTag, searchSnippets } from './handler'
 import { printSnippet } from './printer'
 import { version } from '../package.json'
 
 const isTest = process.env.NODE_ENV === 'test'
 const actions = {
-  tag: (id, opts) => printSnippet (opts, getSnippetsByTag (snippets, id)),
-  view: (id, opts) => printSnippet (opts, getSnippet (snippets, id)),
-  search: (query, opts) => printSnippet (opts, searchSnippets (snippets, query)),
+  random: opts => printSnippet (opts, randomSnippet (snippets)),
+  search: (opts, query) => printSnippet (opts, searchSnippets (snippets, query)),
+  tag: (opts, id) => printSnippet (opts, getSnippetsByTag (snippets, id)),
+  view: (opts, id) => printSnippet (opts, getSnippet (snippets, id)),
 }
 const addCommand = settings =>
   reduce ((acc, [key, ...args]) => acc[key] (...args), program, settings)
@@ -31,9 +37,12 @@ const addAction = action => [
         console.log (
           JSON.stringify ([action, input, !!opts.cp, !!opts.json, opts.layout])
         )
-      : actions[action] (input, opts)
+      : action === 'random'
+      ? actions[action] (input)
+      : actions[action] (opts, input)
   },
 ]
+
 const commonOptions = [
   ['option', '-c, --cp', 'copy code to clipboard', false],
   ['option', '-j, --json', 'output in json format', false],
@@ -41,6 +50,14 @@ const commonOptions = [
 ]
 
 program.version (version)
+
+addCommand ([
+  ['command', 'r'],
+  ['alias', 'random'],
+  ['description', ['view random snippet']],
+  ...commonOptions,
+  addAction ('random'),
+])
 
 addCommand ([
   ['command', 's [query]'],
@@ -71,14 +88,17 @@ program.on ('--help', () =>
     [
       '',
       'Examples:',
-      '  v head',
-      '  view head',
+      '  30s v head',
+      '  30s view head',
       '',
-      '  s -j flatten',
-      '  search --json flatten',
+      '  30s r',
+      '  30s random',
       '',
-      '  t -l ic array',
-      '  tag --layout ic array',
+      '  30s s -j flatten',
+      '  30s search --json flatten',
+      '',
+      '  30s t -l ic array',
+      '  30s tag --layout ic array',
     ].join ('\n')
   )
 )
