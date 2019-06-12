@@ -47,6 +47,7 @@ $ node lib/index.js <command> <query>
 
 | Short version | Long version | Description                          |
 | :-----------: | :----------: | ------------------------------------ |
+|      `r`      |   `random`   | View random snippet                  |
 |      `s`      |   `search`   | Fuzzy search (RegExp) snippets by id |
 |      `t`      |    `tag`     | View snippets by tag                 |
 |      `v`      |    `view`    | View snippet with id                 |
@@ -76,6 +77,8 @@ $ node lib/index.js <command> <query>
 | :--------------------------- | ---------------------------------------------------------------------------- |
 | `30s v head`                 | View snippet with id `head`                                                  |
 | `30s view head`              | View snippet with id `head`                                                  |
+| `30s r`                      | View random snippet                                                          |
+| `30s random`                 | View random snippet                                                          |
 | `30s t array`                | View snippets by tag `array`                                                 |
 | `30s tag array`              | View snippets by tag `array`                                                 |
 | `30s s all`                  | Find all snippets with an id that contains `all`                             |
