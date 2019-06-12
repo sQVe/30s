@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/sQVe/30s/compare/v1.2.8...v1.3.0) (2019-06-12)
+
+
+### Features
+
+* view random snippet ([66993f0](https://github.com/sQVe/30s/commit/66993f0)), closes [#224](https://github.com/sQVe/30s/issues/224)
+
 ## [1.2.8](https://github.com/sQVe/30s/compare/v1.2.7...v1.2.8) (2019-06-04)
 
 
