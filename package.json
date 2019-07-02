@@ -63,7 +63,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "husky": "~2.7.0",
     "jest": "~24.8.0",
-    "lint-staged": "~8.2.0",
+    "lint-staged": "~9.0.0",
     "prettier": "~1.18.2",
     "prettier-eslint-cli": "~5.0.0",
     "rollup": "~1.16.2",
