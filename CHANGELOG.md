@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/sQVe/30s/compare/v1.3.3...v1.3.4) (2019-07-18)
+
+
+### Bug Fixes
+
+* dump for npm release ([bdebf78](https://github.com/sQVe/30s/commit/bdebf78))
+
 ## [1.3.3](https://github.com/sQVe/30s/compare/v1.3.2...v1.3.3) (2019-07-06)
 
 
