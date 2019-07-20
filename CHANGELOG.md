@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/sQVe/30s/compare/v1.3.4...v1.3.5) (2019-07-20)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (cron build: 2245) ([f5ad3d2](https://github.com/sQVe/30s/commit/f5ad3d2))
+
 ## [1.3.4](https://github.com/sQVe/30s/compare/v1.3.3...v1.3.4) (2019-07-18)
 
 
