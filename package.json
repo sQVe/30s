@@ -83,7 +83,7 @@
     "commander": "~2.20.0",
     "core-js": "~3.1.0",
     "marked": "~0.7.0",
-    "marked-terminal": "~3.2.0",
+    "marked-terminal": "~3.3.0",
     "ramda": "~0.26.0"
   },
   "husky": {
