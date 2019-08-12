@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/sQVe/30s/compare/v1.4.0...v1.4.1) (2019-08-12)
+
+
+### Bug Fixes
+
+* **printer:** repair default layout for empty command ([e60e6cb](https://github.com/sQVe/30s/commit/e60e6cb))
+
 # [1.4.0](https://github.com/sQVe/30s/compare/v1.3.7...v1.4.0) (2019-08-12)
 
 
