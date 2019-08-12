@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/sQVe/30s/compare/v1.3.7...v1.4.0) (2019-08-12)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (build: 2374) ([b2f25f5](https://github.com/sQVe/30s/commit/b2f25f5))
+
+
+### Features
+
+* default to view given empty command ([b35c319](https://github.com/sQVe/30s/commit/b35c319))
+
 ## [1.3.7](https://github.com/sQVe/30s/compare/v1.3.6...v1.3.7) (2019-08-12)
 
 
