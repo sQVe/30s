@@ -83,11 +83,18 @@ addCommand ([
   addAction ('view'),
 ])
 
+addCommand ([
+  ['command', '* [id]'],
+  ['description', ['view snippet with id']],
+  addAction ('view'),
+])
+
 program.on ('--help', () =>
   console.log (
     [
       '',
       'Examples:',
+      '  30s head',
       '  30s v head',
       '  30s view head',
       '',

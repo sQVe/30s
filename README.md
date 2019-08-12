@@ -51,6 +51,7 @@ $ node lib/index.js <command> <query>
 |      `s`      |   `search`   | Fuzzy search (RegExp) snippets by id |
 |      `t`      |    `tag`     | View snippets by tag                 |
 |      `v`      |    `view`    | View snippet with id                 |
+|      `*`      |              | View snippet with id                 |
 
 #### Options
 
@@ -75,6 +76,7 @@ $ node lib/index.js <command> <query>
 
 | Example                      | Description                                                                  |
 | :--------------------------- | ---------------------------------------------------------------------------- |
+| `30s head`                   | View snippet with id `head`                                                  |
 | `30s v head`                 | View snippet with id `head`                                                  |
 | `30s view head`              | View snippet with id `head`                                                  |
 | `30s r`                      | View random snippet                                                          |

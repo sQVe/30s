@@ -12,8 +12,10 @@ Commands:
   s|search [options] [query]  fuzzy search snippets by id
   t|tag [options] [id]        view snippets by tag
   v|view [options] [id]       view snippet with id
+  * [id]                      view snippet with id
 
 Examples:
+  30s head
   30s v head
   30s view head
 
@@ -39,8 +41,10 @@ Commands:
   s|search [options] [query]  fuzzy search snippets by id
   t|tag [options] [id]        view snippets by tag
   v|view [options] [id]       view snippet with id
+  * [id]                      view snippet with id
 
 Examples:
+  30s head
   30s v head
   30s view head
 
