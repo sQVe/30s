@@ -43,7 +43,7 @@ export const printSnippet = ({ cp, layout, json }, x) => {
     i: 'id',
     t: 'tags',
   }
-  const keysByLayout = map (k => layoutMap[k]) (Array.from (layout))
+  const keysByLayout = map (k => layoutMap[k]) (Array.from (layout || 'itced'))
 
   if (x == null) return ''
   if (cp) {
