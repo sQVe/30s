@@ -55,97 +55,97 @@ Examples:
 `;
 
 exports[`Cli help option should print help page for random command 1`] = `
-"Usage: r|random [options]
+"Usage: 30s r|random [options]
 
 view random snippet
 
 Options:
-  -c, --cp               copy code to clipboard
-  -j, --json             output in json format
+  -c, --cp               copy code to clipboard (default: false)
+  -j, --json             output in json format (default: false)
   -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for random command 2`] = `
-"Usage: r|random [options]
+"Usage: 30s r|random [options]
 
 view random snippet
 
 Options:
-  -c, --cp               copy code to clipboard
-  -j, --json             output in json format
+  -c, --cp               copy code to clipboard (default: false)
+  -j, --json             output in json format (default: false)
   -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for search command 1`] = `
-"Usage: s|search [options] [query]
+"Usage: 30s s|search [options] [query]
 
 fuzzy search snippets by id
 
 Options:
-  -c, --cp               copy code to clipboard
-  -j, --json             output in json format
+  -c, --cp               copy code to clipboard (default: false)
+  -j, --json             output in json format (default: false)
   -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for search command 2`] = `
-"Usage: s|search [options] [query]
+"Usage: 30s s|search [options] [query]
 
 fuzzy search snippets by id
 
 Options:
-  -c, --cp               copy code to clipboard
-  -j, --json             output in json format
+  -c, --cp               copy code to clipboard (default: false)
+  -j, --json             output in json format (default: false)
   -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for tag command 1`] = `
-"Usage: t|tag [options] [id]
+"Usage: 30s t|tag [options] [id]
 
 view snippets by tag
 
 Options:
-  -c, --cp               copy code to clipboard
-  -j, --json             output in json format
+  -c, --cp               copy code to clipboard (default: false)
+  -j, --json             output in json format (default: false)
   -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for tag command 2`] = `
-"Usage: t|tag [options] [id]
+"Usage: 30s t|tag [options] [id]
 
 view snippets by tag
 
 Options:
-  -c, --cp               copy code to clipboard
-  -j, --json             output in json format
+  -c, --cp               copy code to clipboard (default: false)
+  -j, --json             output in json format (default: false)
   -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for view command 1`] = `
-"Usage: v|view [options] [id]
+"Usage: 30s v|view [options] [id]
 
 view snippet with id
 
 Options:
-  -c, --cp               copy code to clipboard
-  -j, --json             output in json format
+  -c, --cp               copy code to clipboard (default: false)
+  -j, --json             output in json format (default: false)
   -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
 
 exports[`Cli help option should print help page for view command 2`] = `
-"Usage: v|view [options] [id]
+"Usage: 30s v|view [options] [id]
 
 view snippet with id
 
 Options:
-  -c, --cp               copy code to clipboard
-  -j, --json             output in json format
+  -c, --cp               copy code to clipboard (default: false)
+  -j, --json             output in json format (default: false)
   -l, --layout <layout>  print in specified layout (default: \\"itced\\")
   -h, --help             output usage information"
 `;
