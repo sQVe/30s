@@ -1,3 +1,10 @@
+## [1.3.7](https://github.com/sQVe/30s/compare/v1.3.6...v1.3.7) (2019-08-12)
+
+
+### Bug Fixes
+
+* **deps:** update commander ([c2af2c7](https://github.com/sQVe/30s/commit/c2af2c7))
+
 ## [1.3.6](https://github.com/sQVe/30s/compare/v1.3.5...v1.3.6) (2019-07-21)
 
 
