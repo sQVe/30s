@@ -17,29 +17,29 @@ import { version } from '../package.json'
 
 const isTest = process.env.NODE_ENV === 'test'
 const actions = {
-  random: opts => printSnippet (opts, randomSnippet (snippets)),
-  search: (opts, query) => printSnippet (opts, searchSnippets (snippets, query)),
-  tag: (opts, id) => printSnippet (opts, getSnippetsByTag (snippets, id)),
-  view: (opts, id) => printSnippet (opts, getSnippet (snippets, id)),
+  random: opts => printSnippet(opts, randomSnippet(snippets)),
+  search: (opts, query) => printSnippet(opts, searchSnippets(snippets, query)),
+  tag: (opts, id) => printSnippet(opts, getSnippetsByTag(snippets, id)),
+  view: (opts, id) => printSnippet(opts, getSnippet(snippets, id)),
 }
 const addCommand = settings =>
-  reduce ((acc, [key, ...args]) => acc[key] (...args), program, settings)
+  reduce((acc, [key, ...args]) => acc[key](...args), program, settings)
 
 const addAction = action => [
   'action',
   (input, opts) => {
-    if (!input) return program.outputHelp ()
+    if (!input) return program.outputHelp()
 
     return isTest
       ? // NOTE: Commander.js sadly does not include a way to hook onto given
         // actions for integration testing. We solve this by outputting state
         // when NODE_ENV is test.
-        console.log (
-          JSON.stringify ([action, input, !!opts.cp, !!opts.json, opts.layout])
+        console.log(
+          JSON.stringify([action, input, !!opts.cp, !!opts.json, opts.layout])
         )
       : action === 'random'
-      ? actions[action] (input)
-      : actions[action] (opts, input)
+      ? actions[action](input)
+      : actions[action](opts, input)
   },
 ]
 
@@ -49,48 +49,48 @@ const commonOptions = [
   ['option', '-l, --layout <layout>', 'print in specified layout', 'itced'],
 ]
 
-program.version (version)
+program.version(version)
 
-addCommand ([
+addCommand([
   ['command', 'r'],
   ['alias', 'random'],
   ['description', ['view random snippet']],
   ...commonOptions,
-  addAction ('random'),
+  addAction('random'),
 ])
 
-addCommand ([
+addCommand([
   ['command', 's [query]'],
   ['alias', 'search'],
   ['description', ['fuzzy search snippets by id']],
   ...commonOptions,
-  addAction ('search'),
+  addAction('search'),
 ])
 
-addCommand ([
+addCommand([
   ['command', 't [id]'],
   ['alias', 'tag'],
   ['description', ['view snippets by tag']],
   ...commonOptions,
-  addAction ('tag'),
+  addAction('tag'),
 ])
 
-addCommand ([
+addCommand([
   ['command', 'v [id]'],
   ['alias', 'view'],
   ['description', ['view snippet with id']],
   ...commonOptions,
-  addAction ('view'),
+  addAction('view'),
 ])
 
-addCommand ([
+addCommand([
   ['command', '* [id]'],
   ['description', ['view snippet with id']],
-  addAction ('view'),
+  addAction('view'),
 ])
 
-program.on ('--help', () =>
-  console.log (
+program.on('--help', () =>
+  console.log(
     [
       '',
       'Examples:',
@@ -106,11 +106,11 @@ program.on ('--help', () =>
       '',
       '  30s t -l ic array',
       '  30s tag --layout ic array',
-    ].join ('\n')
+    ].join('\n')
   )
 )
 
-program.parse (process.argv)
+program.parse(process.argv)
 if (process.argv.length <= 2) {
-  program.outputHelp ()
+  program.outputHelp()
 }
