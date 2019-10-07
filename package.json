@@ -18,8 +18,7 @@
     "build:snippets": "BUILD_BUNDLE=snippets rollup -c && node .tmp/parser.js",
     "move:snippets": "mkdir -p lib && mv .tmp/snippets.json lib/",
     "clean": "rm -rf {lib,.tmp}",
-    "format": "prettier-eslint --write '{**/*,*}.{js,json,jsx,md,yaml}'",
-    "format:check": "prettier-eslint --list-different '{**/*,*}.{js,json,jsx,md,yaml}'",
+    "format": "prettier --write '{**/*,*}.{js,json,jsx,md,yaml}' && eslint --fix '{**/*,*}.{js,jsx}'",
     "lint": "eslint '{**/*,*}.{js,jsx}'",
     "prepublishOnly": "npm run build",
     "test": "jest",
@@ -53,11 +52,11 @@
     "babel-jest": "~24.9.0",
     "babel-plugin-ramda": "~2.0.0",
     "coveralls": "~3.0.0",
-    "eslint": "~6.2.0",
-    "eslint-config-sqve": "~2.3.0",
+    "eslint": "~6.5.0",
+    "eslint-config-sqve": "~2.4.0",
     "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-node": "^9.0.0",
+    "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-react": "^7.12.0",
     "eslint-plugin-standard": "^4.0.0",
@@ -65,7 +64,6 @@
     "jest": "~24.9.0",
     "lint-staged": "~9.4.0",
     "prettier": "~1.18.2",
-    "prettier-eslint-cli": "~5.0.0",
     "rollup": "~1.23.0",
     "rollup-plugin-add-shebang": "~0.3.0",
     "rollup-plugin-babel": "~4.3.0",
@@ -93,13 +91,13 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "prettier-eslint --write",
+      "prettier --write",
       "eslint",
       "jest --findRelatedTests",
       "git add"
     ],
     "*.json": [
-      "prettier-eslint --write",
+      "prettier --write",
       "git add"
     ]
   }
