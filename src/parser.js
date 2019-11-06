@@ -22,9 +22,9 @@ export const createItem = ({
     text,
   },
 }) =>
-  map (enforceSingleNewLine, { code: es6, example, id, tags, description: text })
+  map(enforceSingleNewLine, { code: es6, example, id, tags, description: text })
 export const writeFile = content =>
-  fs.writeFileSync (path.resolve (__dirname, FILE_NAME), JSON.stringify (content))
+  fs.writeFileSync(path.resolve(__dirname, FILE_NAME), JSON.stringify(content))
 
 // eslint-disable-next-line fp/no-unused-expression
-writeFile (map (createItem) (snippets))
+writeFile(map(createItem)(snippets))

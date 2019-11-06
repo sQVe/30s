@@ -8,29 +8,29 @@ import pkg from './package.json'
 
 const bundleTarget = process.env.BUILD_BUNDLE
 const dependencies = [
-  ...Object.keys (pkg.dependencies || {}),
-  ...Object.keys (pkg.peerDependencies || {}),
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.peerDependencies || {}),
   'core-js',
   'fs',
   'lib/snippets',
   'path',
 ]
 const isArrayLike = x => x != null && typeof x[Symbol.iterator] === 'function'
-const isNil = (...xs) => xs.some (x => x == null)
+const isNil = (...xs) => xs.some(x => x == null)
 const isObjectLike = x => x != null && typeof x === 'object'
-const isSameType = (x, y) => !isNil (x, y) && x.constructor === y.constructor
+const isSameType = (x, y) => !isNil(x, y) && x.constructor === y.constructor
 const sanitizeBundle = ({ type, ...rest }) => rest
-const removeRelativePath = dep => dep.replace (/^(\.{1,2}\/)+/, '')
+const removeRelativePath = dep => dep.replace(/^(\.{1,2}\/)+/, '')
 const external = id =>
-  dependencies.map (dep => removeRelativePath (id).startsWith (dep)).some (Boolean)
+  dependencies.map(dep => removeRelativePath(id).startsWith(dep)).some(Boolean)
 
 const presetBundleDefaults = defaults => opts =>
-  Object.entries ({ ...defaults, ...opts }).reduce (
+  Object.entries({ ...defaults, ...opts }).reduce(
     (acc, [k, v]) => ({
       ...acc,
       [k]:
-        isObjectLike (v) && isSameType (v, defaults[k])
-          ? isArrayLike (v)
+        isObjectLike(v) && isSameType(v, defaults[k])
+          ? isArrayLike(v)
             ? [...defaults[k], ...v]
             : { ...defaults[k], ...v }
           : v,
@@ -38,14 +38,14 @@ const presetBundleDefaults = defaults => opts =>
     {}
   )
 
-const bundle = presetBundleDefaults ({
+const bundle = presetBundleDefaults({
   input: 'src/index.js',
   output: { exports: 'named', indent: false },
   plugins: [
-    nodeResolve (),
-    commonjs (),
-    json (),
-    shebang ({
+    nodeResolve(),
+    commonjs(),
+    json(),
+    shebang({
       include: `lib/${pkg.name}.js`,
     }),
   ],
@@ -53,17 +53,17 @@ const bundle = presetBundleDefaults ({
 })
 
 const bundles = [
-  bundle ({
+  bundle({
     external,
     output: { format: 'cjs', file: `lib/${pkg.name}.js` },
-    plugins: [babel ({ runtimeHelpers: true })],
+    plugins: [babel({ runtimeHelpers: true })],
     type: 'cjs',
   }),
   {
     external,
     input: 'src/parser.js',
     output: { format: 'cjs', file: '.tmp/parser.js' },
-    plugins: [json ()],
+    plugins: [json()],
     type: 'snippets',
   },
 ]
@@ -71,6 +71,6 @@ const bundles = [
 export default (() =>
   [
     ...(bundleTarget != null
-      ? bundles.filter (x => x.type === bundleTarget)
+      ? bundles.filter(x => x.type === bundleTarget)
       : bundles),
-  ].map (sanitizeBundle)) ()
+  ].map(sanitizeBundle))()
