@@ -41,7 +41,7 @@
     "@babel/cli": "~7.6.0",
     "@babel/core": "~7.6.0",
     "@babel/plugin-transform-runtime": "~7.6.0",
-    "@babel/preset-env": "~7.6.0",
+    "@babel/preset-env": "~7.7.1",
     "@semantic-release/changelog": "~3.0.0",
     "@semantic-release/git": "~7.0.0",
     "@types/jest": "^24.0.0",
