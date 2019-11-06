@@ -27,20 +27,19 @@ const addCommand = settings =>
 
 const addAction = action => [
   'action',
-  (input, opts) => {
-    if (!input) return program.outputHelp()
+  (...args) =>
+    ((input, opts = {}) => {
+      if (!input) return program.outputHelp()
 
-    return isTest
-      ? // NOTE: Commander.js sadly does not include a way to hook onto given
-        // actions for integration testing. We solve this by outputting state
-        // when NODE_ENV is test.
-        console.log(
-          JSON.stringify([action, input, !!opts.cp, !!opts.json, opts.layout])
-        )
-      : action === 'random'
-      ? actions[action](input)
-      : actions[action](opts, input)
-  },
+      return isTest
+        ? // NOTE: Commander.js sadly does not include a way to hook onto given
+          // actions for integration testing. We solve this by outputting state
+          // when NODE_ENV is test.
+          console.log(
+            JSON.stringify([action, input, !!opts.cp, !!opts.json, opts.layout])
+          )
+        : actions[action](opts, input)
+    })(...(action === 'random' ? [true, args[0]] : args)),
 ]
 
 const commonOptions = [

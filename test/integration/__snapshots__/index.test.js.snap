@@ -58,30 +58,6 @@ Examples:
   30s tag --layout ic array"
 `;
 
-exports[`Cli help option should print help page for random command 1`] = `
-"Usage: 30s r|random [options]
-
-view random snippet
-
-Options:
-  -c, --cp               copy code to clipboard (default: false)
-  -j, --json             output in json format (default: false)
-  -l, --layout <layout>  print in specified layout (default: \\"itced\\")
-  -h, --help             output usage information"
-`;
-
-exports[`Cli help option should print help page for random command 2`] = `
-"Usage: 30s r|random [options]
-
-view random snippet
-
-Options:
-  -c, --cp               copy code to clipboard (default: false)
-  -j, --json             output in json format (default: false)
-  -l, --layout <layout>  print in specified layout (default: \\"itced\\")
-  -h, --help             output usage information"
-`;
-
 exports[`Cli help option should print help page for search command 1`] = `
 "Usage: 30s s|search [options] [query]
 

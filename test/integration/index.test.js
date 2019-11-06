@@ -9,7 +9,7 @@ const callCli = (...args) =>
   spawnSync('node', [cliPath, ...args])
     .stdout.toString()
     .trim()
-const commands = ['random', 'search', 'view', 'tag']
+const commands = ['search', 'view', 'tag']
 
 describe('Cli', () => {
   describe('version option', () => {
@@ -33,14 +33,25 @@ describe('Cli', () => {
     })
   })
 
-  describe('input safe guard', () => {
-    // TODO: Write this.
+  describe(`random command`, () => {
+    it(`should output test strings`, async () => {
+      expect(callCli('random')).toEqual(
+        JSON.stringify(['random', true, false, false, 'itced'])
+      )
+      expect(callCli('random', '--layout', 'ic')).toEqual(
+        JSON.stringify(['random', true, false, false, 'ic'])
+      )
+      expect(callCli('random', '--json')).toEqual(
+        JSON.stringify(['random', true, false, true, 'itced'])
+      )
+      expect(callCli('random', '--cp')).toEqual(
+        JSON.stringify(['random', true, true, false, 'itced'])
+      )
+    })
   })
 
   commands.forEach(command => {
     describe(`${command} command`, () => {
-      // TODO: Write correct it cases here.
-
       it(`should output test strings`, async () => {
         expect(callCli(command, 'foo')).toEqual(
           JSON.stringify([command, 'foo', false, false, 'itced'])
