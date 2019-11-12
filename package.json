@@ -78,7 +78,7 @@
   "dependencies": {
     "@babel/polyfill": "~7.7.0",
     "@babel/runtime": "~7.7.0",
-    "chalk": "~2.4.0",
+    "chalk": "~3.0.0",
     "cli-highlight": "~2.1.0",
     "clipboardy": "~2.1.0",
     "commander": "~4.0.0",
