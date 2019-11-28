@@ -54,7 +54,7 @@
     "babel-jest": "~24.9.0",
     "babel-plugin-ramda": "~2.0.0",
     "coveralls": "~3.0.0",
-    "eslint": "~6.6.0",
+    "eslint": "~6.7.1",
     "eslint-config-sqve": "~2.5.0",
     "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-import": "~2.18.0",
