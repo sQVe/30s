@@ -22,8 +22,8 @@
     "lint": "eslint '{**/*,*}.{js,jsx}'",
     "prepublishOnly": "npm run build",
     "test": "jest",
-    "test:cov": "jest --coverage",
-    "test:cov:up": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "test:coverage": "jest --coverage",
+    "test:coverage:up": "jest --coverage && codecov",
     "test:integration": "jest --testPathIgnorePatterns --testPathPattern test/integration/*",
     "test:watch": "jest --watch --onlyChanged"
   },
@@ -53,7 +53,7 @@
     "babel-eslint": "~10.0.3",
     "babel-jest": "~24.9.0",
     "babel-plugin-ramda": "~2.0.0",
-    "coveralls": "~3.0.0",
+    "codecov": "~3.6.0",
     "eslint": "~6.7.0",
     "eslint-config-sqve": "~2.6.0",
     "eslint-plugin-fp": "^2.3.0",
@@ -83,7 +83,7 @@
     "clipboardy": "~2.1.0",
     "commander": "~4.0.0",
     "core-js": "~3.5.0",
-    "marked": "~0.7.0",
+    "marked": "~0.8.0",
     "marked-terminal": "~3.3.0",
     "ramda": "~0.26.0"
   },
