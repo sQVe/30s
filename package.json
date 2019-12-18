@@ -17,7 +17,7 @@
     "build:cjs": "BUILD_BUNDLE=cjs rollup -c",
     "build:snippets": "BUILD_BUNDLE=snippets rollup -c && node .tmp/parser.js",
     "move:snippets": "mkdir -p lib && mv .tmp/snippets.json lib/",
-    "clean": "rm -rf {lib,.tmp}",
+    "clean": "rm -rf {.tmp,coverage,lib}",
     "format": "prettier --write '{**/*,*}.{js,json,jsx,md,yaml}' && eslint --fix '{**/*,*}.{js,jsx}'",
     "lint": "eslint '{**/*,*}.{js,jsx}'",
     "prepublishOnly": "npm run build",
