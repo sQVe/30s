@@ -23,7 +23,7 @@
     "prepublishOnly": "npm run build",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:coverage:up": "jest --coverage && codecov",
+    "test:coverage:upload": "jest --coverage && codecov",
     "test:integration": "jest --testPathIgnorePatterns --testPathPattern test/integration/*",
     "test:watch": "jest --watch --onlyChanged"
   },

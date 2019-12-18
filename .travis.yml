@@ -10,7 +10,7 @@ script:
   - npm run test
   - npm run test:integration
 after_success:
-  - npm run test:coverage:up
+  - npm run test:coverage:upload
   - scripts/update.sh
 deploy:
   provider: script
