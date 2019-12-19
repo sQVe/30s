@@ -82,7 +82,7 @@
     "cli-highlight": "~2.1.0",
     "clipboardy": "~2.1.0",
     "commander": "~4.0.0",
-    "core-js": "~3.5.0",
+    "core-js": "~3.6.0",
     "marked": "~0.8.0",
     "marked-terminal": "~3.3.0",
     "ramda": "~0.26.0"
