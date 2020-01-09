@@ -37,10 +37,7 @@ const computeRelevance = (id, query) => {
   )
 
   if (id === query) return base
-  return compose(
-    divideByDiffInChars,
-    multi
-  )(base)
+  return compose(divideByDiffInChars, multi)(base)
 }
 
 const setSearchRelevance = query => x =>
