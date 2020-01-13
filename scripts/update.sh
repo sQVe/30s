@@ -49,17 +49,13 @@ commit_changes() {
 
 push_changes() {
   echo "Pushing to master branch..."
-  git push --force --quiet "https://${GH_TOKEN}@github.com/sQVe/30s.git" master > /dev/null 2>&1
+  git push --force --quiet "https://${GH_TOKEN}@github.com/sQVe/30s.git" master >/dev/null 2>&1
 }
 
 # Ensure master branch and a not pull request event.
-if [[
-  $TRAVIS_BRANCH == "master" &&
-  $TRAVIS_EVENT_TYPE != "pull_request"
-]]; then
+if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_EVENT_TYPE != "pull_request" ]]; then
   setup_git
   check_submodules_changes
   commit_changes
   push_changes
 fi
-

@@ -15,10 +15,7 @@ export const colorizedPrint = x => {
     description: y => enforceSingleNewLine(marked(y)),
     example: y => highlight(y, { language: 'javascript' }),
     id: y => chalk.magenta.bold(y),
-    tags: compose(
-      chalk.gray.italic,
-      join(', ')
-    ),
+    tags: compose(chalk.gray.italic, join(', ')),
   }
   const print = y =>
     compose(
@@ -28,10 +25,7 @@ export const colorizedPrint = x => {
       toPairs
     )(y)
 
-  return compose(
-    join('\n\n'),
-    map(print)
-  )(x)
+  return compose(join('\n\n'), map(print))(x)
 }
 
 export const printSnippet = ({ cp, layout, json }, x) => {
@@ -47,12 +41,7 @@ export const printSnippet = ({ cp, layout, json }, x) => {
 
   if (x == null) return ''
   if (cp) {
-    writeToClipboard(
-      compose(
-        join('\n'),
-        map(prop('code'))
-      )(arr)
-    )
+    writeToClipboard(compose(join('\n'), map(prop('code')))(arr))
   }
 
   const pickedSnippet = map(pick(keysByLayout))(arr)
