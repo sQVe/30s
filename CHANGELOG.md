@@ -1,3 +1,10 @@
+## [1.4.35](https://github.com/sQVe/30s/compare/v1.4.34...v1.4.35) (2020-01-22)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (cron build: 4024) ([bf939eb](https://github.com/sQVe/30s/commit/bf939eb02d1c994a09f2577a93ea7494e3830193))
+
 ## [1.4.34](https://github.com/sQVe/30s/compare/v1.4.33...v1.4.34) (2020-01-13)
 
 
