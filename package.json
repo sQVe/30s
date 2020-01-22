@@ -47,11 +47,11 @@
     "@types/jest": "^24.0.0",
     "@types/node": "^13.0.0",
     "@types/ramda": "^0.26.0",
-    "@typescript-eslint/eslint-plugin": "~2.16.0",
-    "@typescript-eslint/parser": "~2.16.0",
+    "@typescript-eslint/eslint-plugin": "~2.17.0",
+    "@typescript-eslint/parser": "~2.17.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "~10.0.3",
-    "babel-jest": "~24.9.0",
+    "babel-jest": "~25.1.0",
     "babel-plugin-ramda": "~2.0.0",
     "codecov": "~3.6.0",
     "eslint": "~6.8.0",
@@ -60,11 +60,11 @@
     "eslint-plugin-import": "~2.20.0",
     "eslint-plugin-node": "~11.0.0",
     "eslint-plugin-promise": "~4.2.0",
-    "eslint-plugin-react": "~7.17.0",
+    "eslint-plugin-react": "~7.18.0",
     "eslint-plugin-standard": "~4.0.0",
-    "husky": "~4.0.0",
-    "jest": "~24.9.0",
-    "lint-staged": "~9.5.0",
+    "husky": "~4.2.0",
+    "jest": "~25.1.0",
+    "lint-staged": "~10.0.0",
     "prettier": "~1.19.0",
     "rollup": "~1.29.0",
     "rollup-plugin-add-shebang": "~0.3.0",
@@ -97,12 +97,10 @@
     "*.{js,jsx}": [
       "prettier --write",
       "eslint",
-      "jest --findRelatedTests",
-      "git add"
+      "jest --findRelatedTests"
     ],
     "*.json": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }
