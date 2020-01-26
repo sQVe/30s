@@ -86,21 +86,5 @@
     "marked": "~0.8.0",
     "marked-terminal": "~4.0.0",
     "ramda": "~0.26.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "jest"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "prettier --write",
-      "eslint",
-      "jest --findRelatedTests"
-    ],
-    "*.json": [
-      "prettier --write"
-    ]
   }
 }
