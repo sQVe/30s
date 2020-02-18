@@ -4,5 +4,5 @@
     "eslint --fix",
     "jest --findRelatedTests"
   ],
-  "*.json": ["prettier --write"]
+  "*.{json,md,yaml}": ["prettier --write"]
 }
