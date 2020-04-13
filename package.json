@@ -79,7 +79,7 @@
     "@babel/runtime": "~7.8.0",
     "chalk": "~3.0.0",
     "cli-highlight": "~2.1.0",
-    "clipboardy": "~2.2.0",
+    "clipboardy": "~2.3.0",
     "commander": "~4.1.0",
     "core-js": "~3.6.0",
     "marked": "~0.8.0",
