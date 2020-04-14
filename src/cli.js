@@ -17,15 +17,15 @@ import { version } from '../package.json'
 
 const isTest = process.env.NODE_ENV === 'test'
 const actions = {
-  random: opts => printSnippet(opts, randomSnippet(snippets)),
+  random: (opts) => printSnippet(opts, randomSnippet(snippets)),
   search: (opts, query) => printSnippet(opts, searchSnippets(snippets, query)),
   tag: (opts, id) => printSnippet(opts, getSnippetsByTag(snippets, id)),
   view: (opts, id) => printSnippet(opts, getSnippet(snippets, id)),
 }
-const addCommand = settings =>
+const addCommand = (settings) =>
   reduce((acc, [key, ...args]) => acc[key](...args), program, settings)
 
-const addAction = action => [
+const addAction = (action) => [
   'action',
   (...args) =>
     ((input, opts = {}) => {

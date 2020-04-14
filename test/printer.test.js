@@ -22,7 +22,7 @@ describe('Printer', () => {
     it('should print in color based on given snippet', () => {
       expect(
         colorizedPrint(
-          Object.keys(snippet).map(k => ({ [k]: snippet[k] }))
+          Object.keys(snippet).map((k) => ({ [k]: snippet[k] }))
         ).toString()
       ).toMatchSnapshot()
       expect(colorizedPrint([snippet])).toMatchSnapshot()
@@ -66,7 +66,7 @@ describe('Printer', () => {
       )
     })
 
-    layouts.forEach(layout => {
+    layouts.forEach((layout) => {
       describe(`with layout set to "${layout}"`, () => {
         it('should log JSON given json flag', () => {
           printSnippet({ layout, json: true }, snippet)
