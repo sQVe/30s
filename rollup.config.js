@@ -1,7 +1,7 @@
 import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import json from 'rollup-plugin-json'
-import nodeResolve from 'rollup-plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+import json from '@rollup/plugin-json'
+import nodeResolve from '@rollup/plugin-node-resolve'
 import shebang from 'rollup-plugin-add-shebang'
 
 import pkg from './package.json'
@@ -15,16 +15,18 @@ const dependencies = [
   'lib/snippets',
   'path',
 ]
-const isArrayLike = x => x != null && typeof x[Symbol.iterator] === 'function'
-const isNil = (...xs) => xs.some(x => x == null)
-const isObjectLike = x => x != null && typeof x === 'object'
+const isArrayLike = (x) => x != null && typeof x[Symbol.iterator] === 'function'
+const isNil = (...xs) => xs.some((x) => x == null)
+const isObjectLike = (x) => x != null && typeof x === 'object'
 const isSameType = (x, y) => !isNil(x, y) && x.constructor === y.constructor
 const sanitizeBundle = ({ type, ...rest }) => rest
-const removeRelativePath = dep => dep.replace(/^(\.{1,2}\/)+/, '')
-const external = id =>
-  dependencies.map(dep => removeRelativePath(id).startsWith(dep)).some(Boolean)
+const removeRelativePath = (dep) => dep.replace(/^(\.{1,2}\/)+/, '')
+const external = (id) =>
+  dependencies
+    .map((dep) => removeRelativePath(id).startsWith(dep))
+    .some(Boolean)
 
-const presetBundleDefaults = defaults => opts =>
+const presetBundleDefaults = (defaults) => (opts) =>
   Object.entries({ ...defaults, ...opts }).reduce(
     (acc, [k, v]) => ({
       ...acc,
@@ -71,6 +73,6 @@ const bundles = [
 export default (() =>
   [
     ...(bundleTarget != null
-      ? bundles.filter(x => x.type === bundleTarget)
+      ? bundles.filter((x) => x.type === bundleTarget)
       : bundles),
   ].map(sanitizeBundle))()

@@ -9,15 +9,15 @@ import { enforceSingleNewLine } from './helpers'
 
 marked.setOptions({ renderer: new Renderer() })
 
-export const colorizedPrint = x => {
+export const colorizedPrint = (x) => {
   const printMap = {
-    code: y => highlight(y, { language: 'javascript' }),
-    description: y => enforceSingleNewLine(marked(y)),
-    example: y => highlight(y, { language: 'javascript' }),
-    id: y => chalk.magenta.bold(y),
+    code: (y) => highlight(y, { language: 'javascript' }),
+    description: (y) => enforceSingleNewLine(marked(y)),
+    example: (y) => highlight(y, { language: 'javascript' }),
+    id: (y) => chalk.magenta.bold(y),
     tags: compose(chalk.gray.italic, join(', ')),
   }
-  const print = y =>
+  const print = (y) =>
     compose(
       replace(/\n$/, ''),
       join('\n'),
@@ -37,7 +37,7 @@ export const printSnippet = ({ cp, layout, json }, x) => {
     i: 'id',
     t: 'tags',
   }
-  const keysByLayout = map(k => layoutMap[k])(Array.from(layout || 'itced'))
+  const keysByLayout = map((k) => layoutMap[k])(Array.from(layout || 'itced'))
 
   if (x == null) return ''
   if (cp) {

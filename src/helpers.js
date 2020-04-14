@@ -1,6 +1,6 @@
 import { anyPass, compose, endsWith, is, replace, startsWith } from 'ramda'
 
-export const enforceSingleNewLine = x =>
+export const enforceSingleNewLine = (x) =>
   is(String, x)
     ? compose(replace(/[\r\n]+/g, '\n'), replace(/[\r\n]*$/, ''))(x)
     : x

@@ -18,12 +18,12 @@ import {
 
 import { randomNumberInRange, startsOrEndsWith } from './helpers'
 
-const fuzzyMatch = query => x => new RegExp(query).test(x.id)
-export const getSnippet = (snippets, id) => find(x => x.id === id, snippets)
+const fuzzyMatch = (query) => (x) => new RegExp(query).test(x.id)
+export const getSnippet = (snippets, id) => find((x) => x.id === id, snippets)
 export const getSnippetsByTag = (snippets, id) =>
-  filter(x => any(y => y === id, x.tags), snippets)
+  filter((x) => any((y) => y === id, x.tags), snippets)
 
-export const randomSnippet = snippets =>
+export const randomSnippet = (snippets) =>
   snippets[randomNumberInRange(0, snippets.length - 1)]
 
 const computeRelevance = (id, query) => {
@@ -40,7 +40,7 @@ const computeRelevance = (id, query) => {
   return compose(divideByDiffInChars, multi)(base)
 }
 
-const setSearchRelevance = query => x =>
+const setSearchRelevance = (query) => (x) =>
   set(lensProp('relevance'), computeRelevance(x.id, query), x)
 
 export const searchSnippets = (snippets, query) =>

@@ -25,7 +25,7 @@ describe('Cli', () => {
       expect(callCli('--help')).toMatchSnapshot()
     })
 
-    commands.forEach(command => {
+    commands.forEach((command) => {
       it(`should print help page for ${command} command`, () => {
         expect(callCli(command, '-h')).toMatchSnapshot()
         expect(callCli(command, '--help')).toMatchSnapshot()
@@ -50,7 +50,7 @@ describe('Cli', () => {
     })
   })
 
-  commands.forEach(command => {
+  commands.forEach((command) => {
     describe(`${command} command`, () => {
       it(`should output test strings`, async () => {
         expect(callCli(command, 'foo')).toEqual(
