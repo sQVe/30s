@@ -1,6 +1,6 @@
 {
   "hooks": {
     "pre-commit": "lint-staged",
-    "pre-push": "jest"
+    "pre-push": "npm run test && npm run test:integration"
   }
 }
