@@ -14,5 +14,5 @@ after_success:
   - scripts/update.sh
 deploy:
   provider: script
-  cleanup: true
-  script: npx semantic-release
+  skip_cleanup: true
+  script: npx semantic-release --no-install
