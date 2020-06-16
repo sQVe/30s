@@ -1,64 +1,54 @@
-jest.mock('fs', () => ({
-  writeFileSync: jest.fn(() => ''),
-}))
+import path from 'path'
+
+const mockFixturesDirectory = path.join(__dirname, './fixtures')
+
+jest.mock('fs', () => {
+  const actualFs = jest.requireActual('fs')
+
+  return {
+    ...actualFs,
+    readdirSync: jest.fn(() => actualFs.readdirSync(mockFixturesDirectory)),
+    writeFileSync: jest.fn(),
+  }
+})
 
 import fs from 'fs'
-import { last } from 'ramda'
 
-import { createItem, writeFile } from '../src/parser'
+import {
+  parseSections,
+  run,
+  sanitizeCode,
+  sanitizeIdentifiers,
+} from '../src/parser'
 
-const stringifySpy = jest.spyOn(JSON, 'stringify')
-jest.spyOn(global.console, 'log').mockImplementation(() => {})
+const fixtureFiles = fs.readdirSync(mockFixturesDirectory)
 
 describe('Parser', () => {
-  describe('createItem', () => {
-    const attributes = {
-      codeBlocks: { es6: 'code', example: 'example' },
-      tags: ['tags'],
-      text: 'text',
-    }
-    const snippet = {
-      id: 'id',
-      attributes,
-    }
+  fixtureFiles.forEach((file) => {
+    describe('when given snippet ' + file, () => {
+      const content = fs.readFileSync(path.join(mockFixturesDirectory, file), {
+        encoding: 'utf8',
+      })
 
-    it('should create item', () => {
-      expect(createItem(snippet)).toMatchSnapshot()
-    })
+      it('should be able to parse sections', () => {
+        expect(parseSections(content)).toMatchSnapshot()
+      })
 
-    it('should enforce single newlines between paragraphs', () => {
-      expect(
-        createItem({
-          ...snippet,
-          attributes: { ...attributes, text: 'foo\n\nbar' },
-        }).description
-      ).toEqual('foo\nbar')
-    })
+      it('should sanitize identifiers into id and tags', () => {
+        const [identifiers] = parseSections(content)
 
-    it('should remove all newlines from ending', () => {
-      expect(
-        createItem({
-          ...snippet,
-          attributes: { ...attributes, text: 'foo\n\n' },
-        }).description
-      ).toEqual('foo')
+        expect(sanitizeIdentifiers(identifiers)).toMatchSnapshot()
+      })
+
+      it('should sanitize code', () => {
+        const [_, __, code] = parseSections(content)
+
+        expect(sanitizeCode(code)).toMatchSnapshot()
+      })
     })
   })
 
-  describe('writeFile', () => {
-    beforeEach(() => {
-      writeFile({ foo: true })
-    })
-
-    it('should write content as JSON', () => {
-      expect(stringifySpy).toHaveBeenCalled()
-    })
-
-    it('should call fs.writeFile with a path and content', () => {
-      const [path, content] = last(fs.writeFileSync.mock.calls)
-
-      expect(path).toMatch(/.*\/src\/snippets.json/)
-      expect(content).toMatchSnapshot()
-    })
+  it('should iterate over source files and create snippet data', () => {
+    expect(run()).toMatchSnapshot()
   })
 })
