@@ -30,7 +30,9 @@ describe('Printer', () => {
   })
 
   describe('printSnippet', () => {
-    jest.spyOn(global.console, 'log').mockImplementation(() => {})
+    jest.spyOn(global.console, 'log').mockImplementation(() => {
+      // Noop.
+    })
 
     it('should handle snippets in a array', () => {
       printSnippet({ layout: 'ic' }, [snippet])
