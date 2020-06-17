@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/sQVe/30s/compare/v1.4.51...v1.5.0) (2020-06-17)
+
+
+### Features
+
+* **parser:** add custom parser ([158decc](https://github.com/sQVe/30s/commit/158deccb34af93f0560f33fb987b8762e03df28c))
+
 ## [1.4.51](https://github.com/sQVe/30s/compare/v1.4.50...v1.4.51) (2020-04-08)
 
 
