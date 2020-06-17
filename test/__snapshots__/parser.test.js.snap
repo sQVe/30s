@@ -1,15 +1,626 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Parser createItem should create item 1`] = `
-Object {
-  "code": "code",
-  "description": "text",
-  "example": "example",
-  "id": "id",
-  "tags": Array [
-    "tags",
-  ],
-}
+exports[`Parser should iterate over source files and create snippet data 1`] = `
+Array [
+  Object {
+    "code": "const JSONtoCSV = (arr, columns, delimiter = ',') =>
+  [
+    columns.join(delimiter),
+    ...arr.map(obj =>
+      columns.reduce(
+        (acc, key) => \\\\\`\\\\\${acc}\\\\\${!acc.length ? '' : delimiter}\\"\\\\\${!obj[key] ? '' : obj[key]}\\"\\\\\`,
+        ''
+      )
+    )
+  ].join('\\\\n');",
+    "description": "Converts an array of objects to a comma-separated values (CSV) string that contains only the \`columns\` specified.
+
+Use \`Array.prototype.join(delimiter)\` to combine all the names in \`columns\` to create the first row.
+Use \`Array.prototype.map()\` and \`Array.prototype.reduce()\` to create a row for each object, substituting non-existent values with empty strings and only mapping values in \`columns\`.
+Use \`Array.prototype.join('\\\\n')\` to combine all rows into a string.
+Omit the third argument, \`delimiter\`, to use a default delimiter of \`,\`.",
+    "example": "JSONtoCSV([{ a: 1, b: 2 }, { a: 3, b: 4, c: 5 }, { a: 6 }, { b: 7 }], ['a', 'b']); // 'a,b\\\\n\\"1\\",\\"2\\"\\\\n\\"3\\",\\"4\\"\\\\n\\"6\\",\\"\\"\\\\n\\"\\",\\"7\\"'
+JSONtoCSV([{ a: 1, b: 2 }, { a: 3, b: 4, c: 5 }, { a: 6 }, { b: 7 }], ['a', 'b'], ';'); // 'a;b\\\\n\\"1\\";\\"2\\"\\\\n\\"3\\";\\"4\\"\\\\n\\"6\\";\\"\\"\\\\n\\"\\";\\"7\\"'",
+    "id": "JSONtoCSV",
+    "tags": Array [
+      "array",
+      "string",
+      "object",
+      "advanced",
+    ],
+  },
+  Object {
+    "code": "const any = (arr, fn = Boolean) => arr.some(fn);",
+    "description": "Returns \`true\` if the provided predicate function returns \`true\` for at least one element in a collection, \`false\` otherwise.
+
+Use \`Array.prototype.some()\` to test if any elements in the collection return \`true\` based on \`fn\`.
+Omit the second argument, \`fn\`, to use \`Boolean\` as a default.",
+    "example": "any([0, 1, 2, 0], x => x >= 2); // true
+any([0, 0, 1, 0]); // true",
+    "id": "any",
+    "tags": Array [
+      "array",
+      "function",
+      "beginner",
+    ],
+  },
+  Object {
+    "code": "const dig = (obj, target) =>
+  target in obj
+    ? obj[target]
+    : Object.values(obj).reduce((acc, val) => {
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);",
+    "description": "Returns the target value in a nested JSON object, based on the given key.
+
+Use the \`in\` operator to check if \`target\` exists in \`obj\`.
+If found, return the value of \`obj[target]\`, otherwise use \`Object.values(obj)\` and \`Array.prototype.reduce()\` to recursively call \`dig\` on each nested object until the first matching key/value pair is found.",
+    "example": "const data = {
+  level1: {
+    level2: {
+      level3: 'some data'
+    }
+  }
+};
+dig(data, 'level3'); // 'some data'
+dig(data, 'level4'); // undefined",
+    "id": "dig",
+    "tags": Array [
+      "object",
+      "recursion",
+      "intermediate",
+    ],
+  },
+  Object {
+    "code": "const elo = ([...ratings], kFactor = 32, selfRating) => {
+  const [a, b] = ratings;
+  const expectedScore = (self, opponent) => 1 / (1 + 10 ** ((opponent - self) / 400));
+  const newRating = (rating, i) =>
+    (selfRating || rating) + kFactor * (i - expectedScore(i ? a : b, i ? b : a));
+  if (ratings.length === 2) return [newRating(a, 1), newRating(b, 0)];
+
+  for (let i = 0, len = ratings.length; i < len; i++) {
+    let j = i;
+    while (j < len - 1) {
+      j++;
+      [ratings[i], ratings[j]] = elo([ratings[i], ratings[j]], kFactor);
+    }
+  }
+  return ratings;
+};",
+    "description": "Computes the new ratings between two or more opponents using the [Elo rating system](https://en.wikipedia.org/wiki/Elo_rating_system). It takes an array
+of pre-ratings and returns an array containing post-ratings.
+The array should be ordered from best performer to worst performer (winner -> loser).
+
+Use the exponent \`**\` operator and math operators to compute the expected score (chance of winning).
+of each opponent and compute the new rating for each.
+Loop through the ratings, using each permutation to compute the post-Elo rating for each player in a pairwise fashion. 
+Omit the second argument to use the default \`kFactor\` of 32.",
+    "example": "// Standard 1v1s
+elo([1200, 1200]); // [1216, 1184]
+elo([1200, 1200], 64); // [1232, 1168]
+// 4 player FFA, all same rank
+elo([1200, 1200, 1200, 1200]).map(Math.round); // [1246, 1215, 1185, 1154]
+/*
+For teams, each rating can adjusted based on own team's average rating vs.
+average rating of opposing team, with the score being added to their
+own individual rating by supplying it as the third argument.
+*/",
+    "id": "elo",
+    "tags": Array [
+      "math",
+      "array",
+      "advanced",
+    ],
+  },
+  Object {
+    "code": "const get = (from, ...selectors) =>
+  [...selectors].map(s =>
+    s
+      .replace(/\\\\[([^\\\\[\\\\]]*)\\\\]/g, '.$1.')
+      .split('.')
+      .filter(t => t !== '')
+      .reduce((prev, cur) => prev && prev[cur], from)
+  );",
+    "description": "Retrieve a set of properties indicated by the given selectors from an object.
+
+Use \`Array.prototype.map()\` for each selector, \`String.prototype.replace()\` to replace square brackets with dots, \`String.prototype.split('.')\` to split each selector, \`Array.prototype.filter()\` to remove empty values and \`Array.prototype.reduce()\` to get the value indicated by it.",
+    "example": "const obj = { selector: { to: { val: 'val to select' } }, target: [1, 2, { a: 'test' }] };
+get(obj, 'selector.to.val', 'target[0]', 'target[2].a'); // ['val to select', 1, 'test']",
+    "id": "get",
+    "tags": Array [
+      "object",
+      "intermediate",
+    ],
+  },
+  Object {
+    "code": "const hz = (fn, iterations = 100) => {
+  const before = performance.now();
+  for (let i = 0; i < iterations; i++) fn();
+  return (1000 * iterations) / (performance.now() - before);
+};",
+    "description": "Returns the number of times a function executed per second. 
+\`hz\` is the unit for \`hertz\`, the unit of frequency defined as one cycle per second.
+
+Use \`performance.now()\` to get the difference in milliseconds before and after the iteration loop to calculate the time elapsed executing the function \`iterations\` times. 
+Return the number of cycles per second by converting milliseconds to seconds and dividing it by the time elapsed. 
+Omit the second argument, \`iterations\`, to use the default of 100 iterations.",
+    "example": "// 10,000 element array
+const numbers = Array(10000)
+  .fill()
+  .map((_, i) => i);
+
+// Test functions with the same goal: sum up the elements in the array
+const sumReduce = () => numbers.reduce((acc, n) => acc + n, 0);
+const sumForLoop = () => {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  return sum;
+};
+
+// \`sumForLoop\` is nearly 10 times faster
+Math.round(hz(sumReduce)); // 572
+Math.round(hz(sumForLoop)); // 4784",
+    "id": "hz",
+    "tags": Array [
+      "function",
+      "intermediate",
+    ],
+  },
+  Object {
+    "code": "const on = (el, evt, fn, opts = {}) => {
+  const delegatorFn = e => e.target.matches(opts.target) && fn.call(e.target, e);
+  el.addEventListener(evt, opts.target ? delegatorFn : fn, opts.options || false);
+  if (opts.target) return delegatorFn;
+};",
+    "description": "Adds an event listener to an element with the ability to use event delegation.
+
+Use \`EventTarget.addEventListener()\` to add an event listener to an element.
+If there is a \`target\` property supplied to the options object, ensure the event target matches the target specified and then invoke the callback by supplying the correct \`this\` context.
+Returns a reference to the custom delegator function, in order to be possible to use with [\`off\`](#off).
+Omit \`opts\` to default to non-delegation behavior and event bubbling.",
+    "example": "const fn = () => console.log('!');
+on(document.body, 'click', fn); // logs '!' upon clicking the body
+on(document.body, 'click', fn, { target: 'p' }); // logs '!' upon clicking a \`p\` element child of the body
+on(document.body, 'click', fn, { options: true }); // use capturing instead of bubbling",
+    "id": "on",
+    "tags": Array [
+      "browser",
+      "event",
+      "intermediate",
+    ],
+  },
+  Object {
+    "code": "const or = (a, b) => a || b;",
+    "description": "Returns \`true\` if at least one of the arguments is \`true\`, \`false\` otherwise.
+
+Use the logical or (\`||\`) operator on the two given values.",
+    "example": "or(true, true); // true
+or(true, false); // true
+or(false, false); // false",
+    "id": "or",
+    "tags": Array [
+      "math",
+      "logic",
+      "beginner",
+    ],
+  },
+  Object {
+    "code": "const zip = (...arrays) => {
+  const maxLength = Math.max(...arrays.map(x => x.length));
+  return Array.from({ length: maxLength }).map((_, i) => {
+    return Array.from({ length: arrays.length }, (_, k) => arrays[k][i]);
+  });
+};",
+    "description": "Creates an array of elements, grouped based on the position in the original arrays.
+
+Use \`Math.max.apply()\` to get the longest array in the arguments.
+Creates an array with that length as return value and use \`Array.from()\` with a map-function to create an array of grouped elements.
+If lengths of the argument-arrays vary, \`undefined\` is used where no value could be found.",
+    "example": "zip(['a', 'b'], [1, 2], [true, false]); // [['a', 1, true], ['b', 2, false]]
+zip(['a'], [1, 2], [true, false]); // [['a', 1, true], [undefined, 2, false]]",
+    "id": "zip",
+    "tags": Array [
+      "array",
+      "intermediate",
+    ],
+  },
+]
 `;
 
-exports[`Parser writeFile should call fs.writeFile with a path and content 1`] = `"{\\"foo\\":true}"`;
+exports[`Parser when given snippet JSONtoCSV.md should be able to parse sections 1`] = `
+Array [
+  "title: JSONtoCSV
+tags: array,string,object,advanced",
+  "Converts an array of objects to a comma-separated values (CSV) string that contains only the \`columns\` specified.
+
+Use \`Array.prototype.join(delimiter)\` to combine all the names in \`columns\` to create the first row.
+Use \`Array.prototype.map()\` and \`Array.prototype.reduce()\` to create a row for each object, substituting non-existent values with empty strings and only mapping values in \`columns\`.
+Use \`Array.prototype.join('\\\\n')\` to combine all rows into a string.
+Omit the third argument, \`delimiter\`, to use a default delimiter of \`,\`.",
+  "const JSONtoCSV = (arr, columns, delimiter = ',') =>
+  [
+    columns.join(delimiter),
+    ...arr.map(obj =>
+      columns.reduce(
+        (acc, key) => \`\${acc}\${!acc.length ? '' : delimiter}\\"\${!obj[key] ? '' : obj[key]}\\"\`,
+        ''
+      )
+    )
+  ].join('\\\\n');",
+  "JSONtoCSV([{ a: 1, b: 2 }, { a: 3, b: 4, c: 5 }, { a: 6 }, { b: 7 }], ['a', 'b']); // 'a,b\\\\n\\"1\\",\\"2\\"\\\\n\\"3\\",\\"4\\"\\\\n\\"6\\",\\"\\"\\\\n\\"\\",\\"7\\"'
+JSONtoCSV([{ a: 1, b: 2 }, { a: 3, b: 4, c: 5 }, { a: 6 }, { b: 7 }], ['a', 'b'], ';'); // 'a;b\\\\n\\"1\\";\\"2\\"\\\\n\\"3\\";\\"4\\"\\\\n\\"6\\";\\"\\"\\\\n\\"\\";\\"7\\"'",
+]
+`;
+
+exports[`Parser when given snippet JSONtoCSV.md should sanitize code 1`] = `
+"const JSONtoCSV = (arr, columns, delimiter = ',') =>
+  [
+    columns.join(delimiter),
+    ...arr.map(obj =>
+      columns.reduce(
+        (acc, key) => \\\\\`\\\\\${acc}\\\\\${!acc.length ? '' : delimiter}\\"\\\\\${!obj[key] ? '' : obj[key]}\\"\\\\\`,
+        ''
+      )
+    )
+  ].join('\\\\n');"
+`;
+
+exports[`Parser when given snippet JSONtoCSV.md should sanitize identifiers into id and tags 1`] = `
+Array [
+  "JSONtoCSV",
+  Array [
+    "array",
+    "string",
+    "object",
+    "advanced",
+  ],
+]
+`;
+
+exports[`Parser when given snippet any.md should be able to parse sections 1`] = `
+Array [
+  "title: any
+tags: array,function,beginner",
+  "Returns \`true\` if the provided predicate function returns \`true\` for at least one element in a collection, \`false\` otherwise.
+
+Use \`Array.prototype.some()\` to test if any elements in the collection return \`true\` based on \`fn\`.
+Omit the second argument, \`fn\`, to use \`Boolean\` as a default.",
+  "const any = (arr, fn = Boolean) => arr.some(fn);",
+  "any([0, 1, 2, 0], x => x >= 2); // true
+any([0, 0, 1, 0]); // true",
+]
+`;
+
+exports[`Parser when given snippet any.md should sanitize code 1`] = `"const any = (arr, fn = Boolean) => arr.some(fn);"`;
+
+exports[`Parser when given snippet any.md should sanitize identifiers into id and tags 1`] = `
+Array [
+  "any",
+  Array [
+    "array",
+    "function",
+    "beginner",
+  ],
+]
+`;
+
+exports[`Parser when given snippet dig.md should be able to parse sections 1`] = `
+Array [
+  "title: dig
+tags: object,recursion,intermediate",
+  "Returns the target value in a nested JSON object, based on the given key.
+
+Use the \`in\` operator to check if \`target\` exists in \`obj\`.
+If found, return the value of \`obj[target]\`, otherwise use \`Object.values(obj)\` and \`Array.prototype.reduce()\` to recursively call \`dig\` on each nested object until the first matching key/value pair is found.",
+  "const dig = (obj, target) =>
+  target in obj
+    ? obj[target]
+    : Object.values(obj).reduce((acc, val) => {
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);",
+  "const data = {
+  level1: {
+    level2: {
+      level3: 'some data'
+    }
+  }
+};
+dig(data, 'level3'); // 'some data'
+dig(data, 'level4'); // undefined",
+]
+`;
+
+exports[`Parser when given snippet dig.md should sanitize code 1`] = `
+"const dig = (obj, target) =>
+  target in obj
+    ? obj[target]
+    : Object.values(obj).reduce((acc, val) => {
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);"
+`;
+
+exports[`Parser when given snippet dig.md should sanitize identifiers into id and tags 1`] = `
+Array [
+  "dig",
+  Array [
+    "object",
+    "recursion",
+    "intermediate",
+  ],
+]
+`;
+
+exports[`Parser when given snippet elo.md should be able to parse sections 1`] = `
+Array [
+  "title: elo
+tags: math,array,advanced",
+  "Computes the new ratings between two or more opponents using the [Elo rating system](https://en.wikipedia.org/wiki/Elo_rating_system). It takes an array
+of pre-ratings and returns an array containing post-ratings.
+The array should be ordered from best performer to worst performer (winner -> loser).
+
+Use the exponent \`**\` operator and math operators to compute the expected score (chance of winning).
+of each opponent and compute the new rating for each.
+Loop through the ratings, using each permutation to compute the post-Elo rating for each player in a pairwise fashion. 
+Omit the second argument to use the default \`kFactor\` of 32.",
+  "const elo = ([...ratings], kFactor = 32, selfRating) => {
+  const [a, b] = ratings;
+  const expectedScore = (self, opponent) => 1 / (1 + 10 ** ((opponent - self) / 400));
+  const newRating = (rating, i) =>
+    (selfRating || rating) + kFactor * (i - expectedScore(i ? a : b, i ? b : a));
+  if (ratings.length === 2) return [newRating(a, 1), newRating(b, 0)];
+
+  for (let i = 0, len = ratings.length; i < len; i++) {
+    let j = i;
+    while (j < len - 1) {
+      j++;
+      [ratings[i], ratings[j]] = elo([ratings[i], ratings[j]], kFactor);
+    }
+  }
+  return ratings;
+};",
+  "// Standard 1v1s
+elo([1200, 1200]); // [1216, 1184]
+elo([1200, 1200], 64); // [1232, 1168]
+// 4 player FFA, all same rank
+elo([1200, 1200, 1200, 1200]).map(Math.round); // [1246, 1215, 1185, 1154]
+/*
+For teams, each rating can adjusted based on own team's average rating vs.
+average rating of opposing team, with the score being added to their
+own individual rating by supplying it as the third argument.
+*/",
+]
+`;
+
+exports[`Parser when given snippet elo.md should sanitize code 1`] = `
+"const elo = ([...ratings], kFactor = 32, selfRating) => {
+  const [a, b] = ratings;
+  const expectedScore = (self, opponent) => 1 / (1 + 10 ** ((opponent - self) / 400));
+  const newRating = (rating, i) =>
+    (selfRating || rating) + kFactor * (i - expectedScore(i ? a : b, i ? b : a));
+  if (ratings.length === 2) return [newRating(a, 1), newRating(b, 0)];
+
+  for (let i = 0, len = ratings.length; i < len; i++) {
+    let j = i;
+    while (j < len - 1) {
+      j++;
+      [ratings[i], ratings[j]] = elo([ratings[i], ratings[j]], kFactor);
+    }
+  }
+  return ratings;
+};"
+`;
+
+exports[`Parser when given snippet elo.md should sanitize identifiers into id and tags 1`] = `
+Array [
+  "elo",
+  Array [
+    "math",
+    "array",
+    "advanced",
+  ],
+]
+`;
+
+exports[`Parser when given snippet get.md should be able to parse sections 1`] = `
+Array [
+  "title: get
+tags: object,intermediate",
+  "Retrieve a set of properties indicated by the given selectors from an object.
+
+Use \`Array.prototype.map()\` for each selector, \`String.prototype.replace()\` to replace square brackets with dots, \`String.prototype.split('.')\` to split each selector, \`Array.prototype.filter()\` to remove empty values and \`Array.prototype.reduce()\` to get the value indicated by it.",
+  "const get = (from, ...selectors) =>
+  [...selectors].map(s =>
+    s
+      .replace(/\\\\[([^\\\\[\\\\]]*)\\\\]/g, '.$1.')
+      .split('.')
+      .filter(t => t !== '')
+      .reduce((prev, cur) => prev && prev[cur], from)
+  );",
+  "const obj = { selector: { to: { val: 'val to select' } }, target: [1, 2, { a: 'test' }] };
+get(obj, 'selector.to.val', 'target[0]', 'target[2].a'); // ['val to select', 1, 'test']",
+]
+`;
+
+exports[`Parser when given snippet get.md should sanitize code 1`] = `
+"const get = (from, ...selectors) =>
+  [...selectors].map(s =>
+    s
+      .replace(/\\\\[([^\\\\[\\\\]]*)\\\\]/g, '.$1.')
+      .split('.')
+      .filter(t => t !== '')
+      .reduce((prev, cur) => prev && prev[cur], from)
+  );"
+`;
+
+exports[`Parser when given snippet get.md should sanitize identifiers into id and tags 1`] = `
+Array [
+  "get",
+  Array [
+    "object",
+    "intermediate",
+  ],
+]
+`;
+
+exports[`Parser when given snippet hz.md should be able to parse sections 1`] = `
+Array [
+  "title: hz
+tags: function,intermediate",
+  "Returns the number of times a function executed per second. 
+\`hz\` is the unit for \`hertz\`, the unit of frequency defined as one cycle per second.
+
+Use \`performance.now()\` to get the difference in milliseconds before and after the iteration loop to calculate the time elapsed executing the function \`iterations\` times. 
+Return the number of cycles per second by converting milliseconds to seconds and dividing it by the time elapsed. 
+Omit the second argument, \`iterations\`, to use the default of 100 iterations.",
+  "const hz = (fn, iterations = 100) => {
+  const before = performance.now();
+  for (let i = 0; i < iterations; i++) fn();
+  return (1000 * iterations) / (performance.now() - before);
+};",
+  "// 10,000 element array
+const numbers = Array(10000)
+  .fill()
+  .map((_, i) => i);
+
+// Test functions with the same goal: sum up the elements in the array
+const sumReduce = () => numbers.reduce((acc, n) => acc + n, 0);
+const sumForLoop = () => {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  return sum;
+};
+
+// \`sumForLoop\` is nearly 10 times faster
+Math.round(hz(sumReduce)); // 572
+Math.round(hz(sumForLoop)); // 4784",
+]
+`;
+
+exports[`Parser when given snippet hz.md should sanitize code 1`] = `
+"const hz = (fn, iterations = 100) => {
+  const before = performance.now();
+  for (let i = 0; i < iterations; i++) fn();
+  return (1000 * iterations) / (performance.now() - before);
+};"
+`;
+
+exports[`Parser when given snippet hz.md should sanitize identifiers into id and tags 1`] = `
+Array [
+  "hz",
+  Array [
+    "function",
+    "intermediate",
+  ],
+]
+`;
+
+exports[`Parser when given snippet on.md should be able to parse sections 1`] = `
+Array [
+  "title: on
+tags: browser,event,intermediate",
+  "Adds an event listener to an element with the ability to use event delegation.
+
+Use \`EventTarget.addEventListener()\` to add an event listener to an element.
+If there is a \`target\` property supplied to the options object, ensure the event target matches the target specified and then invoke the callback by supplying the correct \`this\` context.
+Returns a reference to the custom delegator function, in order to be possible to use with [\`off\`](#off).
+Omit \`opts\` to default to non-delegation behavior and event bubbling.",
+  "const on = (el, evt, fn, opts = {}) => {
+  const delegatorFn = e => e.target.matches(opts.target) && fn.call(e.target, e);
+  el.addEventListener(evt, opts.target ? delegatorFn : fn, opts.options || false);
+  if (opts.target) return delegatorFn;
+};",
+  "const fn = () => console.log('!');
+on(document.body, 'click', fn); // logs '!' upon clicking the body
+on(document.body, 'click', fn, { target: 'p' }); // logs '!' upon clicking a \`p\` element child of the body
+on(document.body, 'click', fn, { options: true }); // use capturing instead of bubbling",
+]
+`;
+
+exports[`Parser when given snippet on.md should sanitize code 1`] = `
+"const on = (el, evt, fn, opts = {}) => {
+  const delegatorFn = e => e.target.matches(opts.target) && fn.call(e.target, e);
+  el.addEventListener(evt, opts.target ? delegatorFn : fn, opts.options || false);
+  if (opts.target) return delegatorFn;
+};"
+`;
+
+exports[`Parser when given snippet on.md should sanitize identifiers into id and tags 1`] = `
+Array [
+  "on",
+  Array [
+    "browser",
+    "event",
+    "intermediate",
+  ],
+]
+`;
+
+exports[`Parser when given snippet or.md should be able to parse sections 1`] = `
+Array [
+  "title: or
+tags: math,logic,beginner",
+  "Returns \`true\` if at least one of the arguments is \`true\`, \`false\` otherwise.
+
+Use the logical or (\`||\`) operator on the two given values.",
+  "const or = (a, b) => a || b;",
+  "or(true, true); // true
+or(true, false); // true
+or(false, false); // false",
+]
+`;
+
+exports[`Parser when given snippet or.md should sanitize code 1`] = `"const or = (a, b) => a || b;"`;
+
+exports[`Parser when given snippet or.md should sanitize identifiers into id and tags 1`] = `
+Array [
+  "or",
+  Array [
+    "math",
+    "logic",
+    "beginner",
+  ],
+]
+`;
+
+exports[`Parser when given snippet zip.md should be able to parse sections 1`] = `
+Array [
+  "title: zip
+tags: array,intermediate",
+  "Creates an array of elements, grouped based on the position in the original arrays.
+
+Use \`Math.max.apply()\` to get the longest array in the arguments.
+Creates an array with that length as return value and use \`Array.from()\` with a map-function to create an array of grouped elements.
+If lengths of the argument-arrays vary, \`undefined\` is used where no value could be found.",
+  "const zip = (...arrays) => {
+  const maxLength = Math.max(...arrays.map(x => x.length));
+  return Array.from({ length: maxLength }).map((_, i) => {
+    return Array.from({ length: arrays.length }, (_, k) => arrays[k][i]);
+  });
+};",
+  "zip(['a', 'b'], [1, 2], [true, false]); // [['a', 1, true], ['b', 2, false]]
+zip(['a'], [1, 2], [true, false]); // [['a', 1, true], [undefined, 2, false]]",
+]
+`;
+
+exports[`Parser when given snippet zip.md should sanitize code 1`] = `
+"const zip = (...arrays) => {
+  const maxLength = Math.max(...arrays.map(x => x.length));
+  return Array.from({ length: maxLength }).map((_, i) => {
+    return Array.from({ length: arrays.length }, (_, k) => arrays[k][i]);
+  });
+};"
+`;
+
+exports[`Parser when given snippet zip.md should sanitize identifiers into id and tags 1`] = `
+Array [
+  "zip",
+  Array [
+    "array",
+    "intermediate",
+  ],
+]
+`;

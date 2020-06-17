@@ -7,24 +7,64 @@
 
 import fs from 'fs'
 import path from 'path'
-import { map } from 'ramda'
 
-import { data as snippets } from '../submodules/30-seconds-of-code/snippet_data/snippets.json'
-import { enforceSingleNewLine } from './helpers'
+const commaRe = /,+/g
+const identifierKeyRe = /^(title|tags):\s+/
+const newlineRe = /\n+/g
+const sectionRe = /---|```(?:js)?/g
+const surroundingWhitespaceRe = /^\s+|\s+$/g
+const parsableCharsRe = /(\${|`)/g
 
-const FILE_NAME = 'snippets.json'
+export const parseSections = (content) => {
+  return content
+    .split(sectionRe)
+    .map((x) => x.replace(surroundingWhitespaceRe, ''))
+    .filter(Boolean)
+}
+export const sanitizeIdentifiers = (identifiers) => {
+  const [id, tags] = identifiers
+    .split(newlineRe)
+    .map((x) => x.replace(identifierKeyRe, ''))
 
-export const createItem = ({
-  id,
-  attributes: {
-    codeBlocks: { es6, example },
-    tags,
-    text,
-  },
-}) =>
-  map(enforceSingleNewLine, { code: es6, example, id, tags, description: text })
-export const writeFile = (content) =>
-  fs.writeFileSync(path.resolve(__dirname, FILE_NAME), JSON.stringify(content))
+  return [id, tags.split(commaRe)]
+}
 
-// eslint-disable-next-line fp/no-unused-expression
-writeFile(map(createItem)(snippets))
+export const sanitizeCode = (code) => code.replace(parsableCharsRe, '\\$1')
+
+export const run = () => {
+  const sourceDirectory = path.join(
+    __dirname,
+    '../submodules/30-seconds-of-code/snippets'
+  )
+  const outputPath = path.join(__dirname, 'snippets.json')
+
+  const sourceFiles = fs
+    .readdirSync(sourceDirectory)
+    .map((x) => path.join(sourceDirectory, x))
+
+  const snippets = sourceFiles.reduce((acc, file) => {
+    const sections = parseSections(fs.readFileSync(file, { encoding: 'utf8' }))
+
+    const [identifiers, description, code, example] = sections
+    const [id, tags] = sanitizeIdentifiers(identifiers)
+
+    return [
+      ...acc,
+      {
+        code: sanitizeCode(code),
+        description,
+        example,
+        id,
+        tags,
+      },
+    ]
+  }, [])
+
+  // eslint-disable-next-line fp/no-nil
+  fs.writeFileSync(outputPath, JSON.stringify(snippets, null, 2))
+
+  return snippets
+}
+
+// istanbul ignore next
+if (process.env.NODE_ENV !== 'test') run()
