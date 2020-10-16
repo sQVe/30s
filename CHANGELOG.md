@@ -1,3 +1,10 @@
+## [1.5.7](https://github.com/sQVe/30s/compare/v1.5.6...v1.5.7) (2020-10-16)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (build: 5823) ([74fc8e1](https://github.com/sQVe/30s/commit/74fc8e10bd7a6ec2efb0984bd96bdb5b49fd3ddc))
+
 ## [1.5.6](https://github.com/sQVe/30s/compare/v1.5.5...v1.5.6) (2020-09-16)
 
 
