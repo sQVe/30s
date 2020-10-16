@@ -1,3 +1,31 @@
+## [1.5.6](https://github.com/sQVe/30s/compare/v1.5.5...v1.5.6) (2020-09-16)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (cron build: 5625) ([db13f79](https://github.com/sQVe/30s/commit/db13f7912e6ca3ea0867b5921b585753570f847f))
+
+## [1.5.5](https://github.com/sQVe/30s/compare/v1.5.4...v1.5.5) (2020-09-14)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (cron build: 5588) ([0e50a80](https://github.com/sQVe/30s/commit/0e50a8030d7a9df055bc53928f9fd9245f4d9155))
+
+## [1.5.4](https://github.com/sQVe/30s/compare/v1.5.3...v1.5.4) (2020-09-13)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (cron build: 5586) ([8a5bfc1](https://github.com/sQVe/30s/commit/8a5bfc1d64902fd88b0698aeee399801aca4ae9d))
+
+## [1.5.3](https://github.com/sQVe/30s/compare/v1.5.2...v1.5.3) (2020-09-08)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (build: 5578) ([19da1e1](https://github.com/sQVe/30s/commit/19da1e1db41d7b17384e8bea1dc66f6a168162cd))
+
 ## [1.5.2](https://github.com/sQVe/30s/compare/v1.5.1...v1.5.2) (2020-09-07)
 
 
