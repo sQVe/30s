@@ -49,6 +49,6 @@ describe('Parser', () => {
   })
 
   it('should iterate over source files and create snippet data', () => {
-    expect(run()).toMatchSnapshot()
+    expect(run(mockFixturesDirectory)).toMatchSnapshot()
   })
 })

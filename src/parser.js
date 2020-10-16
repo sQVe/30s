@@ -31,11 +31,7 @@ export const sanitizeIdentifiers = (identifiers) => {
 
 export const sanitizeCode = (code) => code.replace(parsableCharsRe, '\\$1')
 
-export const run = () => {
-  const sourceDirectory = path.join(
-    __dirname,
-    '../submodules/30-seconds-of-code/snippets'
-  )
+export const run = (sourceDirectory) => {
   const outputPath = path.join(__dirname, 'snippets.json')
 
   const sourceFiles = fs
@@ -50,13 +46,7 @@ export const run = () => {
 
     return [
       ...acc,
-      {
-        code: sanitizeCode(code),
-        description,
-        example,
-        id,
-        tags,
-      },
+      { code: sanitizeCode(code), description, example, id, tags },
     ]
   }, [])
 
@@ -66,5 +56,10 @@ export const run = () => {
   return snippets
 }
 
+const sourceDirectory = path.join(
+  __dirname,
+  '../submodules/30-seconds-of-code/snippets'
+)
+
 // istanbul ignore next
-if (process.env.NODE_ENV !== 'test') run()
+if (process.env.NODE_ENV !== 'test') run(sourceDirectory)
