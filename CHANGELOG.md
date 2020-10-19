@@ -1,3 +1,10 @@
+## [1.5.10](https://github.com/sQVe/30s/compare/v1.5.9...v1.5.10) (2020-10-19)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (cron build: 5877) ([a2d238c](https://github.com/sQVe/30s/commit/a2d238c7eac3a56fb56ee0fc0778dd9e73de8dc5))
+
 ## [1.5.9](https://github.com/sQVe/30s/compare/v1.5.8...v1.5.9) (2020-10-18)
 
 
