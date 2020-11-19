@@ -5,15 +5,15 @@
 import program from 'commander'
 import { reduce } from 'ramda'
 
+import snippets from '../lib/snippets.json'
+import { version } from '../package.json'
 import {
   getSnippet,
   getSnippetsByTag,
   randomSnippet,
   searchSnippets,
 } from './handler'
-import snippets from '../lib/snippets.json'
 import { printSnippet } from './printer'
-import { version } from '../package.json'
 
 const isTest = process.env.NODE_ENV === 'test'
 const actions = {

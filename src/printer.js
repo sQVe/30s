@@ -1,9 +1,9 @@
-import Renderer from 'marked-terminal'
 import chalk from 'chalk'
-import marked from 'marked'
-import { compose, is, join, map, pick, prop, replace, toPairs } from 'ramda'
 import { highlight } from 'cli-highlight'
 import { writeSync as writeToClipboard } from 'clipboardy'
+import marked from 'marked'
+import Renderer from 'marked-terminal'
+import { compose, is, join, map, pick, prop, replace, toPairs } from 'ramda'
 
 import { enforceSingleNewLine } from './helpers'
 
