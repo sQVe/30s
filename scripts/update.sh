@@ -19,9 +19,6 @@ get_snippets_sha() {
 check_submodules_changes() {
   local snippetsSha
 
-  git checkout master
-  git submodule foreach git pull origin master
-
   if [[ $(git status --short | wc -l) -eq 0 ]]; then
     echo "Clean working status after pulling all submodules, exiting..."
     exit 0
