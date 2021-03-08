@@ -13,8 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           ref: master
           submodules: recursive
+          token: ${{ secrets.GH_ADMIN_TOKEN }}
 
       - name: Update snippets
         run: scripts/update.sh
