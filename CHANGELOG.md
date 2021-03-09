@@ -1,3 +1,10 @@
+## [1.5.25](https://github.com/sQVe/30s/compare/v1.5.24...v1.5.25) (2021-03-09)
+
+
+### Bug Fixes
+
+* repair husky installation ([c2a977d](https://github.com/sQVe/30s/commit/c2a977dbea43e175a7357521298788fa4df6da19))
+
 ## [1.5.24](https://github.com/sQVe/30s/compare/v1.5.23...v1.5.24) (2021-03-09)
 
 

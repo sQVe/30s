@@ -1,6 +1,6 @@
 {
   "name": "30s",
-  "version": "1.5.24",
+  "version": "1.5.25",
   "description": "A command-line application for 30 seconds of code snippets",
   "author": "Oskar Grunning <oskargrunning@gmail.com>",
   "license": "CC0-1.0",
