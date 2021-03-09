@@ -20,7 +20,7 @@
     "format": "prettier --write '{**/*,*}.{js,json,jsx,md,yaml}' && eslint --fix '{**/*,*}.{js,jsx}'",
     "lint": "eslint '{**/*,*}.{js,jsx}'",
     "move:snippets": "mkdir -p lib && mv .tmp/snippets.json lib/",
-    "postinstall": "husky install",
+    "prepare": "husky install",
     "prepublishOnly": "npm run build",
     "test": "jest",
     "test:coverage": "jest --coverage",
