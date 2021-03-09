@@ -36,18 +36,14 @@ check_submodules_changes() {
 
 commit_changes() {
   echo "Committing to master branch..."
-  git add .
 
-  if [[ $TRAVIS_EVENT_TYPE == "cron" ]]; then
-    git commit --message "fix(submodules): update snippets (cron build: $GITHUB_RUN_NUMBER)"
-  else
-    git commit --message "fix(submodules): update snippets (build: $GITHUB_RUN_NUMBER)"
-  fi
+  git add .
+  git commit --message "fix(submodules): update snippets (run: $GITHUB_RUN_NUMBER)"
 }
 
 push_changes() {
   echo "Pushing to master branch..."
-  git push --force --quiet "https://${GH_TOKEN}@github.com/sQVe/30s.git" master > /dev/null 2>&1
+  git push --force --quiet "https://${GH_ADMIN_TOKEN}@github.com/sQVe/30s.git" master > /dev/null 2>&1
 }
 
 setup_git
