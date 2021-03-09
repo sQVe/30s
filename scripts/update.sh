@@ -10,6 +10,7 @@ set -o errexit
 setup_git() {
   git config --global user.email "github@github.com"
   git config --global user.name "GitHub Actions"
+  git config pull.ff only
 }
 
 get_snippets_sha() {
