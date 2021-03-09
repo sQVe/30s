@@ -1,3 +1,11 @@
+## [1.5.24](https://github.com/sQVe/30s/compare/v1.5.23...v1.5.24) (2021-03-09)
+
+
+### Bug Fixes
+
+* **action:** add auto update snippets action ([3a2f783](https://github.com/sQVe/30s/commit/3a2f783c7d54cfff4e57e5579dcddf7cfd3bff50))
+* **action:** add test and release action ([ef29e9d](https://github.com/sQVe/30s/commit/ef29e9d462be839ef17d764f57a994ceb5cc0c2b))
+
 ## [1.5.23](https://github.com/sQVe/30s/compare/v1.5.22...v1.5.23) (2020-11-29)
 
 
