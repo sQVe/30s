@@ -10,7 +10,6 @@ set -o errexit
 setup_git() {
   git config --global user.email "github@github.com"
   git config --global user.name "GitHub Actions"
-  git config pull.ff only
 }
 
 get_snippets_sha() {
@@ -20,7 +19,7 @@ get_snippets_sha() {
 check_submodules_changes() {
   local snippetsSha
 
-  git submodule foreach git pull origin master
+  git submodule foreach git pull --ff-only origin master
 
   if [[ $(git status --short | wc -l) -eq 0 ]]; then
     echo "Clean working status after pulling all submodules, exiting..."
