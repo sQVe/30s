@@ -1,0 +1,71 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "08:00"
+    timezone: Europe/Stockholm
+  open-pull-requests-limit: 10
+  reviewers:
+  - sQVe
+  ignore:
+  - dependency-name: "@rollup/plugin-commonjs"
+    versions:
+    - 17.0.0
+    - 17.1.0
+  - dependency-name: eslint-plugin-standard
+    versions:
+    - 5.0.0
+  - dependency-name: eslint
+    versions:
+    - 7.18.0
+    - 7.19.0
+    - 7.20.0
+    - 7.21.0
+  - dependency-name: commander
+    versions:
+    - 7.0.0
+    - 7.1.0
+  - dependency-name: husky
+    versions:
+    - 4.3.8
+    - 5.0.9
+    - 5.1.0
+    - 5.1.2
+  - dependency-name: "@rollup/plugin-node-resolve"
+    versions:
+    - 11.1.0
+    - 11.1.1
+    - 11.2.0
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.12.11
+    - 7.12.13
+    - 7.12.16
+    - 7.12.17
+    - 7.13.8
+  - dependency-name: node-notifier
+    versions:
+    - 8.0.1
+  - dependency-name: "@types/ramda"
+    versions:
+    - 0.27.36
+    - 0.27.37
+    - 0.27.38
+  - dependency-name: core-js
+    versions:
+    - 3.10.0
+    - 3.10.1
+    - 3.8.3
+    - 3.9.0
+    - 3.9.1
+  - dependency-name: "@types/jest"
+    versions:
+    - 26.0.20
+  - dependency-name: marked
+    versions:
+    - 2.0.0
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.13.13
