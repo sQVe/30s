@@ -1,3 +1,10 @@
+## [1.5.31](https://github.com/sQVe/30s/compare/v1.5.30...v1.5.31) (2021-05-18)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 72) ([90cdc45](https://github.com/sQVe/30s/commit/90cdc45c60d39398612bca8b57f622fde145e2cb))
+
 ## [1.5.30](https://github.com/sQVe/30s/compare/v1.5.29...v1.5.30) (2021-05-10)
 
 
