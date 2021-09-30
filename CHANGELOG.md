@@ -1,3 +1,115 @@
+## [1.5.42](https://github.com/sQVe/30s/compare/v1.5.41...v1.5.42) (2021-09-28)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 205) ([6955796](https://github.com/sQVe/30s/commit/6955796ad61f25f1f5975ac853826c18f8259160))
+
+## [1.5.41](https://github.com/sQVe/30s/compare/v1.5.40...v1.5.41) (2021-09-24)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 201) ([c07f125](https://github.com/sQVe/30s/commit/c07f12500af306c3a693b9970adc7ce2e7b93320))
+
+## [1.5.40](https://github.com/sQVe/30s/compare/v1.5.39...v1.5.40) (2021-09-09)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 186) ([76e633b](https://github.com/sQVe/30s/commit/76e633b3d31b9dd0f5ad73d798749491630bba08))
+
+## [1.5.39](https://github.com/sQVe/30s/compare/v1.5.38...v1.5.39) (2021-08-27)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 173) ([9ee8aee](https://github.com/sQVe/30s/commit/9ee8aee3775b328301793329e494a020629e6106))
+
+## [1.5.38](https://github.com/sQVe/30s/compare/v1.5.37...v1.5.38) (2021-08-17)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 163) ([5188801](https://github.com/sQVe/30s/commit/5188801e3f03b4e686bc94c98d4390052f13a6c2))
+
+## [1.5.37](https://github.com/sQVe/30s/compare/v1.5.36...v1.5.37) (2021-07-24)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 139) ([cf018c2](https://github.com/sQVe/30s/commit/cf018c225812a0d346b463f441fcf9f2cca3600b))
+
+## [1.5.36](https://github.com/sQVe/30s/compare/v1.5.35...v1.5.36) (2021-07-14)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 129) ([c5262f6](https://github.com/sQVe/30s/commit/c5262f61bcf8343b5a59f669952f0113f88f6b30))
+
+## [1.5.35](https://github.com/sQVe/30s/compare/v1.5.34...v1.5.35) (2021-06-21)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 106) ([2c0c4b6](https://github.com/sQVe/30s/commit/2c0c4b6d1b3c00d42ebcfd138c36d7fc44c924ae))
+
+## [1.5.34](https://github.com/sQVe/30s/compare/v1.5.33...v1.5.34) (2021-06-19)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 104) ([c74bfae](https://github.com/sQVe/30s/commit/c74bfae08b41eca8d143f67ac0aac9a5290fcc79))
+
+## [1.5.33](https://github.com/sQVe/30s/compare/v1.5.32...v1.5.33) (2021-06-18)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 103) ([062a4e5](https://github.com/sQVe/30s/commit/062a4e5abe0041bb46c6f534497f5bc1f80f7013))
+
+## [1.5.32](https://github.com/sQVe/30s/compare/v1.5.31...v1.5.32) (2021-06-14)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 99) ([ebad5ef](https://github.com/sQVe/30s/commit/ebad5ef31c116ca5288b4c2c6babf749722ca9fe))
+
+## [1.5.31](https://github.com/sQVe/30s/compare/v1.5.30...v1.5.31) (2021-05-18)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 72) ([90cdc45](https://github.com/sQVe/30s/commit/90cdc45c60d39398612bca8b57f622fde145e2cb))
+
+## [1.5.30](https://github.com/sQVe/30s/compare/v1.5.29...v1.5.30) (2021-05-10)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 64) ([3d33896](https://github.com/sQVe/30s/commit/3d3389686492ebc7d75b44f1dc12a847ddbf441c))
+
+## [1.5.29](https://github.com/sQVe/30s/compare/v1.5.28...v1.5.29) (2021-04-25)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 49) ([80b0d02](https://github.com/sQVe/30s/commit/80b0d0229d5f8c86a48271422c527d404d94550a))
+
+## [1.5.28](https://github.com/sQVe/30s/compare/v1.5.27...v1.5.28) (2021-04-23)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 47) ([f434145](https://github.com/sQVe/30s/commit/f4341457889b8845ea30b09d3688742501f92c54))
+
+## [1.5.27](https://github.com/sQVe/30s/compare/v1.5.26...v1.5.27) (2021-04-03)
+
+
+### Bug Fixes
+
+* **submodules:** update snippets (run: 27) ([1c3a930](https://github.com/sQVe/30s/commit/1c3a93001b1d0658035400566a68753669434007))
+
 ## [1.5.26](https://github.com/sQVe/30s/compare/v1.5.25...v1.5.26) (2021-03-19)
 
 
